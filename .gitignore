@@ -47,6 +47,11 @@ AUTO_GENERATED_REPORT.md
 SUGGESTED_PATTERNS.txt
 scan-results/
 scan-results-*.zip
+scan-results-archive-*.zip
+
+# Debug and log files
+logs_*.zip
+workflow-logs/
 
 # Sensitive documents - NEVER commit!
 Personal Access Token*.pdf
