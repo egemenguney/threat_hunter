@@ -44,6 +44,14 @@ secrets.txt
 detected_repos.json
 detected_repos.csv
 AUTO_GENERATED_REPORT.md
+SUGGESTED_PATTERNS.txt
+scan-results/
+scan-results-*.zip
+
+# Sensitive documents - NEVER commit!
+Personal Access Token*.pdf
+*.token
+token*.txt
 
 # Downloaded malware samples (NEVER commit these!)
 *.exe

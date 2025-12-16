@@ -35,10 +35,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
+      - name: Test SCAN_TOKEN validity
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+        run: |
+          echo "🔑 Testing SCAN_TOKEN..."
+          curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user | jq '.login // "ERROR"'
+          echo "✅ Token test completed"
+      
       - name: Run malware scan
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
+          echo "🔍 Starting malware scan with SCAN_TOKEN..."
           python malware_hunter.py
       
       - name: Upload scan results
@@ -75,6 +84,7 @@ jobs:
         env:
           NEW_PATTERNS: ${{ steps.check_patterns.outputs.new_patterns }}
         with:
+          github-token: ${{ secrets.SCAN_TOKEN }}
           script: |
             const fs = require('fs');
             const data = JSON.parse(fs.readFileSync('detected_repos.json', 'utf8'));
