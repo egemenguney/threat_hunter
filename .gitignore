@@ -53,6 +53,12 @@ scan-results-archive-*.zip
 logs_*.zip
 workflow-logs/
 
+# Mass reporter output
+mass_report_log.json
+mass_report_summary.md
+reports/
+temp-scan-results/
+
 # Sensitive documents - NEVER commit!
 Personal Access Token*.pdf
 *.token
