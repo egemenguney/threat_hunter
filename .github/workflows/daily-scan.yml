@@ -49,6 +49,7 @@ jobs:
             detected_repos.json
             detected_repos.csv
             AUTO_GENERATED_REPORT.md
+            SUGGESTED_PATTERNS.txt
           retention-days: 30
       
       - name: Check for HIGH severity detections
@@ -58,9 +59,21 @@ jobs:
           echo "high_count=$HIGH_COUNT" >> $GITHUB_OUTPUT
           echo "Found $HIGH_COUNT HIGH severity repositories"
       
+      - name: Check for new pattern suggestions
+        id: check_patterns
+        run: |
+          if [ -f "SUGGESTED_PATTERNS.txt" ]; then
+            echo "new_patterns=true" >> $GITHUB_OUTPUT
+            echo "New pattern suggestions found"
+          else
+            echo "new_patterns=false" >> $GITHUB_OUTPUT
+          fi
+      
       - name: Create issue for new detections
         if: steps.check_high.outputs.high_count > 0
         uses: actions/github-script@v7
+        env:
+          NEW_PATTERNS: ${{ steps.check_patterns.outputs.new_patterns }}
         with:
           script: |
             const fs = require('fs');
@@ -80,6 +93,8 @@ jobs:
             ${highSeverity.length > 20 ? `\n*... and ${highSeverity.length - 20} more*` : ''}
             
             📁 Full results in workflow artifacts.
+            
+            ${process.env.NEW_PATTERNS === 'true' ? '\n🧠 **New pattern suggestions found** - Check SUGGESTED_PATTERNS.txt in artifacts' : ''}
             `;
             
             await github.rest.issues.create({
