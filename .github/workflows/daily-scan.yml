@@ -79,7 +79,7 @@ jobs:
           fi
       
       - name: Create issue for new detections
-        if: false  # Temporarily disabled for debugging
+        if: steps.check_high.outputs.high_count > 0
         uses: actions/github-script@v7
         env:
           NEW_PATTERNS: ${{ steps.check_patterns.outputs.new_patterns }}
