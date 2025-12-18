@@ -1,11 +1,10 @@
-# Delta Force Malware Hunter v2.0 - Dependencies
+# Threat Hunter v3.0 - Dependencies
 
 # Core
-requests>=2.28.0
 python-dotenv>=1.0.0
 
-# GitHub API (better than raw requests)
-PyGithub>=2.0.0
+# Async HTTP Client (fast parallel requests)
+httpx>=0.25.0
 
 # YARA signature matching
 yara-python>=4.3.0

@@ -60,7 +60,7 @@ reports/
 temp-scan-results/
 
 # Backup files
-delta_force_malware.yar.bak
+*.bak
 
 # Sensitive documents - NEVER commit!
 Personal Access Token*.pdf

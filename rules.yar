@@ -235,8 +235,8 @@ meta:
         // 1. DELTA FORCE (Base Pattern Reference)
         // ====================================================================
         // Desen: Delta Force 2025, Delta-Force-Hack-2024, DeltaForce2025
-        $df_year_mix    = /delta[-_\s]*force.*?\d{4}/i
-        $df_hawk_year   = /hawk[-_\s]*ops.*?\d{4}/i
+        $df_year_mix    = /delta[-_\s]*force.*\d{4}/i
+        $df_hawk_year   = /hawk[-_\s]*ops.*\d{4}/i
 
         // ====================================================================
         // 2. CALL OF DUTY SERIES (BO6, BO7, MW3, Warzone) + YEAR
@@ -244,35 +244,35 @@ meta:
         // Desen: "Black Ops 6 2025", "Warzone-Unlocker-2024", "MW3 2025"
         
         // Black Ops (6, 7 and Generic) with Year
-        $cod_bo_year    = /black[-_\s]*ops[-_\s]*(6|7).*?\d{4}/i
-        $cod_bo_gen     = /black[-_\s]*ops.*?\d{4}/i
+        $cod_bo_year    = /black[-_\s]*ops[-_\s]*(6|7).*\d{4}/i
+        $cod_bo_gen     = /black[-_\s]*ops.*\d{4}/i
         
         // Warzone with Year
-        $cod_wz_year    = /warzone.*?\d{4}/i
-        $cod_wz_hack_yr = /warzone.*(hack|cheat|unlock|aim).*?\d{4}/i
+        $cod_wz_year    = /warzone.*\d{4}/i
+        $cod_wz_hack_yr = /warzone.*(hack|cheat|unlock|aim).*\d{4}/i
         
         // Modern Warfare 3 with Year
-        $cod_mw3_year   = /modern[-_\s]*warfare[-_\s]*3.*?\d{4}/i
-        $cod_mw_gen     = /modern[-_\s]*warfare.*?\d{4}/i
-        $cod_mw3_sh_yr  = /mw3.*?\d{4}/i
+        $cod_mw3_year   = /modern[-_\s]*warfare[-_\s]*3.*\d{4}/i
+        $cod_mw_gen     = /modern[-_\s]*warfare.*\d{4}/i
+        $cod_mw3_sh_yr  = /mw3.*\d{4}/i
         
         // General COD
-        $cod_gen_year   = /call[-_\s]*of[-_\s]*duty.*?\d{4}/i
-        $cod_sh_year    = /cod.*?\d{4}/i
+        $cod_gen_year   = /call[-_\s]*of[-_\s]*duty.*\d{4}/i
+        $cod_sh_year    = /cod.*\d{4}/i
 
         // ====================================================================
         // 3. COUNTER-STRIKE (CS2, CS:GO) + YEAR
         // ====================================================================
         // Desen: "CS2 2025", "Counter-Strike 2 Hack 2024"
         
-        $cs2_year       = /counter[-_\s]*strike[-_\s]*2.*?\d{4}/i
-        $cs2_short_yr   = /cs[-_\s]*2.*?\d{4}/i
+        $cs2_year       = /counter[-_\s]*strike[-_\s]*2.*\d{4}/i
+        $cs2_short_yr   = /cs[-_\s]*2.*\d{4}/i
         
-        $csgo_year      = /global[-_\s]*offensive.*?\d{4}/i
-        $csgo_short_yr  = /cs[-_\s]*go.*?\d{4}/i
+        $csgo_year      = /global[-_\s]*offensive.*\d{4}/i
+        $csgo_short_yr  = /cs[-_\s]*go.*\d{4}/i
         
         // Generic "CS Hack 2025"
-        $cs_gen_yr      = /cs.*hack.*?\d{4}/i
+        $cs_gen_yr      = /cs.*hack.*\d{4}/i
 
         // ====================================================================
         // 4. BATTLEFIELD SERIES + YEAR
@@ -280,21 +280,21 @@ meta:
         // Desen: "Battlefield V 2025", "BF2042 Hack 2025"
         // Not: BF2042 oyunun kendisi olduğu için, 2042 harici yılları veya "hack" kelimesini arıyoruz.
         
-        $bf_v_year      = /battlefield[-_\s]*(v|5).*?\d{4}/i
-        $bf_2042_hack   = /battlefield[-_\s]*2042.*(hack|cheat|aim).*?\d{4}/i
-        $bf_gen_year    = /battlefield.*?\d{4}/i
-        $bf_short_year  = /bf[-_\s]*(v|5|2042).*?\d{4}/i
+        $bf_v_year      = /battlefield[-_\s]*(v|5).*\d{4}/i
+        $bf_2042_hack   = /battlefield[-_\s]*2042.*(hack|cheat|aim).*\d{4}/i
+        $bf_gen_year    = /battlefield.*\d{4}/i
+        $bf_short_year  = /bf[-_\s]*(v|5|2042).*\d{4}/i
 
         // ====================================================================
         // 5. ARMA SERIES + YEAR
         // ====================================================================
         // Desen: "Arma 3 2025", "Arma 4 2025", "Arma Reforger 2025"
         
-        $arma_3_year    = /arma[-_\s]*3.*?\d{4}/i
-        $arma_4_year    = /arma[-_\s]*4.*?\d{4}/i
-        $arma_ref_year  = /arma[-_\s]*reforger.*?\d{4}/i
-        $arma_tac_year  = /arma[-_\s]*tactics.*?\d{4}/i
-        $arma_gen_year  = /arma.*(hack|cheat|script).*?\d{4}/i
+        $arma_3_year    = /arma[-_\s]*3.*\d{4}/i
+        $arma_4_year    = /arma[-_\s]*4.*\d{4}/i
+        $arma_ref_year  = /arma[-_\s]*reforger.*\d{4}/i
+        $arma_tac_year  = /arma[-_\s]*tactics.*\d{4}/i
+        $arma_gen_year  = /arma.*(hack|cheat|script).*\d{4}/i
 
         // ====================================================================
         // 6. VALORANT & WARFRAME & OUTLAST + YEAR
@@ -302,16 +302,16 @@ meta:
         // Desen: "Valorant-2025", "Warframe Platinum 2025"
         
         // Valorant
-        $val_year       = /valorant.*?\d{4}/i
-        $val_hack_yr    = /valorant.*(hack|aim|esp|tpm).*?\d{4}/i
+        $val_year       = /valorant.*\d{4}/i
+        $val_hack_yr    = /valorant.*(hack|aim|esp|tpm).*\d{4}/i
         
         // Warframe
-        $wf_year        = /warframe.*?\d{4}/i
-        $wf_plat_yr     = /warframe.*(plat|gold|hack).*?\d{4}/i
+        $wf_year        = /warframe.*\d{4}/i
+        $wf_plat_yr     = /warframe.*(plat|gold|hack).*\d{4}/i
         
         // The Outlast
-        $out_year       = /the[-_\s]*outlast.*?\d{4}/i
-        $out_tr_year    = /outlast.*trainer.*?\d{4}/i
+        $out_year       = /the[-_\s]*outlast.*\d{4}/i
+        $out_tr_year    = /outlast.*trainer.*\d{4}/i
 
         // ====================================================================
         // 7. RUST + YEAR
@@ -320,8 +320,8 @@ meta:
         // Rust dilinden ayırmak için "Hack/Cheat" kelimesi veya yılın bitişik kullanımı
         
         $rust_year      = /rust[-_\s]*\d{4}/i  // Rust2025
-        $rust_scr_yr    = /rust.*script.*?\d{4}/i
-        $rust_hack_yr   = /rust.*(hack|cheat|esp|recoil).*?\d{4}/i
+        $rust_scr_yr    = /rust.*script.*\d{4}/i
+        $rust_hack_yr   = /rust.*(hack|cheat|esp|recoil).*\d{4}/i
 
         // ====================================================================
         // 8. COMBINATIONS (Joined/Separated)
