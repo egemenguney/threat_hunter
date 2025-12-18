@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
           echo "🔍 Starting malware scan with SCAN_TOKEN..."
-          python malware_hunter.py
+          python threat_hunter.py
       
       - name: Upload scan results
         uses: actions/upload-artifact@v4

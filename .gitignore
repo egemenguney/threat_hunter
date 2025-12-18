@@ -59,6 +59,9 @@ mass_report_summary.md
 reports/
 temp-scan-results/
 
+# Backup files
+delta_force_malware.yar.bak
+
 # Sensitive documents - NEVER commit!
 Personal Access Token*.pdf
 *.token

@@ -70,7 +70,7 @@ OUTPUT_DIR = Path(".")
 RESULTS_JSON = OUTPUT_DIR / "detected_repos.json"
 RESULTS_CSV = OUTPUT_DIR / "detected_repos.csv"
 REPORT_MD = OUTPUT_DIR / "AUTO_GENERATED_REPORT.md"
-YARA_RULES_FILE = OUTPUT_DIR / "delta_force_malware.yar"
+YARA_RULES_FILE = OUTPUT_DIR / "rules.yar"
 
 # Entropy threshold for detecting encrypted/packed content
 ENTROPY_THRESHOLD = 7.0  # Max is 8.0, >7.0 = likely encrypted
