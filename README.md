@@ -1,6 +1,6 @@
-# 🔍 Delta Force Malware Hunter
+# 🔍 Threat Hunter
 
-Automated GitHub malware repository detection tool targeting the "Delta Force hack" malware distribution campaign.
+Automated GitHub malware repository detection tool targeting the known game hack malware distribution campaign.
 
 ## 🎯 Features
 
@@ -22,8 +22,8 @@ As of December 2025:
 
 ```bash
 # Clone the repository
-git clone https://github.com/egemenguney/deltaforcemalwarehunter.git
-cd deltaforcemalwarehunter
+git clone https://github.com/egemenguney/threat_hunter.git
+cd threat_hunter
 
 # Install dependencies
 pip install -r requirements.txt
@@ -36,12 +36,12 @@ export GITHUB_TOKEN="ghp_xxxxxxxxxxxx"
 
 ### Quick Check Single Repository
 ```bash
-python malware_hunter.py https://github.com/USERNAME/REPO
+python threat_hunter.py https://github.com/USERNAME/REPO
 ```
 
 ### Full Scan (All Delta Force Searches)
 ```bash
-python malware_hunter.py
+python threat_hunter.py
 ```
 
 ### Output Files
@@ -79,7 +79,7 @@ URL:        L%D0%BEader.zip
 
 ## 📝 YARA Rules
 
-The `delta_force_malware.yar` file contains YARA rules for:
+The `rules.yar` file contains YARA rules for:
 - Cyrillic obfuscation detection
 - README social engineering patterns
 - Known malicious infrastructure
