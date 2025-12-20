@@ -9,6 +9,9 @@ httpx>=0.25.0
 # YARA signature matching
 yara-python>=4.3.0
 
+# Web Search Fallback (when GitHub API rate limited)
+duckduckgo_search>=6.0.0
+
 # Optional: VirusTotal API
 # vt-py>=0.18.0
 

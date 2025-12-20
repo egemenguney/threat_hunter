@@ -56,6 +56,13 @@ try:
 except ImportError:
     YARA_AVAILABLE = False
 
+# DuckDuckGo search for fallback when GitHub API is rate limited
+try:
+    from duckduckgo_search import DDGS
+    DDGS_AVAILABLE = True
+except ImportError:
+    DDGS_AVAILABLE = False
+
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
@@ -72,6 +79,13 @@ SEARCH_DELAY = 5.0               # Delay between search batches (artırıldı)
 REQUEST_DELAY = 0.5              # Delay between individual requests
 REQUEST_TIMEOUT = 30             # HTTP request timeout
 RATE_LIMIT_BUFFER = 100          # Core API buffer (bu kadar kaldığında yavaşla)
+
+# Web Search Fallback Configuration
+# GitHub Search API rate limit'e yaklaşınca DuckDuckGo'ya geç
+WEB_SEARCH_FALLBACK = True       # Web search fallback aktif mi?
+SEARCH_API_FALLBACK_THRESHOLD = 5  # Bu kadar istek kaldığında web search'e geç
+WEB_SEARCH_DELAY = 3.0           # Web search istekleri arası bekleme (saniye)
+WEB_SEARCH_MAX_RESULTS = 50      # Web search'ten max sonuç
 
 # Output files - use script directory instead of current working directory
 OUTPUT_DIR = Path(__file__).parent.resolve()
@@ -1023,6 +1037,83 @@ class YaraScanner:
         return self.scan_content(text.encode('utf-8', errors='ignore'), identifier)
 
 # ============================================================================
+# WEB SEARCH FALLBACK (DuckDuckGo)
+# ============================================================================
+
+class WebSearchFallback:
+    """Web search fallback when GitHub API is rate limited"""
+    
+    def __init__(self):
+        self.available = DDGS_AVAILABLE
+        self.search_count = 0
+        
+        if not self.available:
+            print("[!] DuckDuckGo search not available - install with: pip install duckduckgo_search")
+    
+    def search_github_repos(self, query: str, max_results: int = 50) -> List[Dict]:
+        """
+        Search for GitHub repos using DuckDuckGo with site:github.com
+        Returns list of dicts with 'owner' and 'name' keys
+        """
+        if not self.available:
+            return []
+        
+        repos = []
+        search_query = f"site:github.com {query}"
+        
+        try:
+            print(f"[WEB] Searching DuckDuckGo: '{query}'...")
+            
+            with DDGS() as ddgs:
+                results = list(ddgs.text(search_query, max_results=max_results))
+            
+            self.search_count += 1
+            
+            # Parse GitHub repo URLs from results
+            github_pattern = re.compile(r'github\.com/([^/]+)/([^/\s?#]+)')
+            seen = set()
+            
+            for result in results:
+                url = result.get('href', '') or result.get('link', '')
+                match = github_pattern.search(url)
+                
+                if match:
+                    owner, repo_name = match.groups()
+                    # Clean repo name (remove .git, trailing slashes etc)
+                    repo_name = repo_name.rstrip('/').replace('.git', '')
+                    
+                    # Skip GitHub system pages
+                    if owner.lower() in ['topics', 'trending', 'explore', 'settings', 
+                                         'notifications', 'issues', 'pulls', 'marketplace',
+                                         'sponsors', 'orgs', 'users', 'search']:
+                        continue
+                    
+                    # Skip common non-repo paths
+                    if repo_name.lower() in ['followers', 'following', 'stars', 
+                                              'repositories', 'projects', 'packages']:
+                        continue
+                    
+                    key = f"{owner}/{repo_name}".lower()
+                    if key not in seen:
+                        seen.add(key)
+                        repos.append({
+                            'owner': {'login': owner},
+                            'name': repo_name,
+                            'html_url': f"https://github.com/{owner}/{repo_name}",
+                            'source': 'web_search'
+                        })
+            
+            print(f"[WEB] Found {len(repos)} GitHub repos from web search")
+            
+            # Rate limiting for web search
+            time.sleep(WEB_SEARCH_DELAY)
+            
+        except Exception as e:
+            print(f"[WEB] Search error: {e}")
+        
+        return repos[:max_results]
+
+# ============================================================================
 # ASYNC GITHUB API CLIENT
 # ============================================================================
 
@@ -1050,6 +1141,10 @@ class AsyncGitHubClient:
         self.rate_limit_reset = 0
         self.search_rate_remaining = 30
         self.search_rate_reset = 0
+        
+        # Web search fallback
+        self.web_search = WebSearchFallback()
+        self.use_web_search = False  # Aktif mi?
     
     def _update_rate_limits(self, response: httpx.Response, is_search: bool = False):
         """Update rate limit info from response headers"""
@@ -1104,7 +1199,19 @@ class AsyncGitHubClient:
     
     async def search_repositories(self, client: httpx.AsyncClient, query: str, 
                                    max_results: int = 30) -> List[Dict]:
-        """Search for repositories with rate limiting"""
+        """Search for repositories with rate limiting and web search fallback"""
+        
+        # Web search fallback aktif mi kontrol et
+        if WEB_SEARCH_FALLBACK and self.web_search.available:
+            # Search API limiti düşükse web search'e geç
+            if self.search_rate_remaining <= SEARCH_API_FALLBACK_THRESHOLD:
+                if not self.use_web_search:
+                    print(f"[!] GitHub Search API low ({self.search_rate_remaining}), switching to web search...")
+                    self.use_web_search = True
+                
+                # Web search kullan
+                return self.web_search.search_github_repos(query, max_results)
+        
         results = []
         page = 1
         retry_count = 0
@@ -1129,6 +1236,15 @@ class AsyncGitHubClient:
                     self._update_rate_limits(response, is_search=True)
                     
                     if response.status_code == 403:
+                        # Rate limit'e takıldık - web search'e geç
+                        if WEB_SEARCH_FALLBACK and self.web_search.available:
+                            print(f"[!] GitHub Search API rate limited, falling back to web search...")
+                            self.use_web_search = True
+                            web_results = self.web_search.search_github_repos(query, max_results - len(results))
+                            results.extend(web_results)
+                            break
+                        
+                        # Web search yoksa normal rate limit handling
                         if await self._handle_rate_limit(response, is_search=True):
                             retry_count += 1
                             if retry_count <= max_retries:
@@ -1278,7 +1394,10 @@ class AsyncGitHubClient:
     
     def get_rate_limit_status(self) -> str:
         """Get current rate limit status"""
-        return f"API: {self.rate_limit_remaining} | Search: {self.search_rate_remaining}"
+        status = f"API: {self.rate_limit_remaining} | Search: {self.search_rate_remaining}"
+        if self.use_web_search:
+            status += " | 🌐 Web Search Mode"
+        return status
 
 # ============================================================================
 # DETECTION FUNCTIONS
@@ -1631,7 +1750,7 @@ class MalwareHunter:
         print("""
 +====================================================================+
 |  DELTA FORCE MALWARE HUNTER v3.0 (ASYNC)                          |
-|  Features: Cyrillic + Entropy + YARA + Async httpx                |
+|  Features: Cyrillic + Entropy + YARA + Async httpx + Web Search   |
 +====================================================================+
         """)
         
@@ -1640,6 +1759,7 @@ class MalwareHunter:
         print(f"[+] Entropy Analysis: Enabled (threshold: {ENTROPY_THRESHOLD})")
         print(f"[+] Concurrent searches: {SEARCH_CONCURRENT_LIMIT}")
         print(f"[+] Concurrent repo analyses: {REPO_CONCURRENT_LIMIT}")
+        print(f"[+] Web Search Fallback: {'Enabled (DuckDuckGo)' if self.github.web_search.available else 'Disabled'}")
         
         queries = queries or SEARCH_QUERIES
         total_queries = len(queries)
