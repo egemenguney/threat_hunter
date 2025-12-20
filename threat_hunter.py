@@ -64,10 +64,14 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_API = "https://api.github.com"
 
 # Rate limiting configuration
-SEARCH_CONCURRENT_LIMIT = 5      # Max concurrent search queries
-REPO_CONCURRENT_LIMIT = 15       # Max concurrent repo analyses
-SEARCH_DELAY = 2.5               # Delay between search batches (seconds)
+# GitHub Search API: 30 requests/minute (authenticated)
+# GitHub Core API: 5000 requests/hour (authenticated)
+SEARCH_CONCURRENT_LIMIT = 2      # Max concurrent search queries (düşürüldü)
+REPO_CONCURRENT_LIMIT = 10       # Max concurrent repo analyses (düşürüldü)
+SEARCH_DELAY = 5.0               # Delay between search batches (artırıldı)
+REQUEST_DELAY = 0.5              # Delay between individual requests
 REQUEST_TIMEOUT = 30             # HTTP request timeout
+RATE_LIMIT_BUFFER = 100          # Core API buffer (bu kadar kaldığında yavaşla)
 
 # Output files - use script directory instead of current working directory
 OUTPUT_DIR = Path(__file__).parent.resolve()
@@ -1059,19 +1063,43 @@ class AsyncGitHubClient:
         except (ValueError, TypeError):
             pass
     
+    async def _check_rate_limit_buffer(self, is_search: bool = False):
+        """Proaktif rate limit kontrolü - buffer'a yaklaşınca yavaşla"""
+        if is_search:
+            # Search API: 30/dakika - 5 kaldığında 30 sn bekle
+            if self.search_rate_remaining <= 5 and self.search_rate_remaining > 0:
+                wait_time = max(self.search_rate_reset - time.time(), 30)
+                print(f"[RATE] Search API buffer low ({self.search_rate_remaining}), waiting {wait_time:.0f}s...")
+                await asyncio.sleep(wait_time)
+        else:
+            # Core API: 5000/saat - buffer'a yaklaşınca yavaşla
+            if self.rate_limit_remaining <= RATE_LIMIT_BUFFER and self.rate_limit_remaining > 0:
+                # Her istek arasına ekstra delay ekle
+                extra_delay = (RATE_LIMIT_BUFFER - self.rate_limit_remaining) * 0.5
+                print(f"[RATE] Core API buffer low ({self.rate_limit_remaining}), adding {extra_delay:.1f}s delay...")
+                await asyncio.sleep(extra_delay)
+    
     async def _handle_rate_limit(self, response: httpx.Response, is_search: bool = False) -> bool:
         """Handle rate limit response, returns True if should retry"""
         if response.status_code == 403:
             reset_time = int(response.headers.get('X-RateLimit-Reset', 0))
-            if reset_time:
-                wait_time = max(reset_time - time.time(), 1)
-                if wait_time < 120:  # Wait max 2 minutes
-                    limit_type = "Search" if is_search else "API"
-                    print(f"[!] {limit_type} rate limit hit, waiting {wait_time:.0f}s...")
-                    await asyncio.sleep(wait_time + 1)
-                    return True
-                else:
-                    print(f"[!] Rate limit reset too far ({wait_time:.0f}s), skipping...")
+            remaining = int(response.headers.get('X-RateLimit-Remaining', -1))
+            
+            # Rate limit mi yoksa başka bir 403 mü?
+            if remaining == 0 or 'rate limit' in response.text.lower():
+                if reset_time:
+                    wait_time = max(reset_time - time.time(), 1)
+                    # GitHub Actions'da 60 dakikaya kadar bekle (workflow zaten uzun sürebilir)
+                    max_wait = int(os.environ.get('RATE_LIMIT_MAX_WAIT', 3600))  # Default 60 min
+                    if wait_time <= max_wait:
+                        limit_type = "Search" if is_search else "API"
+                        wait_min = wait_time / 60
+                        print(f"[!] {limit_type} rate limit hit (remaining: {remaining})")
+                        print(f"[!] Waiting {wait_min:.1f} minutes for reset...")
+                        await asyncio.sleep(wait_time + 5)  # +5 saniye güvenlik payı
+                        return True
+                    else:
+                        print(f"[!] Rate limit reset too far ({wait_time/60:.1f} min), exceeds max wait ({max_wait/60:.0f} min)")
         return False
     
     async def search_repositories(self, client: httpx.AsyncClient, query: str, 
@@ -1079,9 +1107,14 @@ class AsyncGitHubClient:
         """Search for repositories with rate limiting"""
         results = []
         page = 1
+        retry_count = 0
+        max_retries = 3
         
         async with self.search_semaphore:
             while len(results) < max_results:
+                # Proaktif rate limit kontrolü
+                await self._check_rate_limit_buffer(is_search=True)
+                
                 url = f"{GITHUB_API}/search/repositories"
                 params = {
                     'q': query, 
@@ -1097,7 +1130,12 @@ class AsyncGitHubClient:
                     
                     if response.status_code == 403:
                         if await self._handle_rate_limit(response, is_search=True):
-                            continue
+                            retry_count += 1
+                            if retry_count <= max_retries:
+                                continue
+                            else:
+                                print(f"[!] Max retries ({max_retries}) exceeded for '{query}'")
+                                break
                         break
                     
                     if response.status_code == 422:
@@ -1113,12 +1151,17 @@ class AsyncGitHubClient:
                     
                     results.extend(items)
                     page += 1
+                    retry_count = 0  # Reset retry counter on success
                     
-                    # Small delay between pages
-                    await asyncio.sleep(0.5)
+                    # Search API için daha uzun delay (30 req/min = 2 sn/req)
+                    await asyncio.sleep(2.5)
                     
                 except httpx.TimeoutException:
                     print(f"[!] Search timeout for '{query}'")
+                    retry_count += 1
+                    if retry_count <= max_retries:
+                        await asyncio.sleep(5)
+                        continue
                     break
                 except Exception as e:
                     print(f"[X] Search error for '{query}': {e}")
@@ -1129,6 +1172,9 @@ class AsyncGitHubClient:
     async def get_repo(self, client: httpx.AsyncClient, owner: str, repo: str) -> Optional[Dict]:
         """Get repository data"""
         async with self.repo_semaphore:
+            # Proaktif rate limit kontrolü
+            await self._check_rate_limit_buffer(is_search=False)
+            
             try:
                 url = f"{GITHUB_API}/repos/{owner}/{repo}"
                 response = await client.get(url, timeout=REQUEST_TIMEOUT)
@@ -1144,6 +1190,7 @@ class AsyncGitHubClient:
                     return None
                 
                 response.raise_for_status()
+                await asyncio.sleep(REQUEST_DELAY)  # Küçük delay
                 return response.json()
             except Exception as e:
                 print(f"[X] Error getting repo {owner}/{repo}: {e}")
@@ -1152,16 +1199,24 @@ class AsyncGitHubClient:
     async def get_contents(self, client: httpx.AsyncClient, owner: str, repo: str) -> List[Dict]:
         """Get repository contents"""
         async with self.repo_semaphore:
+            # Proaktif rate limit kontrolü
+            await self._check_rate_limit_buffer(is_search=False)
+            
             try:
                 url = f"{GITHUB_API}/repos/{owner}/{repo}/contents"
                 response = await client.get(url, timeout=REQUEST_TIMEOUT)
                 self._update_rate_limits(response)
+                
+                if response.status_code == 403:
+                    if await self._handle_rate_limit(response):
+                        response = await client.get(url, timeout=REQUEST_TIMEOUT)
                 
                 if response.status_code in [403, 404]:
                     return []
                 
                 response.raise_for_status()
                 data = response.json()
+                await asyncio.sleep(REQUEST_DELAY)  # Küçük delay
                 return data if isinstance(data, list) else []
             except Exception:
                 return []
@@ -1169,16 +1224,24 @@ class AsyncGitHubClient:
     async def get_readme(self, client: httpx.AsyncClient, owner: str, repo: str) -> str:
         """Get README content"""
         async with self.repo_semaphore:
+            # Proaktif rate limit kontrolü
+            await self._check_rate_limit_buffer(is_search=False)
+            
             try:
                 url = f"{GITHUB_API}/repos/{owner}/{repo}/readme"
                 response = await client.get(url, timeout=REQUEST_TIMEOUT)
                 self._update_rate_limits(response)
+                
+                if response.status_code == 403:
+                    if await self._handle_rate_limit(response):
+                        response = await client.get(url, timeout=REQUEST_TIMEOUT)
                 
                 if response.status_code in [403, 404]:
                     return ""
                 
                 response.raise_for_status()
                 content = response.json().get('content', '')
+                await asyncio.sleep(REQUEST_DELAY)  # Küçük delay
                 return base64.b64decode(content).decode('utf-8', errors='ignore') if content else ""
             except (ValueError, KeyError, binascii.Error):
                 return ""
@@ -1189,10 +1252,17 @@ class AsyncGitHubClient:
                                 repo: str, path: str) -> Optional[bytes]:
         """Get raw file content for entropy analysis"""
         async with self.repo_semaphore:
+            # Proaktif rate limit kontrolü
+            await self._check_rate_limit_buffer(is_search=False)
+            
             try:
                 url = f"{GITHUB_API}/repos/{owner}/{repo}/contents/{path}"
                 response = await client.get(url, timeout=REQUEST_TIMEOUT)
                 self._update_rate_limits(response)
+                
+                if response.status_code == 403:
+                    if await self._handle_rate_limit(response):
+                        response = await client.get(url, timeout=REQUEST_TIMEOUT)
                 
                 if response.status_code in [403, 404]:
                     return None

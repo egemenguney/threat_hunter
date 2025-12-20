@@ -12,13 +12,20 @@ on:
         description: 'Max results per query'
         required: false
         default: '100'
+      rate_limit_wait:
+        description: 'Max wait time for rate limit (seconds)'
+        required: false
+        default: '3600'
 
 env:
   PYTHON_VERSION: '3.11'
+  # Rate limit bitince kaç saniye beklesin (default: 60 dakika)
+  RATE_LIMIT_MAX_WAIT: ${{ github.event.inputs.rate_limit_wait || '3600' }}
 
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 180  # 3 saat max - rate limit bekleme için yeterli
     
     steps:
       - name: Checkout repository
@@ -35,6 +42,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
+      - name: Check rate limit before scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+        run: |
+          echo "🔑 Checking rate limit status..."
+          RATE_INFO=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/rate_limit)
+          CORE_REMAINING=$(echo $RATE_INFO | jq '.resources.core.remaining')
+          SEARCH_REMAINING=$(echo $RATE_INFO | jq '.resources.search.remaining')
+          CORE_RESET=$(echo $RATE_INFO | jq '.resources.core.reset')
+          
+          echo "📊 Core API remaining: $CORE_REMAINING/5000"
+          echo "🔍 Search API remaining: $SEARCH_REMAINING/30"
+          
+          # Eğer core API 500'ün altındaysa bekle
+          if [ "$CORE_REMAINING" -lt 500 ]; then
+            CURRENT_TIME=$(date +%s)
+            WAIT_TIME=$((CORE_RESET - CURRENT_TIME + 60))
+            if [ "$WAIT_TIME" -gt 0 ] && [ "$WAIT_TIME" -lt 3600 ]; then
+              echo "⏳ Low rate limit, waiting ${WAIT_TIME}s for reset..."
+              sleep $WAIT_TIME
+            fi
+          fi
+      
       - name: Test SCAN_TOKEN validity
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
@@ -46,9 +76,19 @@ jobs:
       - name: Run malware scan
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+          RATE_LIMIT_MAX_WAIT: ${{ env.RATE_LIMIT_MAX_WAIT }}
         run: |
           echo "🔍 Starting malware scan with SCAN_TOKEN..."
+          echo "⏱️ Max rate limit wait: ${RATE_LIMIT_MAX_WAIT}s"
           python threat_hunter.py
+      
+      - name: Show final rate limit status
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+        run: |
+          echo "📊 Final rate limit status:"
+          curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/rate_limit | jq '.resources | {core: .core.remaining, search: .search.remaining}'
       
       - name: Upload scan results
         uses: actions/upload-artifact@v4
