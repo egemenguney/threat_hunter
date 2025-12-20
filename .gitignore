@@ -41,8 +41,7 @@ Thumbs.db
 secrets.txt
 
 # Output files (regenerated on each run)
-detected_repos.json
-detected_repos.csv
+# detected_repos.json and detected_repos.csv are now TRACKED for workflow continuity
 AUTO_GENERATED_REPORT.md
 SUGGESTED_PATTERNS.txt
 scan-results/

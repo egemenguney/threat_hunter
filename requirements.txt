@@ -10,7 +10,7 @@ httpx>=0.25.0
 yara-python>=4.3.0
 
 # Web Search Fallback (when GitHub API rate limited)
-duckduckgo_search>=6.0.0
+ddgs>=1.0.4
 
 # Optional: VirusTotal API
 # vt-py>=0.18.0

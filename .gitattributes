@@ -1,0 +1,8 @@
+# Optimize detected_repos files for git
+detected_repos.json linguist-generated=true diff=json
+detected_repos.csv linguist-generated=true
+
+# These are auto-generated, always use ours in merge conflicts
+detected_repos.json merge=ours
+detected_repos.csv merge=ours
+AUTO_GENERATED_REPORT.md merge=ours

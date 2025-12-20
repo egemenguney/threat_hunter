@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Delta Force Malware Hunter v3.0
+Threat Hunter v3.0
 Automated GitHub malware repository detection tool
 
 Features:
@@ -56,9 +56,9 @@ try:
 except ImportError:
     YARA_AVAILABLE = False
 
-# DuckDuckGo search for fallback when GitHub API is rate limited
+# DuckDuckGo search (ddgs) for primary web search
 try:
-    from duckduckgo_search import DDGS
+    from ddgs import DDGS
     DDGS_AVAILABLE = True
 except ImportError:
     DDGS_AVAILABLE = False
@@ -73,19 +73,28 @@ GITHUB_API = "https://api.github.com"
 # Rate limiting configuration
 # GitHub Search API: 30 requests/minute (authenticated)
 # GitHub Core API: 5000 requests/hour (authenticated)
-SEARCH_CONCURRENT_LIMIT = 2      # Max concurrent search queries (düşürüldü)
-REPO_CONCURRENT_LIMIT = 10       # Max concurrent repo analyses (düşürüldü)
-SEARCH_DELAY = 5.0               # Delay between search batches (artırıldı)
-REQUEST_DELAY = 0.5              # Delay between individual requests
+SEARCH_CONCURRENT_LIMIT = 5      # Max concurrent search queries (aggressive)
+REPO_CONCURRENT_LIMIT = 10       # Max concurrent repo analyses (aggressive)
+SEARCH_DELAY = 1.0               # Delay between search batches (minimal)
+REQUEST_DELAY = 0.3              # Delay between individual requests (minimal)
 REQUEST_TIMEOUT = 30             # HTTP request timeout
-RATE_LIMIT_BUFFER = 100          # Core API buffer (bu kadar kaldığında yavaşla)
 
-# Web Search Fallback Configuration
-# GitHub Search API rate limit'e yaklaşınca DuckDuckGo'ya geç
-WEB_SEARCH_FALLBACK = True       # Web search fallback aktif mi?
-SEARCH_API_FALLBACK_THRESHOLD = 5  # Bu kadar istek kaldığında web search'e geç
-WEB_SEARCH_DELAY = 3.0           # Web search istekleri arası bekleme (saniye)
-WEB_SEARCH_MAX_RESULTS = 50      # Web search'ten max sonuç
+# Core API Rate Limit Management
+CORE_API_RESERVED = 1000         # Issue oluşturma ve son işlemler için rezerve
+CORE_API_STOP_THRESHOLD = 1000   # Bu seviyeye düşünce taramayı durdur (sadece 1000 kalsın)
+RATE_LIMIT_BUFFER = 500          # Bu seviyede yavaşla
+
+# Web Search Strategy
+# ÖNCELİK: GitHub PAT ile arama, sonra DDGS fallback
+WEB_SEARCH_PRIMARY = False       # GitHub PAT birincil yöntem
+WEB_SEARCH_DELAY = 2.0           # Web search istekleri arası bekleme (saniye)
+WEB_SEARCH_MAX_RESULTS = 100     # Web search'ten max sonuç (increased for DDGS)
+USE_GITHUB_SEARCH_API = True     # GitHub Search API kullan (primary)
+USE_DDGS_FALLBACK = True         # Search API bitince DDGS kullan
+FALLBACK_SEARCH_MAX_RESULTS = 10 # Fallback çağrısında alınacak max sonuç
+
+# Skip Already Scanned Repos
+SKIP_EXISTING_REPOS = True       # detected_repos.json'daki repoları atla
 
 # Output files - use script directory instead of current working directory
 OUTPUT_DIR = Path(__file__).parent.resolve()
@@ -1141,6 +1150,7 @@ class AsyncGitHubClient:
         self.rate_limit_reset = 0
         self.search_rate_remaining = 30
         self.search_rate_reset = 0
+        self.rate_limit_critical_flag = False  # Flag to stop scanning cleanly
         
         # Web search fallback
         self.web_search = WebSearchFallback()
@@ -1158,21 +1168,26 @@ class AsyncGitHubClient:
         except (ValueError, TypeError):
             pass
     
+    def is_rate_limit_critical(self) -> bool:
+        """Core API kritik seviyeye düştü mü? (4000'den az = rezerve bölgesine giriyor)"""
+        return self.rate_limit_remaining <= CORE_API_STOP_THRESHOLD and self.rate_limit_remaining > 0
+    
+    def get_rate_limit_reserved(self) -> int:
+        """Rezerve edilmiş rate limit miktarını hesapla"""
+        return max(0, CORE_API_RESERVED - (5000 - self.rate_limit_remaining))
+    
     async def _check_rate_limit_buffer(self, is_search: bool = False):
-        """Proaktif rate limit kontrolü - buffer'a yaklaşınca yavaşla"""
+        """Proaktif rate limit kontrolü - sadece kritik seviyede dur"""
         if is_search:
-            # Search API: 30/dakika - 5 kaldığında 30 sn bekle
-            if self.search_rate_remaining <= 5 and self.search_rate_remaining > 0:
-                wait_time = max(self.search_rate_reset - time.time(), 30)
-                print(f"[RATE] Search API buffer low ({self.search_rate_remaining}), waiting {wait_time:.0f}s...")
-                await asyncio.sleep(wait_time)
+            # Search API: 30/dakika kontrolü ayrıca yapılıyor
+            pass
         else:
-            # Core API: 5000/saat - buffer'a yaklaşınca yavaşla
-            if self.rate_limit_remaining <= RATE_LIMIT_BUFFER and self.rate_limit_remaining > 0:
-                # Her istek arasına ekstra delay ekle
-                extra_delay = (RATE_LIMIT_BUFFER - self.rate_limit_remaining) * 0.5
-                print(f"[RATE] Core API buffer low ({self.rate_limit_remaining}), adding {extra_delay:.1f}s delay...")
-                await asyncio.sleep(extra_delay)
+            # Core API: 1000'e düşünce dur (1000 rezerve)
+            if self.rate_limit_remaining <= CORE_API_STOP_THRESHOLD and self.rate_limit_remaining > 0:
+                if not self.rate_limit_critical_flag:
+                    print(f"[RATE] ⚠️ Core API STOP THRESHOLD ({self.rate_limit_remaining}), stopping scan")
+                    print(f"[RATE] 💾 Reserving {CORE_API_RESERVED} requests for issue creation")
+                    self.rate_limit_critical_flag = True
     
     async def _handle_rate_limit(self, response: httpx.Response, is_search: bool = False) -> bool:
         """Handle rate limit response, returns True if should retry"""
@@ -1199,23 +1214,14 @@ class AsyncGitHubClient:
     
     async def search_repositories(self, client: httpx.AsyncClient, query: str, 
                                    max_results: int = 30) -> List[Dict]:
-        """Search for repositories with rate limiting and web search fallback"""
+        """Search for repositories using GitHub PAT (Primary) or DDGS (Fallback)"""
         
-        # Web search fallback aktif mi kontrol et
-        if WEB_SEARCH_FALLBACK and self.web_search.available:
-            # Search API limiti düşükse web search'e geç
-            if self.search_rate_remaining <= SEARCH_API_FALLBACK_THRESHOLD:
-                if not self.use_web_search:
-                    print(f"[!] GitHub Search API low ({self.search_rate_remaining}), switching to web search...")
-                    self.use_web_search = True
-                
-                # Web search kullan
-                return self.web_search.search_github_repos(query, max_results)
-        
+        # Try GitHub Search API first
         results = []
         page = 1
         retry_count = 0
-        max_retries = 3
+        max_retries = 2
+        search_api_exhausted = False
         
         async with self.search_semaphore:
             while len(results) < max_results:
@@ -1228,7 +1234,7 @@ class AsyncGitHubClient:
                     'sort': 'updated', 
                     'order': 'desc', 
                     'page': page, 
-                    'per_page': min(30, max_results - len(results))
+                    'per_page': min(100, max_results - len(results))
                 }
                 
                 try:
@@ -1236,26 +1242,16 @@ class AsyncGitHubClient:
                     self._update_rate_limits(response, is_search=True)
                     
                     if response.status_code == 403:
-                        # Rate limit'e takıldık - web search'e geç
-                        if WEB_SEARCH_FALLBACK and self.web_search.available:
-                            print(f"[!] GitHub Search API rate limited, falling back to web search...")
-                            self.use_web_search = True
-                            web_results = self.web_search.search_github_repos(query, max_results - len(results))
-                            results.extend(web_results)
+                        # Search API rate limited (30/min)
+                        if self.search_rate_remaining <= 0:
+                            print(f"[!] Search API exhausted (30/min limit)")
+                            search_api_exhausted = True
                             break
-                        
-                        # Web search yoksa normal rate limit handling
-                        if await self._handle_rate_limit(response, is_search=True):
-                            retry_count += 1
-                            if retry_count <= max_retries:
-                                continue
-                            else:
-                                print(f"[!] Max retries ({max_retries}) exceeded for '{query}'")
-                                break
-                        break
+                        else:
+                            print(f"[X] GitHub Search API access denied")
+                            break
                     
                     if response.status_code == 422:
-                        # Validation error - query might be invalid
                         break
                     
                     response.raise_for_status()
@@ -1267,9 +1263,8 @@ class AsyncGitHubClient:
                     
                     results.extend(items)
                     page += 1
-                    retry_count = 0  # Reset retry counter on success
+                    retry_count = 0
                     
-                    # Search API için daha uzun delay (30 req/min = 2 sn/req)
                     await asyncio.sleep(2.5)
                     
                 except httpx.TimeoutException:
@@ -1282,6 +1277,29 @@ class AsyncGitHubClient:
                 except Exception as e:
                     print(f"[X] Search error for '{query}': {e}")
                     break
+        
+        # FALLBACK: Use DDGS web search if Search API exhausted
+        if search_api_exhausted and USE_DDGS_FALLBACK and self.web_search.available:
+            print(f"[DDGS] Falling back to DuckDuckGo search...")
+            web_results = self.web_search.search_github_repos(query, WEB_SEARCH_MAX_RESULTS)
+            
+            # Fetch full repo data for web results so they can be analyzed properly
+            for web_repo in web_results:
+                if len(results) >= max_results:
+                    break
+                try:
+                    owner = web_repo['owner']['login']
+                    repo_name = web_repo['name']
+                    # Fetch actual repo data from GitHub API
+                    repo_data = await self.get_repo(client, owner, repo_name)
+                    if repo_data:
+                        results.append(repo_data)
+                    await asyncio.sleep(REQUEST_DELAY)
+                except Exception as e:
+                    print(f"[DDGS] Failed to fetch {owner}/{repo_name}: {e}")
+            
+            if results:
+                print(f"[DDGS] Fetched {len(results)} repos from DDGS for analysis")
         
         return results[:max_results]
     
@@ -1534,12 +1552,32 @@ class MalwareHunter:
         self.yara = YaraScanner()
         self.detected: List[DetectedRepo] = []
         self.seen_repos = set()
+        self.previously_detected = set()  # Daha önce tespit edilenler
         self.stats = {
             'total_queries': 0,
             'total_repos_found': 0,
             'repos_analyzed': 0,
             'repos_skipped': 0,
+            'skipped_existing': 0,  # Zaten tespit edilmiş repolar
         }
+        
+        # Load previously detected repos
+        if SKIP_EXISTING_REPOS:
+            self._load_existing_repos()
+    
+    def _load_existing_repos(self):
+        """Load previously detected repos from JSON file"""
+        if RESULTS_JSON.exists():
+            try:
+                with open(RESULTS_JSON, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    for item in data:
+                        repo_url = item.get('url', '')
+                        if repo_url:
+                            self.previously_detected.add(repo_url)
+                print(f"[+] Loaded {len(self.previously_detected)} previously detected repos")
+            except Exception as e:
+                print(f"[!] Failed to load existing repos: {e}")
     
     async def analyze_repository(self, client: httpx.AsyncClient, 
                                   repo_data: Dict) -> Optional[DetectedRepo]:
@@ -1686,8 +1724,17 @@ class MalwareHunter:
         tasks = []
         for repo_data in repos:
             repo_id = repo_data.get('id')
+            repo_url = repo_data.get('html_url', '')
+            
+            # Skip if already seen in this session
             if repo_id in self.seen_repos:
                 continue
+            
+            # Skip if previously detected (URL check)
+            if SKIP_EXISTING_REPOS and repo_url in self.previously_detected:
+                self.stats['skipped_existing'] += 1
+                continue
+            
             self.seen_repos.add(repo_id)
             tasks.append(self.analyze_repository(client, repo_data))
         
@@ -1708,6 +1755,11 @@ class MalwareHunter:
     async def search_and_analyze(self, client: httpx.AsyncClient, 
                                   query: str, max_results: int = 30) -> List[DetectedRepo]:
         """Search for repos and analyze them"""
+        
+        # Kritik rate limit kontrolü - taramayı durdur
+        if self.github.rate_limit_critical_flag or self.github.is_rate_limit_critical():
+            return []  # Return empty list instead of raising exception
+        
         repos = await self.github.search_repositories(client, query, max_results)
         self.stats['total_repos_found'] += len(repos)
         
@@ -1719,6 +1771,10 @@ class MalwareHunter:
         all_detections = []
         
         for i in range(0, len(repos), batch_size):
+            # Her batch öncesi kontrol
+            if self.github.rate_limit_critical_flag or self.github.is_rate_limit_critical():
+                break  # Exit loop cleanly
+            
             batch = repos[i:i + batch_size]
             detections = await self.process_repo_batch(client, batch)
             all_detections.extend(detections)
@@ -1749,7 +1805,7 @@ class MalwareHunter:
         """Run full async malware scan"""
         print("""
 +====================================================================+
-|  DELTA FORCE MALWARE HUNTER v3.0 (ASYNC)                          |
+|  THREAT HUNTER v3.0 (ASYNC)                          |
 |  Features: Cyrillic + Entropy + YARA + Async httpx + Web Search   |
 +====================================================================+
         """)
@@ -1757,9 +1813,10 @@ class MalwareHunter:
         print(f"[+] Mode: Async (httpx)")
         print(f"[+] YARA: {'Enabled' if self.yara.available else 'Disabled'}")
         print(f"[+] Entropy Analysis: Enabled (threshold: {ENTROPY_THRESHOLD})")
-        print(f"[+] Concurrent searches: {SEARCH_CONCURRENT_LIMIT}")
-        print(f"[+] Concurrent repo analyses: {REPO_CONCURRENT_LIMIT}")
-        print(f"[+] Web Search Fallback: {'Enabled (DuckDuckGo)' if self.github.web_search.available else 'Disabled'}")
+        print(f"[+] Search Strategy: GitHub PAT (Primary) - up to 100 repos per query")
+        print(f"[+] Skip Existing: {'Enabled' if SKIP_EXISTING_REPOS else 'Disabled'} ({len(self.previously_detected)} repos loaded)")
+        print(f"[+] Rate Limit Strategy: Reserve {CORE_API_RESERVED} for issue creation (stop at {CORE_API_STOP_THRESHOLD})")
+        print(f"[+] Concurrent: {SEARCH_CONCURRENT_LIMIT} searches, {REPO_CONCURRENT_LIMIT} repo analyses")
         
         queries = queries or SEARCH_QUERIES
         total_queries = len(queries)
@@ -1811,21 +1868,34 @@ class MalwareHunter:
                 # Rate limit status
                 print(f"  [RATE] {self.github.get_rate_limit_status()}")
                 
+                # Kritik rate limit kontrolü - erken çık
+                if self.github.rate_limit_critical_flag or self.github.is_rate_limit_critical():
+                    print(f"\n[!] ⚠️ STOPPING SCAN - Core API rate limit critical ({self.github.rate_limit_remaining} remaining)")
+                    print(f"[!] Saving partial results...")
+                    break
+                
                 # Delay between batches
                 if batch_idx + batch_size < len(queries):
                     await asyncio.sleep(SEARCH_DELAY)
         
         elapsed = time.time() - start_time
         
+        # Final status
+        was_rate_limited = self.github.is_rate_limit_critical()
+        reserved = self.github.get_rate_limit_reserved()
+        
         print(f"\n{'='*60}")
-        print(f"[*] SCAN COMPLETE in {elapsed:.1f}s")
-        print(f"    Queries executed: {self.stats['total_queries']}")
+        print(f"[*] SCAN {'STOPPED (rate limit reserve)' if was_rate_limited else 'COMPLETE'} in {elapsed:.1f}s")
+        print(f"    Queries executed: {self.stats['total_queries']}/{len(queries)}")
         print(f"    Repos found: {self.stats['total_repos_found']}")
         print(f"    Repos analyzed: {len(self.seen_repos)}")
+        print(f"    Skipped (already detected): {self.stats['skipped_existing']}")
         print(f"    Malicious detected: {len(self.detected)}")
         print(f"      - HIGH: {len([d for d in self.detected if d.severity == 'HIGH'])}")
         print(f"      - MEDIUM: {len([d for d in self.detected if d.severity == 'MEDIUM'])}")
         print(f"      - LOW: {len([d for d in self.detected if d.severity == 'LOW'])}")
+        print(f"    Final API remaining: {self.github.rate_limit_remaining}")
+        print(f"    💾 Reserved for issues: {reserved}/{CORE_API_RESERVED}")
         print(f"{'='*60}\n")
         
         if self.detected:
@@ -1838,23 +1908,58 @@ class MalwareHunter:
         return asyncio.run(self.run_scan_async(queries, max_per_query))
     
     def save_results(self):
-        """Save all results"""
-        # JSON
-        data = [asdict(d) for d in self.detected]
-        with open(RESULTS_JSON, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
-        print(f"[FILE] Saved to {RESULTS_JSON}")
+        """Save all results - APPEND new detections to existing data"""
+        if not self.detected:
+            print(f"[FILE] No new detections to save")
+            return
         
-        # CSV
+        # Load existing data
+        existing_data = []
+        existing_urls = set()
+        
+        if RESULTS_JSON.exists():
+            try:
+                with open(RESULTS_JSON, 'r', encoding='utf-8') as f:
+                    existing_data = json.load(f)
+                    existing_urls = {item.get('url', '') for item in existing_data}
+                print(f"[FILE] Loaded {len(existing_data)} existing detections")
+            except Exception as e:
+                print(f"[!] Failed to load existing data: {e}")
+        
+        # Add only new detections (skip duplicates)
+        new_detections = []
+        for d in self.detected:
+            if d.url not in existing_urls:
+                new_detections.append(asdict(d))
+                existing_urls.add(d.url)
+        
+        print(f"[FILE] Adding {len(new_detections)} new detections (skipped {len(self.detected) - len(new_detections)} duplicates)")
+        
+        # Combine and save JSON
+        all_data = existing_data + new_detections
+        with open(RESULTS_JSON, 'w', encoding='utf-8') as f:
+            json.dump(all_data, f, indent=2, ensure_ascii=False)
+        print(f"[FILE] Saved {len(all_data)} total detections to {RESULTS_JSON}")
+        
+        # Rebuild CSV from complete dataset
         with open(RESULTS_CSV, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerow(['URL', 'Owner', 'Repo', 'Severity', 'Type', 'Score',
                             'Cyrillic', 'Entropy Files', 'YARA Matches', 'Status'])
-            for d in self.detected:
-                writer.writerow([d.url, d.owner, d.repo_name, d.severity, d.detection_type,
-                               d.suspicion_score, d.cyrillic_detected, len(d.high_entropy_files),
-                               len(d.yara_matches), d.report_status])
-        print(f"[FILE] Saved to {RESULTS_CSV}")
+            for item in all_data:
+                writer.writerow([
+                    item.get('url', ''),
+                    item.get('owner', ''),
+                    item.get('repo_name', ''),
+                    item.get('severity', ''),
+                    item.get('detection_type', ''),
+                    item.get('suspicion_score', 0),
+                    item.get('cyrillic_detected', False),
+                    len(item.get('high_entropy_files', [])),
+                    len(item.get('yara_matches', [])),
+                    item.get('report_status', '')
+                ])
+        print(f"[FILE] Saved {len(all_data)} total detections to {RESULTS_CSV}")
         
         # Markdown
         self._generate_report()
@@ -1886,7 +1991,7 @@ class MalwareHunter:
         report = f"""# AUTOMATED MALWARE DETECTION REPORT
 
 **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  
-**Tool:** Delta Force Malware Hunter v3.0 (Async)
+**Tool:** Threat Malware Hunter v3.0 (Async)
 
 ---
 

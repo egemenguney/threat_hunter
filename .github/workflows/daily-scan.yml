@@ -125,36 +125,72 @@ jobs:
         env:
           NEW_PATTERNS: ${{ steps.check_patterns.outputs.new_patterns }}
         with:
+          # SCAN_TOKEN kullan (1000 rate limit rezerve edildi)
           github-token: ${{ secrets.SCAN_TOKEN }}
           script: |
             const fs = require('fs');
-            const data = JSON.parse(fs.readFileSync('detected_repos.json', 'utf8'));
-            const highSeverity = data.filter(d => d.severity === 'HIGH');
             
-            if (highSeverity.length === 0) return;
-            
-            const body = `## 🚨 Daily Scan Results - ${new Date().toISOString().split('T')[0]}
-            
-            **HIGH Severity Detections: ${highSeverity.length}**
-            
-            | Repository | Type | Score |
-            |------------|------|-------|
-            ${highSeverity.slice(0, 20).map(r => `| [${r.owner}/${r.repo_name}](${r.url}) | ${r.detection_type} | ${r.suspicion_score}/100 |`).join('\n')}
-            
-            ${highSeverity.length > 20 ? `\n*... and ${highSeverity.length - 20} more*` : ''}
-            
-            📁 Full results in workflow artifacts.
-            
-            ${process.env.NEW_PATTERNS === 'true' ? '\n🧠 **New pattern suggestions found** - Check SUGGESTED_PATTERNS.txt in artifacts' : ''}
-            `;
-            
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `🚨 Malware Scan: ${highSeverity.length} HIGH severity repos detected`,
-              body: body,
-              labels: ['malware-detection', 'automated']
-            });
+            try {
+              // Rate limit kontrolü
+              const rateLimit = await github.rest.rateLimit.get();
+              const remaining = rateLimit.data.rate.remaining;
+              
+              console.log(`📊 Rate limit remaining: ${remaining}`);
+              
+              if (remaining < 50) {
+                throw new Error(`Rate limit too low (${remaining}), cannot create issue safely`);
+              }
+              
+              const data = JSON.parse(fs.readFileSync('detected_repos.json', 'utf8'));
+              const highSeverity = data.filter(d => d.severity === 'HIGH');
+              
+              if (highSeverity.length === 0) return;
+              
+              const body = `## 🚨 Daily Scan Results - ${new Date().toISOString().split('T')[0]}
+              
+              **HIGH Severity Detections: ${highSeverity.length}**
+              
+              | Repository | Type | Score |
+              |------------|------|-------|
+              ${highSeverity.slice(0, 20).map(r => `| [${r.owner}/${r.repo_name}](${r.url}) | ${r.detection_type} | ${r.suspicion_score}/100 |`).join('\n')}
+              
+              ${highSeverity.length > 20 ? `\n*... and ${highSeverity.length - 20} more*` : ''}
+              
+              📁 Full results in workflow artifacts.
+              
+              ${process.env.NEW_PATTERNS === 'true' ? '\n🧠 **New pattern suggestions found** - Check SUGGESTED_PATTERNS.txt in artifacts' : ''}
+              `;
+              
+              const issue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `🚨 Malware Scan: ${highSeverity.length} HIGH severity repos detected`,
+                body: body,
+                labels: ['malware-detection', 'automated']
+              });
+              
+              console.log(`✅ Issue created: #${issue.data.number}`);
+              console.log(`📊 Rate limit after issue: ${(await github.rest.rateLimit.get()).data.rate.remaining}`);
+              
+            } catch (error) {
+              // Rate limit veya başka hata - CRITICAL: Bu adım başarısız olursa workflow fail olsun
+              console.error(`❌ CRITICAL: Failed to create issue: ${error.message}`);
+              core.setFailed(`Issue creation failed: ${error.message}`);
+            }
+      
+      - name: Commit updated detected_repos
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add detected_repos.json detected_repos.csv
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update detected repos [skip ci]"
+            git push
+            echo "✅ Updated detected_repos committed"
+          fi
 
   notify:
     needs: scan
