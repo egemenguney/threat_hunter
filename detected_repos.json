@@ -37708,5 +37708,1446 @@
     "files": [],
     "suspicion_score": 38,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/amir-salmani/HWlD-2024-",
+    "owner": "amir-salmani",
+    "repo_name": "HWlD-2024-",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "SUSPICIOUS N-GRAM (2x): password 2024",
+      "SUSPICIOUS N-GRAM (2x): full password 2024",
+      "SUSPICIOUS N-GRAM (2x): password 2024 𝐃𝗼𝐰𝐧𝐥𝐨𝐚𝗱",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 52/100"
+    ],
+    "detected_at": "2025-12-21T06:19:58.128311",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "SUSPICIOUS N-GRAM (2x): password 2024",
+      "SUSPICIOUS N-GRAM (2x): full password 2024",
+      "SUSPICIOUS N-GRAM (2x): password 2024 𝐃𝗼𝐰𝐧𝐥𝐨𝐚𝗱"
+    ],
+    "files": [],
+    "suspicion_score": 52,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/karyol/HWlD-Spoofer",
+    "owner": "karyol",
+    "repo_name": "HWlD-Spoofer",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: free.*2024",
+      "RED FLAG: 2024.*Warzone",
+      "RED FLAG: 2024.*Fortnite",
+      "RED FLAG: 2024.*Apex.*Legends",
+      "RED FLAG: 2024.*Apex",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 63/100"
+    ],
+    "detected_at": "2025-12-21T06:19:58.209851",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: free.*2024",
+      "RED FLAG: 2024.*Warzone",
+      "RED FLAG: 2024.*Fortnite",
+      "RED FLAG: 2024.*Apex.*Legends",
+      "RED FLAG: 2024.*Apex"
+    ],
+    "files": [],
+    "suspicion_score": 63,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/wxxz975/HWID-Spoofer",
+    "owner": "wxxz975",
+    "repo_name": "HWID-Spoofer",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:19:58.883380",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/gmh5225/COD-Warzone-MW-HACK-ESP-AIMBOT",
+    "owner": "gmh5225",
+    "repo_name": "COD-Warzone-MW-HACK-ESP-AIMBOT",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 76/100"
+    ],
+    "detected_at": "2025-12-21T06:19:42.380657",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 76,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/penwigle100/blackops6",
+    "owner": "penwigle100",
+    "repo_name": "blackops6",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: free.*2025",
+      "RED FLAG: Black.*Ops.*2025",
+      "RED FLAG: Call.*of.*Duty.*2025",
+      "RED FLAG: BO6.*2025",
+      "RED FLAG: 2025.*Battlefield",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:19:53.181582",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: free.*2025",
+      "RED FLAG: Black.*Ops.*2025",
+      "RED FLAG: Call.*of.*Duty.*2025",
+      "RED FLAG: BO6.*2025",
+      "RED FLAG: 2025.*Battlefield",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/elisha554/BlackOps6-Mod",
+    "owner": "elisha554",
+    "repo_name": "BlackOps6-Mod",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: free.*2025",
+      "RED FLAG: Black.*Ops.*2025",
+      "RED FLAG: Call.*of.*Duty.*2025",
+      "RED FLAG: COD.*2025",
+      "KNOWN MALWARE MEDIAFIRE: dmaaqrcqphy0d",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Known_Mediafire_Payloads (Known malicious MediaFire folder IDs)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:19:53.715266",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Known_Mediafire_Payloads (Known malicious MediaFire folder IDs)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: free.*2025",
+      "RED FLAG: Black.*Ops.*2025",
+      "RED FLAG: Call.*of.*Duty.*2025",
+      "RED FLAG: COD.*2025",
+      "KNOWN MALWARE MEDIAFIRE: dmaaqrcqphy0d"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/mrmonster7983/BO6-ForgeModMenu",
+    "owner": "mrmonster7983",
+    "repo_name": "BO6-ForgeModMenu",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
+      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
+      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
+      "HIDDEN WORD: 'loader' found after normalization",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
+      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: Black.*Ops.*2025",
+      "RED FLAG: 2025.*Call.*of.*Duty",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: BO6.*2025",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:19:54.085803",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: Black.*Ops.*2025",
+      "RED FLAG: 2025.*Call.*of.*Duty",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: BO6.*2025",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [
+      "Lоader.zip"
+    ],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/WaterCM/Call-Of-Duty-Black-Ops-6-external",
+    "owner": "WaterCM",
+    "repo_name": "Call-Of-Duty-Black-Ops-6-external",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: 2025.*Black.*Ops",
+      "RED FLAG: 2025.*Call.*of.*Duty",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: BO6.*2025",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 77/100"
+    ],
+    "detected_at": "2025-12-21T06:19:53.882462",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: 2025.*Black.*Ops",
+      "RED FLAG: 2025.*Call.*of.*Duty",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: BO6.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 77,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Ozair324/Rivals-Op-Script-no-key",
+    "owner": "Ozair324",
+    "repo_name": "Rivals-Op-Script-no-key",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 41/100"
+    ],
+    "detected_at": "2025-12-21T06:19:53.806346",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 41,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Modern-Warfare-3-ESP/mv3-esp",
+    "owner": "Modern-Warfare-3-ESP",
+    "repo_name": "mv3-esp",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-21T06:21:02.753259",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Bodmer/TFT_eSPI",
+    "owner": "Bodmer",
+    "repo_name": "TFT_eSPI",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:21:01.201089",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Reactzz/warzone-unlock-all-tool",
+    "owner": "Reactzz",
+    "repo_name": "warzone-unlock-all-tool",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
+      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
+      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
+      "HIDDEN WORD: 'loader' found after normalization",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
+      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: Warzone.*2025",
+      "RED FLAG: 2025.*Warzone",
+      "RED FLAG: Modern.*Warfare.*2025",
+      "RED FLAG: Call.*of.*Duty.*2025",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: 2025.*COD",
+      "RED FLAG: MW3.*2025",
+      "RED FLAG: 2025.*MW3",
+      "RED FLAG: 2025.*Battlefield",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:21:09.178414",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: Warzone.*2025",
+      "RED FLAG: 2025.*Warzone",
+      "RED FLAG: Modern.*Warfare.*2025",
+      "RED FLAG: Call.*of.*Duty.*2025",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: 2025.*COD",
+      "RED FLAG: MW3.*2025",
+      "RED FLAG: 2025.*MW3",
+      "RED FLAG: 2025.*Battlefield",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [
+      "Lоader.zip"
+    ],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Pikku980/camo-master-unlocker-mw3",
+    "owner": "Pikku980",
+    "repo_name": "camo-master-unlocker-mw3",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Modern.*Warfare.*2025",
+      "RED FLAG: MW3.*2025",
+      "RED FLAG: 2025.*MW3",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 54/100"
+    ],
+    "detected_at": "2025-12-21T06:21:09.014670",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Modern.*Warfare.*2025",
+      "RED FLAG: MW3.*2025",
+      "RED FLAG: 2025.*MW3"
+    ],
+    "files": [],
+    "suspicion_score": 54,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/sneekz407/Warzone-Unlock-All-Tools",
+    "owner": "sneekz407",
+    "repo_name": "Warzone-Unlock-All-Tools",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: Warzone.*2025",
+      "RED FLAG: MW3.*2025",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:21:10.748470",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: Warzone.*2025",
+      "RED FLAG: MW3.*2025",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Cryakl/Ultimate-RAT-Collection",
+    "owner": "Cryakl",
+    "repo_name": "Ultimate-RAT-Collection",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): password infected h1",
+      "YARA:Readme_Password_Hint (Password hints for protected archives)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:21:08.638572",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Password_Hint (Password hints for protected archives)"
+    ],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): password infected h1"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/qb40/resource-hacker",
+    "owner": "qb40",
+    "repo_name": "resource-hacker",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 60/100"
+    ],
+    "detected_at": "2025-12-21T06:21:10.484672",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 60,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/LykosAI/StabilityMatrix",
+    "owner": "LykosAI",
+    "repo_name": "StabilityMatrix",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-21T06:21:09.785333",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Counter-Strike-Go/Cheat-Injector",
+    "owner": "Counter-Strike-Go",
+    "repo_name": "Cheat-Injector",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:22:17.313016",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/mdilai/JweegaCSGO",
+    "owner": "mdilai",
+    "repo_name": "JweegaCSGO",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 31/100"
+    ],
+    "detected_at": "2025-12-21T06:22:17.697341",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version"
+    ],
+    "files": [],
+    "suspicion_score": 31,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Bartis1313/csgo",
+    "owner": "Bartis1313",
+    "repo_name": "csgo",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:22:18.729252",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/dretax/GarHal_CSGO",
+    "owner": "dretax",
+    "repo_name": "GarHal_CSGO",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (4x): click here",
+      "SUSPICIOUS N-GRAM (4x): click here https",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 31/100"
+    ],
+    "detected_at": "2025-12-21T06:22:19.329214",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (4x): click here",
+      "SUSPICIOUS N-GRAM (4x): click here https"
+    ],
+    "files": [],
+    "suspicion_score": 31,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/RemiaCS/CS2-AHK-Bhop",
+    "owner": "RemiaCS",
+    "repo_name": "CS2-AHK-Bhop",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:22:19.846024",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Kava4/Cs2-Logitech-No-Recoil",
+    "owner": "Kava4",
+    "repo_name": "Cs2-Logitech-No-Recoil",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:22:19.946448",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/AhsanBilal-748/battlefield-5-advantage-plus",
+    "owner": "AhsanBilal-748",
+    "repo_name": "battlefield-5-advantage-plus",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: 2025.*Battlefield",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:22:25.747322",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: 2025.*Battlefield"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/A3Wasteland/ArmA3_Wasteland.Altis",
+    "owner": "A3Wasteland",
+    "repo_name": "ArmA3_Wasteland.Altis",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:23:13.966557",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/VictorVG/ph",
+    "owner": "VictorVG",
+    "repo_name": "ph",
+    "detection_type": "HIGH_ENTROPY",
+    "severity": "MEDIUM",
+    "evidence": [
+      "HIGH ENTROPY: ph.zip (7.83/8.0)",
+      "SUSPICION SCORE: 20/100"
+    ],
+    "detected_at": "2025-12-21T06:23:14.617501",
+    "cyrillic_detected": false,
+    "high_entropy_files": [
+      "ph.zip: HIGH ENTROPY (7.83/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 20,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/GameServerManagers/LinuxGSM",
+    "owner": "GameServerManagers",
+    "repo_name": "LinuxGSM",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:23:13.238443",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/ZoDDeL/CM-Ultimate",
+    "owner": "ZoDDeL",
+    "repo_name": "CM-Ultimate",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "FILENAME PATTERN: CM_Ultimate\\.CT (matches 2 files: CM_Ultimate.CT, CM_Ultimate.DE...)",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICION SCORE: 76/100"
+    ],
+    "detected_at": "2025-12-21T06:23:40.327848",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)",
+      "YARA:Suspicious_DLL_Names (Suspicious DLL names commonly used in this campaign)"
+    ],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version"
+    ],
+    "files": [],
+    "suspicion_score": 76,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/TheGag96/individual-color-variation",
+    "owner": "TheGag96",
+    "repo_name": "individual-color-variation",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "FILENAME PATTERN: Hijack_BattleSprite\\.s (matches 2 files: Hijack_BattleSprite.s, Hijack_BattleSprite2.s...)",
+      "FILENAME PATTERN: Hijack_PersonalityTableBuild\\.s (matches 2 files: Hijack_PersonalityTableBuild.s, Hijack_PersonalityTableBuild2.s...)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:24:34.453744",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/bountyhunter34/WarframeHackTutorial",
+    "owner": "bountyhunter34",
+    "repo_name": "WarframeHackTutorial",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: stealth\\s*mode",
+      "RED FLAG: Warframe.*2025",
+      "RED FLAG: 2025.*Warframe",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 77/100"
+    ],
+    "detected_at": "2025-12-21T06:24:31.158479",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: stealth\\s*mode",
+      "RED FLAG: Warframe.*2025",
+      "RED FLAG: 2025.*Warframe"
+    ],
+    "files": [],
+    "suspicion_score": 77,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/XinTiago/Rust-cheats",
+    "owner": "XinTiago",
+    "repo_name": "Rust-cheats",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
+      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
+      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
+      "HIDDEN WORD: 'loader' found after normalization",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
+      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 73/100"
+    ],
+    "detected_at": "2025-12-21T06:24:59.700602",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [
+      "Lоader.zip"
+    ],
+    "suspicion_score": 73,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/stardust71zorotop/labrust",
+    "owner": "stardust71zorotop",
+    "repo_name": "labrust",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: 2025.*Rust",
+      "BOT INDICATOR: 2025.*Edition",
+      "BOT INDICATOR: Updated.*2025",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 77/100"
+    ],
+    "detected_at": "2025-12-21T06:25:00.150664",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: 2025.*Rust",
+      "BOT INDICATOR: 2025.*Edition",
+      "BOT INDICATOR: Updated.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 77,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/outplay-net/Rust-External",
+    "owner": "outplay-net",
+    "repo_name": "Rust-External",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: MIT\\s*License.*hack",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 46/100"
+    ],
+    "detected_at": "2025-12-21T06:25:03.471009",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: MIT\\s*License.*hack"
+    ],
+    "files": [],
+    "suspicion_score": 46,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/IntelSDM/RustDMACheat",
+    "owner": "IntelSDM",
+    "repo_name": "RustDMACheat",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-21T06:25:03.355323",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/MdHassan90/Rust-External-Cheat-2025",
+    "owner": "MdHassan90",
+    "repo_name": "Rust-External-Cheat-2025",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: 2025.*hack.*tool",
+      "RED FLAG: 2025.*cracked",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: free.*2025",
+      "RED FLAG: 2025.*Battlefield",
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: 2025.*Rust",
+      "SUSPICIOUS N-GRAM (5x): undetected rust",
+      "SUSPICIOUS N-GRAM (2x): free download",
+      "SUSPICIOUS N-GRAM (2x): cheat undetected",
+      "SUSPICIOUS N-GRAM (3x): hacks undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected 2025",
+      "SUSPICIOUS N-GRAM (2x): cheat free download",
+      "SUSPICIOUS N-GRAM (2x): free download rust",
+      "SUSPICIOUS N-GRAM (2x): rust cheat undetected",
+      "SUSPICIOUS N-GRAM (2x): cheat undetected rust",
+      "SUSPICIOUS N-GRAM (3x): undetected rust cheat",
+      "SUSPICIOUS N-GRAM (3x): rust hacks undetected",
+      "SUSPICIOUS N-GRAM (2x): hacks undetected 2025",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:25:03.935240",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: 2025.*hack.*tool",
+      "RED FLAG: 2025.*cracked",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: free.*2025",
+      "RED FLAG: 2025.*Battlefield",
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: 2025.*Rust",
+      "SUSPICIOUS N-GRAM (5x): undetected rust",
+      "SUSPICIOUS N-GRAM (2x): free download",
+      "SUSPICIOUS N-GRAM (2x): cheat undetected",
+      "SUSPICIOUS N-GRAM (3x): hacks undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected 2025",
+      "SUSPICIOUS N-GRAM (2x): cheat free download",
+      "SUSPICIOUS N-GRAM (2x): free download rust",
+      "SUSPICIOUS N-GRAM (2x): rust cheat undetected",
+      "SUSPICIOUS N-GRAM (2x): cheat undetected rust",
+      "SUSPICIOUS N-GRAM (3x): undetected rust cheat",
+      "SUSPICIOUS N-GRAM (3x): rust hacks undetected",
+      "SUSPICIOUS N-GRAM (2x): hacks undetected 2025"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Lorentinar/Rust-Memez-External-Software",
+    "owner": "Lorentinar",
+    "repo_name": "Rust-Memez-External-Software",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*defender",
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 36/100"
+    ],
+    "detected_at": "2025-12-21T06:25:00.324175",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*defender",
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 36,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/frosty47/Rust-aimbot",
+    "owner": "frosty47",
+    "repo_name": "Rust-aimbot",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
+      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
+      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
+      "HIDDEN WORD: 'loader' found after normalization",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
+      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
+      "RED FLAG: Rust.*2025",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-21T06:25:00.682594",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2025",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [
+      "Lоader.zip"
+    ],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/smithkernel/Rust-Aimbot",
+    "owner": "smithkernel",
+    "repo_name": "Rust-Aimbot",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 53/100"
+    ],
+    "detected_at": "2025-12-21T06:25:00.784022",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 53,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/rust-esp-triggerbot/rust-triggerbot-esp",
+    "owner": "rust-esp-triggerbot",
+    "repo_name": "rust-triggerbot-esp",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2023",
+      "RED FLAG: 2023.*Rust",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 46/100"
+    ],
+    "detected_at": "2025-12-21T06:25:02.145747",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2023",
+      "RED FLAG: 2023.*Rust"
+    ],
+    "files": [],
+    "suspicion_score": 46,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/esp-rs/awesome-esp-rust",
+    "owner": "esp-rs",
+    "repo_name": "awesome-esp-rust",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2024",
+      "RED FLAG: 2024.*Rust",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 31/100"
+    ],
+    "detected_at": "2025-12-21T06:25:02.084986",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2024",
+      "RED FLAG: 2024.*Rust"
+    ],
+    "files": [],
+    "suspicion_score": 31,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Radiance-for-Rust/Rust-Radiance",
+    "owner": "Radiance-for-Rust",
+    "repo_name": "Rust-Radiance",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: 2024.*Rust",
+      "MALICIOUS DOMAIN: cheatseller.ru",
+      "YARA:Known_C2_Domains (Known malicious C2 domains from this campaign)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 61/100"
+    ],
+    "detected_at": "2025-12-21T06:25:02.326616",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Known_C2_Domains (Known malicious C2 domains from this campaign)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: 2024.*Rust",
+      "MALICIOUS DOMAIN: cheatseller.ru"
+    ],
+    "files": [],
+    "suspicion_score": 61,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/rgl/rust-esp32c6-hello-world",
+    "owner": "rgl",
+    "repo_name": "rust-esp32c6-hello-world",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-21T06:25:03.299131",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/flux-cc/rust-recoil",
+    "owner": "flux-cc",
+    "repo_name": "rust-recoil",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2024",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 28/100"
+    ],
+    "detected_at": "2025-12-21T06:24:58.749582",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2024"
+    ],
+    "files": [],
+    "suspicion_score": 28,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Bboddy/Rust-Recoil-Script",
+    "owner": "Bboddy",
+    "repo_name": "Rust-Recoil-Script",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:24:58.702991",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/ns-cpp/Rust-No-Recoil-Logitech-2025",
+    "owner": "ns-cpp",
+    "repo_name": "Rust-No-Recoil-Logitech-2025",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2025",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:24:58.779449",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/afeldman/RustyElevator",
+    "owner": "afeldman",
+    "repo_name": "RustyElevator",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-21T06:25:11.645652",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/sriramr98/hack_assembler",
+    "owner": "sriramr98",
+    "repo_name": "hack_assembler",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2024",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 38/100"
+    ],
+    "detected_at": "2025-12-21T06:25:12.693449",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2024"
+    ],
+    "files": [],
+    "suspicion_score": 38,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/apexcheat/apexcheat",
+    "owner": "apexcheat",
+    "repo_name": "apexcheat",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 46/100"
+    ],
+    "detected_at": "2025-12-21T06:25:55.469975",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 46,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/WARCHILL-for-APEX-Legends/WARCHILL-esp-for-Apex-Legends",
+    "owner": "WARCHILL-for-APEX-Legends",
+    "repo_name": "WARCHILL-esp-for-Apex-Legends",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: 2025.*Apex",
+      "MALICIOUS DOMAIN: cheatseller.ru",
+      "YARA:Known_C2_Domains (Known malicious C2 domains from this campaign)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 61/100"
+    ],
+    "detected_at": "2025-12-21T06:26:20.264779",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Known_C2_Domains (Known malicious C2 domains from this campaign)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: 2025.*Apex",
+      "MALICIOUS DOMAIN: cheatseller.ru"
+    ],
+    "files": [],
+    "suspicion_score": 61,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/laskapikeyeu/apex-legends-multi",
+    "owner": "laskapikeyeu",
+    "repo_name": "apex-legends-multi",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-21T06:26:21.168173",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Tarkov-Hacks/EXF-Hacks",
+    "owner": "Tarkov-Hacks",
+    "repo_name": "EXF-Hacks",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 38/100"
+    ],
+    "detected_at": "2025-12-21T06:26:42.751170",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 38,
+    "report_status": "PENDING"
   }
 ]
