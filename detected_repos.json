@@ -39149,5 +39149,347 @@
     "files": [],
     "suspicion_score": 38,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/shubhamplank/NewWarzoneHck-2024-",
+    "owner": "shubhamplank",
+    "repo_name": "NewWarzoneHck-2024-",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: Warzone.*2024",
+      "RED FLAG: 2024.*Warzone",
+      "SUSPICIOUS N-GRAM (5x): undetected aimbot",
+      "SUSPICIOUS N-GRAM (2x): esp undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected no",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 93/100"
+    ],
+    "detected_at": "2025-12-22T06:22:37.658040",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: Warzone.*2024",
+      "RED FLAG: 2024.*Warzone",
+      "SUSPICIOUS N-GRAM (5x): undetected aimbot",
+      "SUSPICIOUS N-GRAM (2x): esp undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected no"
+    ],
+    "files": [],
+    "suspicion_score": 93,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/somacaru/call-of-duty-fix",
+    "owner": "somacaru",
+    "repo_name": "call-of-duty-fix",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-22T06:24:05.904731",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: Updated.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/cragson/bo1-fun",
+    "owner": "cragson",
+    "repo_name": "bo1-fun",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 20/100"
+    ],
+    "detected_at": "2025-12-22T06:24:05.972216",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 20,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/YuliiaBezuhla/CheatCode",
+    "owner": "YuliiaBezuhla",
+    "repo_name": "CheatCode",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 45/100"
+    ],
+    "detected_at": "2025-12-22T06:24:12.671072",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 45,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/acemod/ACE3",
+    "owner": "acemod",
+    "repo_name": "ACE3",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version of",
+      "SUSPICION SCORE: 54/100"
+    ],
+    "detected_at": "2025-12-22T06:26:03.201378",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version of"
+    ],
+    "files": [],
+    "suspicion_score": 54,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/dberga/arma3_missions",
+    "owner": "dberga",
+    "repo_name": "arma3_missions",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-22T06:26:37.580003",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Cerasso/Rust_check_cheats",
+    "owner": "Cerasso",
+    "repo_name": "Rust_check_cheats",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "FILENAME PATTERN: image-\\d+\\.png (matches 2 files: image-1.png, image-2.png...)",
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 60/100"
+    ],
+    "detected_at": "2025-12-22T06:27:45.016973",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 60,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/paiml/bashrs",
+    "owner": "paiml",
+    "repo_name": "bashrs",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): passing 100",
+      "SUSPICIOUS N-GRAM (2x): passing 100 pass",
+      "SUSPICION SCORE: 21/100"
+    ],
+    "detected_at": "2025-12-22T06:27:55.061173",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): passing 100",
+      "SUSPICIOUS N-GRAM (2x): passing 100 pass"
+    ],
+    "files": [],
+    "suspicion_score": 21,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/karemlecoqer/fortopsofjs",
+    "owner": "karemlecoqer",
+    "repo_name": "fortopsofjs",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: bypass.*detection",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version of",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 52/100"
+    ],
+    "detected_at": "2025-12-22T06:28:36.532198",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: bypass.*detection",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version of"
+    ],
+    "files": [],
+    "suspicion_score": 52,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/PRIMEAungHtetKyaw/Hwid-Spoofer-For-Fortnite",
+    "owner": "PRIMEAungHtetKyaw",
+    "repo_name": "Hwid-Spoofer-For-Fortnite",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected and",
+      "SUSPICIOUS N-GRAM (2x): password acrobat2024",
+      "SUSPICIOUS N-GRAM (2x): note password acrobat2024",
+      "SUSPICIOUS N-GRAM (2x): password acrobat2024 1",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 60/100"
+    ],
+    "detected_at": "2025-12-22T06:28:36.609980",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected and",
+      "SUSPICIOUS N-GRAM (2x): password acrobat2024",
+      "SUSPICIOUS N-GRAM (2x): note password acrobat2024",
+      "SUSPICIOUS N-GRAM (2x): password acrobat2024 1"
+    ],
+    "files": [],
+    "suspicion_score": 60,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Haeryz/Apex-external-driver",
+    "owner": "Haeryz",
+    "repo_name": "Apex-external-driver",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-22T06:28:34.721520",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/kiddions-mm-devz/kiddions",
+    "owner": "kiddions-mm-devz",
+    "repo_name": "kiddions",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: latest.*2025.*version",
+      "RED FLAG: 2025.*working",
+      "RED FLAG: 2025.*EFT",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICIOUS N-GRAM (4x): latest version",
+      "SUSPICIOUS N-GRAM (2x): download latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version https",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Fake_Verification (Fake GitHub/VirusTotal verification claims)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-22T06:29:42.170182",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Fake_Verification (Fake GitHub/VirusTotal verification claims)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: latest.*2025.*version",
+      "RED FLAG: 2025.*working",
+      "RED FLAG: 2025.*EFT",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICIOUS N-GRAM (4x): latest version",
+      "SUSPICIOUS N-GRAM (2x): download latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version https"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
   }
 ]
