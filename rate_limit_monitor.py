@@ -50,7 +50,7 @@ def get_rate_limit_status() -> Optional[Dict]:
     """Fetch current rate limit status from GitHub API"""
     headers = {}
     if GITHUB_TOKEN:
-        headers["Authorization"] = f"token {GITHUB_TOKEN}"
+        headers["Authorization"] = f"Bearer {GITHUB_TOKEN}"
     
     try:
         response = httpx.get(

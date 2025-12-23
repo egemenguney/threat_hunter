@@ -20,6 +20,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Any
 import argparse
+import statistics
 
 
 def load_detections(filepath: str = "detected_repos.json") -> List[Dict[str, Any]]:
@@ -64,7 +65,7 @@ def analyze_scores(detections: List[Dict]) -> Dict[str, Any]:
         'min': min(scores),
         'max': max(scores),
         'avg': sum(scores) / len(scores),
-        'median': sorted(scores)[len(scores) // 2],
+        'median': statistics.median(scores),
         'critical_90_plus': len([s for s in scores if s >= 90]),
         'very_high_70_89': len([s for s in scores if 70 <= s < 90]),
         'high_50_69': len([s for s in scores if 50 <= s < 70]),
@@ -181,6 +182,7 @@ def print_analysis(detections: List[Dict], args: argparse.Namespace) -> None:
         print()
     
     # False Positive Analysis
+    potential_fps = None
     if args.false_positive:
         print("🔍 POTENTIAL FALSE POSITIVE ANALYSIS")
         print("-" * 70)
@@ -215,7 +217,10 @@ def print_analysis(detections: List[Dict], args: argparse.Namespace) -> None:
         print("      → Prioritize these for immediate reporting")
         print("      → Enable auto-reporter for critical threats")
     
-    potential_fp_percentage = len(identify_potential_false_positives(detections)) / total * 100
+    # Calculate false positive percentage only if not already calculated
+    if potential_fps is None:
+        potential_fps = identify_potential_false_positives(detections)
+    potential_fp_percentage = len(potential_fps) / total * 100
     if potential_fp_percentage > 20:
         print(f"  ⚠️  WARNING: {potential_fp_percentage:.1f}% potential false positives")
         print("      → Manual verification recommended")
