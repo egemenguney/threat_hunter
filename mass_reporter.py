@@ -89,8 +89,10 @@ class MassReporter:
             try:
                 with open(REPORT_LOG, 'r', encoding='utf-8') as f:
                     data = json.load(f)
+                    # Only count actual SUCCESS reports, not DRY_RUN
                     return {item['repo_url']: item['report_status'] 
-                           for item in data if item.get('report_status') == 'SUCCESS'}
+                           for item in data if item.get('report_status') == 'SUCCESS'
+                           and item.get('github_response', '').find('DRY RUN') == -1}
             except Exception as e:
                 print(f"[WARNING] Could not load previous reports: {e}")
         return {}
@@ -155,7 +157,7 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
                 severity=repo['severity'],
                 detection_type=repo['detection_type'],
                 evidence=repo.get('evidence', []),
-                report_status="SUCCESS",
+                report_status="DRY_RUN",
                 report_time=datetime.now().isoformat(),
                 github_response="DRY RUN - No actual report sent"
             )
@@ -209,7 +211,7 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
                 error_message=str(e)
             )
     
-    def mass_report(self, scan_results_file: str, severity_filter: str = "HIGH") -> List[ReportResult]:
+    def mass_report(self, scan_results_file: str, severity_filter: str = "HIGH", max_reports: int = 0) -> List[ReportResult]:
         """Mass report repositories from scan results"""
         
         # Load scan results
@@ -222,6 +224,10 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
         
         # Filter by severity
         filtered_repos = [repo for repo in repos if repo.get('severity') == severity_filter]
+        
+        # Apply max limit if specified
+        if max_reports > 0:
+            filtered_repos = filtered_repos[:max_reports]
         
         print(f"[INFO] Found {len(filtered_repos)} repositories with {severity_filter} severity")
         print(f"[INFO] Dry run: {self.dry_run}")
@@ -236,7 +242,7 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
             results.append(result)
             
             # Log result
-            status_emoji = "✅" if result.report_status == "SUCCESS" else "❌" if result.report_status == "FAILED" else "⏭️"
+            status_emoji = "✅" if result.report_status == "SUCCESS" else "🔵" if result.report_status == "DRY_RUN" else "❌" if result.report_status == "FAILED" else "⏭️"
             print(f"[RESULT] {status_emoji} {result.report_status}: {result.repo_url}")
             
             if result.error_message:
@@ -261,6 +267,7 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
         """Generate summary report"""
         total = len(results)
         success = len([r for r in results if r.report_status == "SUCCESS"])
+        dry_run = len([r for r in results if r.report_status == "DRY_RUN"])
         failed = len([r for r in results if r.report_status == "FAILED"])
         skipped = len([r for r in results if r.report_status == "SKIPPED"])
         
@@ -274,6 +281,7 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
 | Status | Count | Percentage |
 |--------|-------|------------|
 | ✅ Success | {success} | {success/total*100:.1f}% |
+| 🔵 Dry Run | {dry_run} | {dry_run/total*100:.1f}% |
 | ❌ Failed | {failed} | {failed/total*100:.1f}% |
 | ⏭️ Skipped | {skipped} | {skipped/total*100:.1f}% |
 | **Total** | **{total}** | **100%** |
@@ -312,25 +320,38 @@ def main():
     parser.add_argument("--dry-run", action="store_true", 
                        help="Simulate reporting without actually sending reports")
     parser.add_argument("--token", help="GitHub token (or use GITHUB_TOKEN env var)")
+    parser.add_argument("--max", type=int, default=0,
+                       help="Maximum number of repos to report (0 = no limit)")
+    parser.add_argument("--auto", action="store_true",
+                       help="Auto mode for CI/CD - minimal output, fail on error")
     
     args = parser.parse_args()
     
-    print("🤖 Delta Force Mass Reporter v1.0")
-    print("=" * 50)
+    if not args.auto:
+        print("🤖 Delta Force Mass Reporter v1.0")
+        print("=" * 50)
     
     reporter = MassReporter(token=args.token, dry_run=args.dry_run)
     
     if not reporter.token and not args.dry_run:
-        print("[WARNING] No GitHub token provided. Running in dry-run mode.")
+        if args.auto:
+            print("[WARNING] No GitHub token, running dry-run")
+        else:
+            print("[WARNING] No GitHub token provided. Running in dry-run mode.")
         reporter.dry_run = True
     
-    results = reporter.mass_report(args.scan_results, args.severity)
+    results = reporter.mass_report(args.scan_results, args.severity, max_reports=args.max)
     reporter.generate_summary(results)
     
-    print("\n🎉 Mass reporting completed!")
-    print(f"📊 Results: {len([r for r in results if r.report_status == 'SUCCESS'])} success, "
-          f"{len([r for r in results if r.report_status == 'FAILED'])} failed, "
-          f"{len([r for r in results if r.report_status == 'SKIPPED'])} skipped")
+    success_count = len([r for r in results if r.report_status == 'SUCCESS'])
+    failed_count = len([r for r in results if r.report_status == 'FAILED'])
+    skipped_count = len([r for r in results if r.report_status == 'SKIPPED'])
+    
+    if args.auto:
+        print(f"✅ Reported: {success_count}, Failed: {failed_count}, Skipped: {skipped_count}")
+    else:
+        print("\n🎉 Mass reporting completed!")
+        print(f"📊 Results: {success_count} success, {failed_count} failed, {skipped_count} skipped")
 
 if __name__ == "__main__":
     main()

@@ -500,29 +500,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/posesedbot/delta-force-unfair-advantage",
-    "owner": "posesedbot",
-    "repo_name": "delta-force-unfair-advantage",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "RED FLAG: 2025.*Delta.*Force",
-      "BOT INDICATOR: educational.*purposes.*only",
-      "SUSPICION SCORE: 31/100"
-    ],
-    "detected_at": "2025-12-19T06:20:11.704617",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "RED FLAG: 2025.*Delta.*Force",
-      "BOT INDICATOR: educational.*purposes.*only"
-    ],
-    "files": [],
-    "suspicion_score": 31,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/polopaa/delta-force-elite-utility",
     "owner": "polopaa",
     "repo_name": "delta-force-elite-utility",
@@ -8813,27 +8790,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/Reavy8/ModernWarfare2-Cpp-External-Cheat-DLL",
-    "owner": "Reavy8",
-    "repo_name": "ModernWarfare2-Cpp-External-Cheat-DLL",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "BOT INDICATOR: educational.*purposes.*only",
-      "SUSPICION SCORE: 23/100"
-    ],
-    "detected_at": "2025-12-19T06:22:13.108023",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "BOT INDICATOR: educational.*purposes.*only"
-    ],
-    "files": [],
-    "suspicion_score": 23,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/Modern-Warfare-III-Hack-e-1900/.github",
     "owner": "Modern-Warfare-III-Hack-e-1900",
     "repo_name": ".github",
@@ -10077,32 +10033,6 @@
     ],
     "files": [],
     "suspicion_score": 38,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/Ahmii1013/CS2_DMA_Radar",
-    "owner": "Ahmii1013",
-    "repo_name": "CS2_DMA_Radar",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version",
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
-      "SUSPICION SCORE: 46/100"
-    ],
-    "detected_at": "2025-12-19T06:22:28.546485",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
-    ],
-    "readme_flags": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version"
-    ],
-    "files": [],
-    "suspicion_score": 46,
     "report_status": "PENDING"
   },
   {
@@ -19727,29 +19657,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/jomcay/Cheat-Softhub-for-Arma-Reforger",
-    "owner": "jomcay",
-    "repo_name": "Cheat-Softhub-for-Arma-Reforger",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version",
-      "SUSPICION SCORE: 31/100"
-    ],
-    "detected_at": "2025-12-19T06:24:38.243021",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version"
-    ],
-    "files": [],
-    "suspicion_score": 31,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/youritchstranger1996/ARBoost",
     "owner": "youritchstranger1996",
     "repo_name": "ARBoost",
@@ -22108,29 +22015,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/Shuvo357/Monotone-HWID-Spoofer",
-    "owner": "Shuvo357",
-    "repo_name": "Monotone-HWID-Spoofer",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version",
-      "SUSPICION SCORE: 31/100"
-    ],
-    "detected_at": "2025-12-19T06:25:24.522596",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version"
-    ],
-    "files": [],
-    "suspicion_score": 31,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/A123Arshad/valorant-hwid-shield",
     "owner": "A123Arshad",
     "repo_name": "valorant-hwid-shield",
@@ -22964,34 +22848,6 @@
     ],
     "files": [],
     "suspicion_score": 69,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/gras30-Valorant-Private-Aimbot/.github",
-    "owner": "gras30-Valorant-Private-Aimbot",
-    "repo_name": ".github",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: undetected",
-      "SUSPICIOUS N-GRAM (2x): aimbot undetected",
-      "SUSPICIOUS N-GRAM (2x): private aimbot undetected",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "SUSPICION SCORE: 54/100"
-    ],
-    "detected_at": "2025-12-19T06:25:27.303414",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
-    ],
-    "readme_flags": [
-      "RED FLAG: undetected",
-      "SUSPICIOUS N-GRAM (2x): aimbot undetected",
-      "SUSPICIOUS N-GRAM (2x): private aimbot undetected"
-    ],
-    "files": [],
-    "suspicion_score": 54,
     "report_status": "PENDING"
   },
   {
@@ -24673,27 +24529,6 @@
     "readme_flags": [],
     "files": [],
     "suspicion_score": 20,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/rustnew/Rust_hackathon",
-    "owner": "rustnew",
-    "repo_name": "Rust_hackathon",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
-      "SUSPICION SCORE: 30/100"
-    ],
-    "detected_at": "2025-12-19T06:25:53.975566",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
-    ],
-    "readme_flags": [],
-    "files": [],
-    "suspicion_score": 30,
     "report_status": "PENDING"
   },
   {
@@ -36128,34 +35963,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/DentiNeri/FiveM-Tool-Kit",
-    "owner": "DentiNeri",
-    "repo_name": "FiveM-Tool-Kit",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: disable.*antivirus",
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "SUSPICION SCORE: 39/100"
-    ],
-    "detected_at": "2025-12-19T06:28:28.237481",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
-    ],
-    "readme_flags": [
-      "RED FLAG: disable.*antivirus",
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version"
-    ],
-    "files": [],
-    "suspicion_score": 39,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/hije354/FiveM-Mod-Menu",
     "owner": "hije354",
     "repo_name": "FiveM-Mod-Menu",
@@ -36534,30 +36341,6 @@
     ],
     "files": [],
     "suspicion_score": 28,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/NathyG2524/FiveM-Tool-Kit",
-    "owner": "NathyG2524",
-    "repo_name": "FiveM-Tool-Kit",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: undetected",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "SUSPICION SCORE: 38/100"
-    ],
-    "detected_at": "2025-12-19T06:28:27.428823",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
-    ],
-    "readme_flags": [
-      "RED FLAG: undetected"
-    ],
-    "files": [],
-    "suspicion_score": 38,
     "report_status": "PENDING"
   },
   {

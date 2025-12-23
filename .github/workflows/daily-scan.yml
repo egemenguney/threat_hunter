@@ -239,22 +239,22 @@ jobs:
           fi
 
       - name: Auto-report HIGH severity repos
-        if: steps.check_high.outputs.high_count > 50
+        if: steps.check_high.outputs.high_count > 0
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
-          echo "🤖 Auto-reporting HIGH severity repositories..."
+          echo "🤖 Generating report files for HIGH severity repositories..."
           HIGH_COUNT=${{ steps.check_high.outputs.high_count }}
           
-          # Report up to 50 repos per run to avoid rate limiting
+          # Generate reports for up to 50 repos per run
           MAX_REPORTS=50
           
-          echo "📊 Found $HIGH_COUNT HIGH severity repos, will report up to $MAX_REPORTS"
+          echo "📊 Found $HIGH_COUNT HIGH severity repos, generating reports for up to $MAX_REPORTS"
           
-          # Run mass reporter in auto mode
+          # Run mass reporter in auto mode (generates report files, not actual GitHub reports)
           python mass_reporter.py detected_repos.json --severity HIGH --max $MAX_REPORTS --auto
           
-          echo "✅ Auto-reporting completed"
+          echo "✅ Report files generated in reports/ folder"
 
       - name: Upload report logs
         if: always()
