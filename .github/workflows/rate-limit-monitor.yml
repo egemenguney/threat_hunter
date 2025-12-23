@@ -2,8 +2,8 @@ name: Rate Limit Monitor
 
 on:
   schedule:
-    # Her 15 dakikada bir kontrol
-    - cron: '*/15 * * * *'
+    # Her 12 saatte bir kontrol
+    - cron: '0 */12 * * *'
   
   # Manuel tetikleme
   workflow_dispatch:
