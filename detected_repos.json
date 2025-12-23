@@ -39491,5 +39491,213 @@
     "files": [],
     "suspicion_score": 100,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Gtajisan/Miui-bootlooder-unlock",
+    "owner": "Gtajisan",
+    "repo_name": "Miui-bootlooder-unlock",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: disable.*defender",
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICIOUS N-GRAM (2x): bypass 168",
+      "SUSPICIOUS N-GRAM (5x): download links",
+      "SUSPICIOUS N-GRAM (2x): disable antivirus",
+      "SUSPICIOUS N-GRAM (2x): instantly bypass 168",
+      "SUSPICIOUS N-GRAM (2x): bypass 168 hour",
+      "SUSPICIOUS N-GRAM (2x): disable antivirus temporarily",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 87/100"
+    ],
+    "detected_at": "2025-12-23T06:23:32.827740",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: disable.*defender",
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICIOUS N-GRAM (2x): bypass 168",
+      "SUSPICIOUS N-GRAM (5x): download links",
+      "SUSPICIOUS N-GRAM (2x): disable antivirus",
+      "SUSPICIOUS N-GRAM (2x): instantly bypass 168",
+      "SUSPICIOUS N-GRAM (2x): bypass 168 hour",
+      "SUSPICIOUS N-GRAM (2x): disable antivirus temporarily"
+    ],
+    "files": [],
+    "suspicion_score": 87,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/gxqk/k2-external-cs2-cheat",
+    "owner": "gxqk",
+    "repo_name": "k2-external-cs2-cheat",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 38/100"
+    ],
+    "detected_at": "2025-12-23T06:23:50.061189",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 38,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/UnrealKaraulov/UnrealDemoScanner",
+    "owner": "UnrealKaraulov",
+    "repo_name": "UnrealDemoScanner",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-23T06:25:47.685997",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/JourneyOver/CTRPF-AR-CHEAT-CODES",
+    "owner": "JourneyOver",
+    "repo_name": "CTRPF-AR-CHEAT-CODES",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-23T06:26:17.288693",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/silentesc/torrent-cleaner",
+    "owner": "silentesc",
+    "repo_name": "torrent-cleaner",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: disable.*av",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-23T06:27:57.371886",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: disable.*av"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/GauravS13/Present-Thief",
+    "owner": "GauravS13",
+    "repo_name": "Present-Thief",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "RED FLAG: Rust.*2024",
+      "BOT INDICATOR: 2024.*Edition",
+      "SUSPICIOUS N-GRAM (2x): while undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 92/100"
+    ],
+    "detected_at": "2025-12-23T06:27:56.282079",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: Rust.*2024",
+      "BOT INDICATOR: 2024.*Edition",
+      "SUSPICIOUS N-GRAM (2x): while undetected"
+    ],
+    "files": [],
+    "suspicion_score": 92,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/kayleb20/pubg-elite-mod-toolkit",
+    "owner": "kayleb20",
+    "repo_name": "pubg-elite-mod-toolkit",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: PUBG.*2025",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-23T06:29:07.748917",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: PUBG.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Mohamed45508/yimmenu-v2",
+    "owner": "Mohamed45508",
+    "repo_name": "yimmenu-v2",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 38/100"
+    ],
+    "detected_at": "2025-12-23T06:29:45.014619",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus"
+    ],
+    "files": [],
+    "suspicion_score": 38,
+    "report_status": "PENDING"
   }
 ]
