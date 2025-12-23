@@ -13,10 +13,12 @@ Automated GitHub malware repository detection tool targeting the known game hack
 ## 📊 Campaign Statistics
 
 As of December 2025:
-- **35+ malicious repositories** identified
-- **20+ repos** using Cyrillic filename obfuscation
-- **2 confirmed Trojans** (Wacatac.H!ml, Kepavll!rfn)
-- **2 phishing sites** (GitHub Pages, Google Sites)
+- **1310+ malicious repositories** detected
+- **1111 HIGH severity threats** in latest scan (Issue #7)
+- **341 critical score (90-100)** repositories
+- **Primary threat:** Delta Force game hack malware distribution
+- **Detection methods:** YARA matching (76%), Pattern matching (14%), Cyrillic obfuscation (8%)
+- **Automated daily scans** via GitHub Actions
 
 ## 🛠️ Installation
 
@@ -42,6 +44,30 @@ python threat_hunter.py https://github.com/USERNAME/REPO
 ### Full Scan (All Delta Force Searches)
 ```bash
 python threat_hunter.py
+```
+
+### Monitor Rate Limits
+```bash
+# Check current rate limit status
+python rate_limit_monitor.py
+
+# Continuous monitoring
+python rate_limit_monitor.py --watch
+
+# JSON output
+python rate_limit_monitor.py --json
+```
+
+### Analyze Detection Statistics
+```bash
+# Full analysis
+python analyze_detections.py
+
+# Show top 50 threats
+python analyze_detections.py --top 50
+
+# Identify potential false positives
+python analyze_detections.py --false-positive --verbose
 ```
 
 ### Output Files
@@ -84,6 +110,57 @@ The `rules.yar` file contains YARA rules for:
 - README social engineering patterns
 - Known malicious infrastructure
 - Payload characteristics
+
+## 🛠️ Additional Tools
+
+### Rate Limit Monitor (`rate_limit_monitor.py`)
+Monitor GitHub API rate limits in real-time to prevent workflow failures.
+
+**Features:**
+- Real-time rate limit checking for Core, Search, and GraphQL APIs
+- Color-coded status indicators (🔴 Critical, 🟡 Warning, 🟢 Safe)
+- Watch mode for continuous monitoring
+- Time-until-reset calculations
+- JSON output for automation
+
+**Usage:**
+```bash
+# Quick check
+python rate_limit_monitor.py
+
+# Continuous monitoring (refresh every 30 seconds)
+python rate_limit_monitor.py --watch --interval 30
+
+# JSON output for scripts
+python rate_limit_monitor.py --json
+```
+
+### Detection Statistics Analyzer (`analyze_detections.py`)
+Comprehensive analysis of detection results with false positive identification.
+
+**Features:**
+- Severity and detection type distribution
+- Score range analysis and percentiles
+- Top threats by score
+- Potential false positive identification
+- Actionable recommendations
+
+**Usage:**
+```bash
+# Full analysis
+python analyze_detections.py
+
+# Show top 50 threats
+python analyze_detections.py --top 50
+
+# False positive analysis with details
+python analyze_detections.py --false-positive --verbose
+```
+
+### Mass Reporter (`mass_reporter.py`)
+Automate GitHub abuse reporting for detected malicious repositories.
+
+**See:** [MASS_REPORTER_GUIDE.md](MASS_REPORTER_GUIDE.md) for detailed usage instructions.
 
 ## ⚠️ Disclaimer
 
