@@ -24,6 +24,7 @@ wheels/
 venv/
 ENV/
 env/
+venv_threat/
 
 # IDE
 .idea/
