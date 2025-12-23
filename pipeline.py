@@ -109,8 +109,7 @@ def stage1_load_repos() -> List[Dict]:
     
     # Try different input files
     input_files = [
-        'detected_repos.json',
-        'malware_analysis/quick_analysis_async.json'
+        'detected_repos.json'
     ]
     
     repos = []

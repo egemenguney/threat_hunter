@@ -37,6 +37,7 @@ Thumbs.db
 
 # Sensitive data - DO NOT COMMIT TOKENS!
 .env
+.env.local
 *.env
 secrets.txt
 
@@ -45,8 +46,15 @@ secrets.txt
 AUTO_GENERATED_REPORT.md
 SUGGESTED_PATTERNS.txt
 scan-results/
+scan-results-*/
 scan-results-*.zip
 scan-results-archive-*.zip
+
+# Old analysis folder (no longer used - pipeline.py replaces this)
+malware_analysis/
+
+# Pipeline output (regenerated on each run)
+pipeline_output/
 
 # Debug and log files
 logs_*.zip
