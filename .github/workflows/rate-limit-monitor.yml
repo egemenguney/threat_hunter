@@ -1,0 +1,161 @@
+name: Rate Limit Monitor
+
+on:
+  schedule:
+    # Her 15 dakikada bir kontrol
+    - cron: '*/15 * * * *'
+  
+  # Manuel tetikleme
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install httpx
+      
+      - name: Check Rate Limit Status
+        id: rate_check
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+        run: |
+          python rate_limit_monitor.py --json > rate_status.json
+          
+          # Parse values
+          CORE_REMAINING=$(cat rate_status.json | jq '.resources.core.remaining')
+          SEARCH_REMAINING=$(cat rate_status.json | jq '.resources.search.remaining')
+          CORE_LIMIT=$(cat rate_status.json | jq '.resources.core.limit')
+          SEARCH_LIMIT=$(cat rate_status.json | jq '.resources.search.limit')
+          CORE_RESET=$(cat rate_status.json | jq '.resources.core.reset')
+          
+          echo "core_remaining=$CORE_REMAINING" >> $GITHUB_OUTPUT
+          echo "search_remaining=$SEARCH_REMAINING" >> $GITHUB_OUTPUT
+          echo "core_limit=$CORE_LIMIT" >> $GITHUB_OUTPUT
+          echo "search_limit=$SEARCH_LIMIT" >> $GITHUB_OUTPUT
+          
+          # Calculate percentage
+          CORE_PCT=$((CORE_REMAINING * 100 / CORE_LIMIT))
+          echo "core_pct=$CORE_PCT" >> $GITHUB_OUTPUT
+          
+          # Determine status
+          if [ "$CORE_REMAINING" -lt 100 ]; then
+            echo "status=CRITICAL" >> $GITHUB_OUTPUT
+            echo "🔴 CRITICAL: Core API at $CORE_REMAINING/$CORE_LIMIT"
+          elif [ "$CORE_REMAINING" -lt 500 ]; then
+            echo "status=WARNING" >> $GITHUB_OUTPUT
+            echo "🟡 WARNING: Core API at $CORE_REMAINING/$CORE_LIMIT"
+          else
+            echo "status=OK" >> $GITHUB_OUTPUT
+            echo "🟢 OK: Core API at $CORE_REMAINING/$CORE_LIMIT"
+          fi
+          
+          echo "📊 Search API: $SEARCH_REMAINING/$SEARCH_LIMIT"
+      
+      - name: Create Alert Issue on Critical
+        if: steps.rate_check.outputs.status == 'CRITICAL'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.SCAN_TOKEN }}
+          script: |
+            const core_remaining = '${{ steps.rate_check.outputs.core_remaining }}';
+            const core_limit = '${{ steps.rate_check.outputs.core_limit }}';
+            const search_remaining = '${{ steps.rate_check.outputs.search_remaining }}';
+            
+            // Check if there's already an open rate limit alert
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'rate-limit-alert'
+            });
+            
+            if (existingIssues.data.length > 0) {
+              console.log('⏭️ Rate limit alert issue already exists');
+              return;
+            }
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔴 CRITICAL: GitHub API Rate Limit Low (${core_remaining}/${core_limit})`,
+              body: `## Rate Limit Alert
+              
+              **Status:** 🔴 CRITICAL
+              **Time:** ${new Date().toISOString()}
+              
+              ### Current Limits
+              
+              | API | Remaining | Limit | Status |
+              |-----|-----------|-------|--------|
+              | Core | ${core_remaining} | ${core_limit} | 🔴 CRITICAL |
+              | Search | ${search_remaining} | 30 | ${search_remaining < 5 ? '🔴' : '🟢'} |
+              
+              ### Recommended Actions
+              
+              1. ⏸️ Pause any running scans
+              2. ⏳ Wait for rate limit reset
+              3. 🔍 Check for runaway processes
+              
+              This issue will auto-close when limits recover.
+              `,
+              labels: ['rate-limit-alert', 'automated', 'urgent']
+            });
+            
+            console.log('✅ Created rate limit alert issue');
+      
+      - name: Close Alert Issue when Recovered
+        if: steps.rate_check.outputs.status == 'OK'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.SCAN_TOKEN }}
+          script: |
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'rate-limit-alert'
+            });
+            
+            for (const issue of existingIssues.data) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+                body: issue.body + `\n\n---\n\n✅ **Resolved at ${new Date().toISOString()}**\nRate limits have recovered.`
+              });
+              console.log(`✅ Closed rate limit alert #${issue.number}`);
+            }
+      
+      - name: Update Rate Limit Badge
+        if: always()
+        run: |
+          STATUS=${{ steps.rate_check.outputs.status }}
+          CORE_PCT=${{ steps.rate_check.outputs.core_pct }}
+          
+          if [ "$STATUS" = "CRITICAL" ]; then
+            COLOR="red"
+          elif [ "$STATUS" = "WARNING" ]; then
+            COLOR="yellow"
+          else
+            COLOR="green"
+          fi
+          
+          echo "📊 Rate Limit Status: $STATUS ($CORE_PCT%)"
+          echo "🏷️ Badge color: $COLOR"

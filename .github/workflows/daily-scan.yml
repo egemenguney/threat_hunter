@@ -101,6 +101,26 @@ jobs:
             AUTO_GENERATED_REPORT.md
             SUGGESTED_PATTERNS.txt
           retention-days: 30
+
+      - name: Run pipeline analysis
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+        run: |
+          echo "🔬 Running pipeline analysis..."
+          python pipeline.py
+          echo "✅ Pipeline analysis completed"
+          
+          # Show summary
+          echo "📊 Pipeline Results:"
+          cat pipeline_output/FINAL_REPORT.md | head -50
+
+      - name: Upload pipeline results
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-results-${{ github.run_number }}
+          path: |
+            pipeline_output/
+          retention-days: 30
       
       - name: Check for HIGH severity detections
         id: check_high
@@ -146,10 +166,36 @@ jobs:
               
               if (highSeverity.length === 0) return;
               
+              // Pipeline sonuçlarını oku
+              let pipelineSummary = '';
+              try {
+                const pipelineReport = fs.readFileSync('pipeline_output/repos_to_report.json', 'utf8');
+                const pipelineData = JSON.parse(pipelineReport);
+                const critical = pipelineData.filter(r => r.severity === 'CRITICAL').length;
+                const high = pipelineData.filter(r => r.severity === 'HIGH').length;
+                const obfuscated = pipelineData.filter(r => r.detection_type.includes('obfuscated_js')).length;
+                const easylauncher = pipelineData.filter(r => r.detection_type.includes('easylauncher')).length;
+                
+                pipelineSummary = `
+              ### 🔬 Pipeline Analysis
+              | Category | Count |
+              |----------|-------|
+              | CRITICAL | ${critical} |
+              | HIGH | ${high} |
+              | Obfuscated JS | ${obfuscated} |
+              | easylauncher.su | ${easylauncher} |
+              | **Total to Report** | **${pipelineData.length}** |
+              `;
+              } catch (e) {
+                console.log('Pipeline results not found');
+              }
+              
               const body = `## 🚨 Daily Scan Results - ${new Date().toISOString().split('T')[0]}
               
               **HIGH Severity Detections: ${highSeverity.length}**
+              ${pipelineSummary}
               
+              ### Top 20 Detected Repos
               | Repository | Type | Score |
               |------------|------|-------|
               ${highSeverity.slice(0, 20).map(r => `| [${r.owner}/${r.repo_name}](${r.url}) | ${r.detection_type} | ${r.suspicion_score}/100 |`).join('\n')}
@@ -191,6 +237,36 @@ jobs:
             git push
             echo "✅ Updated detected_repos committed"
           fi
+
+      - name: Auto-report HIGH severity repos
+        if: steps.check_high.outputs.high_count > 50
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+        run: |
+          echo "🤖 Auto-reporting HIGH severity repositories..."
+          HIGH_COUNT=${{ steps.check_high.outputs.high_count }}
+          
+          # Report up to 50 repos per run to avoid rate limiting
+          MAX_REPORTS=50
+          
+          echo "📊 Found $HIGH_COUNT HIGH severity repos, will report up to $MAX_REPORTS"
+          
+          # Run mass reporter in auto mode
+          python mass_reporter.py detected_repos.json --severity HIGH --max $MAX_REPORTS --auto
+          
+          echo "✅ Auto-reporting completed"
+
+      - name: Upload report logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-logs-${{ github.run_number }}
+          path: |
+            mass_report_log.json
+            mass_report_summary.md
+            reports/
+          retention-days: 30
+          if-no-files-found: ignore
 
   notify:
     needs: scan

@@ -12,8 +12,11 @@ yara-python>=4.3.0
 # Web Search Fallback (when GitHub API rate limited)
 ddgs>=1.0.4
 
-# Optional: VirusTotal API
-# vt-py>=0.18.0
+# VirusTotal API Integration
+# vt-py>=0.18.0  # Alternative: use httpx directly (already included)
+
+# ML Pattern Learning (optional - custom implementation included)
+# scikit-learn>=1.3.0  # Not required - using custom TF-IDF implementation
 
 # Optional: Advanced file analysis
 # python-magic>=0.4.27
