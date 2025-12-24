@@ -39482,5 +39482,359 @@
     "files": [],
     "suspicion_score": 38,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/auroramod/h1-mod",
+    "owner": "auroramod",
+    "repo_name": "h1-mod",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-24T06:23:32.947818",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Lamer87/Space_Engineers_DLC_unlocker",
+    "owner": "Lamer87",
+    "repo_name": "Space_Engineers_DLC_unlocker",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (4x): click here",
+      "SUSPICIOUS N-GRAM (4x): summary click here",
+      "SUSPICIOUS N-GRAM (4x): click here to",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 39/100"
+    ],
+    "detected_at": "2025-12-24T06:23:32.897569",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (4x): click here",
+      "SUSPICIOUS N-GRAM (4x): summary click here",
+      "SUSPICIOUS N-GRAM (4x): click here to"
+    ],
+    "files": [],
+    "suspicion_score": 39,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Koshak1013/HuananzhiX99_BIOS_mods",
+    "owner": "Koshak1013",
+    "repo_name": "HuananzhiX99_BIOS_mods",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "HIGH ENTROPY: TM5.zip (7.98/8.0)",
+      "CYRILLIC FILENAME: V5_✅_Win7_8x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar - Cyrillic obfuscation: 'о' (U+043E) instead of 'o', 'а' (U+0430) instead of 'a', 'е' (U+0435) instead of 'e', 'р' (U+0440) instead of 'p', 'с' (U+0441) instead of 'c'",
+      "MIXED SCRIPT: 'е' (U+0435) -> 'e', 'с' (U+0441) -> 'c', 'р' (U+0440) -> 'p', 'а' (U+0430) -> 'a', 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'V5_✅_Win7_8x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar' -> 'V5_✅_Win7_8x64_Drivers_Pack_by_#SnoOkilow_+_пpoгa_для_бeкaпa_и_pecтopa.rar'",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E), %D0%B0 = а (U+0430), %D0%B5 = е (U+0435), %D1%80 = р (U+0440), %D1%81 = с (U+0441), %D0%B8 = і (U+0456)",
+      "CYRILLIC FILENAME: V6_✅_Win11_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar - Cyrillic obfuscation: 'о' (U+043E) instead of 'o', 'а' (U+0430) instead of 'a', 'е' (U+0435) instead of 'e', 'р' (U+0440) instead of 'p', 'с' (U+0441) instead of 'c'",
+      "MIXED SCRIPT: 'е' (U+0435) -> 'e', 'с' (U+0441) -> 'c', 'р' (U+0440) -> 'p', 'а' (U+0430) -> 'a', 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'V6_✅_Win11_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar' -> 'V6_✅_Win11_Drivers_Pack_by_#SnoOkilow_+_пpoгa_для_бeкaпa_и_pecтopa.rar'",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E), %D0%B0 = а (U+0430), %D0%B5 = е (U+0435), %D1%80 = р (U+0440), %D1%81 = с (U+0441), %D0%B8 = і (U+0456)",
+      "CYRILLIC FILENAME: V7_✅_Win10x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar - Cyrillic obfuscation: 'о' (U+043E) instead of 'o', 'а' (U+0430) instead of 'a', 'е' (U+0435) instead of 'e', 'р' (U+0440) instead of 'p', 'с' (U+0441) instead of 'c'",
+      "MIXED SCRIPT: 'е' (U+0435) -> 'e', 'с' (U+0441) -> 'c', 'р' (U+0440) -> 'p', 'а' (U+0430) -> 'a', 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'V7_✅_Win10x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar' -> 'V7_✅_Win10x64_Drivers_Pack_by_#SnoOkilow_+_пpoгa_для_бeкaпa_и_pecтopa.rar'",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E), %D0%B0 = а (U+0430), %D0%B5 = е (U+0435), %D1%80 = р (U+0440), %D1%81 = с (U+0441), %D0%B8 = і (U+0456)",
+      "FILENAME PATTERN: V\\d+_✅_Win\\d+_\\d+x\\d+_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора\\.rar (matches 3 files: V5_✅_Win7_8x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar, V6_✅_Win11_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar, V7_✅_Win10x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar...)",
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 85/100"
+    ],
+    "detected_at": "2025-12-24T06:23:34.411239",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "TM5.zip: HIGH ENTROPY (7.98/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [
+      "V5_✅_Win7_8x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar",
+      "V6_✅_Win11_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar",
+      "V7_✅_Win10x64_Drivers_Pack_by_#SnoOkilow_+_прога_для_бекапа_и_рестора.rar"
+    ],
+    "suspicion_score": 85,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/MustardChef/WSABuilds",
+    "owner": "MustardChef",
+    "repo_name": "WSABuilds",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: 2023.*EFT",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: 2025.*COD",
+      "BOT INDICATOR: Updated.*2024",
+      "SUSPICIOUS N-GRAM (3x): click here",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): click here h2",
+      "SUSPICIOUS N-GRAM (2x): latest tested version",
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-24T06:23:38.471932",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: 2023.*EFT",
+      "RED FLAG: COD.*2025",
+      "RED FLAG: 2025.*COD",
+      "BOT INDICATOR: Updated.*2024",
+      "SUSPICIOUS N-GRAM (3x): click here",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): click here h2",
+      "SUSPICIOUS N-GRAM (2x): latest tested version"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/military-tycoon-dev/military-tycoon-script",
+    "owner": "military-tycoon-dev",
+    "repo_name": "military-tycoon-script",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Battlefield.*2025",
+      "RED FLAG: 2025.*Rust",
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 62/100"
+    ],
+    "detected_at": "2025-12-24T06:25:06.676795",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Battlefield.*2025",
+      "RED FLAG: 2025.*Rust",
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 62,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/user-grinch/Cheat-Menu",
+    "owner": "user-grinch",
+    "repo_name": "Cheat-Menu",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: stealth\\s*mode",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-24T06:25:51.404906",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: stealth\\s*mode"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/quonaro/Nest",
+    "owner": "quonaro",
+    "repo_name": "Nest",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 35/100"
+    ],
+    "detected_at": "2025-12-24T06:27:56.341975",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 35,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/7rikazhexde/gist-cache-rs",
+    "owner": "7rikazhexde",
+    "repo_name": "gist-cache-rs",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-24T06:28:01.099693",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): latest version"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Jrocch/apex-cheat",
+    "owner": "Jrocch",
+    "repo_name": "apex-cheat",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "SUSPICIOUS N-GRAM (2x): remains undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected and",
+      "SUSPICIOUS N-GRAM (2x): cheat remains undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 62/100"
+    ],
+    "detected_at": "2025-12-24T06:29:08.011201",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "SUSPICIOUS N-GRAM (2x): remains undetected",
+      "SUSPICIOUS N-GRAM (2x): undetected and",
+      "SUSPICIOUS N-GRAM (2x): cheat remains undetected"
+    ],
+    "files": [],
+    "suspicion_score": 62,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/ch3raxmmenu/cherax",
+    "owner": "ch3raxmmenu",
+    "repo_name": "cherax",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: undetected",
+      "RED FLAG: bypass.*detection",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: 2025.*Rust",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-24T06:29:42.463607",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: undetected",
+      "RED FLAG: bypass.*detection",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: 2025.*Rust",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/kiddnsmenu/kiddions",
+    "owner": "kiddnsmenu",
+    "repo_name": "kiddions",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: EFT.*2025",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-24T06:29:57.018856",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: EFT.*2025",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
   }
 ]
