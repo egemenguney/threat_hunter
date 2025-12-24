@@ -1,5 +1,7 @@
 # Threat Hunter v3.0 - Dependencies
 
+requests>=2.20.0
+
 # Core
 python-dotenv>=1.0.0
 
