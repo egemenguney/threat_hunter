@@ -39836,5 +39836,316 @@
     "files": [],
     "suspicion_score": 100,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/geriondeer6/DeltaTactixTool",
+    "owner": "geriondeer6",
+    "repo_name": "DeltaTactixTool",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 76/100"
+    ],
+    "detected_at": "2025-12-25T06:20:52.153646",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 76,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/ShadowHackrs/Jailbreaks-GPT-Gemini-deepseek-",
+    "owner": "ShadowHackrs",
+    "repo_name": "Jailbreaks-GPT-Gemini-deepseek-",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-25T06:21:45.752417",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)"
+    ],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/jekil/awesome-hacking",
+    "owner": "jekil",
+    "repo_name": "awesome-hacking",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 15/100"
+    ],
+    "detected_at": "2025-12-25T06:21:50.461324",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 15,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/0x90n/InfoSec-Black-Friday",
+    "owner": "0x90n",
+    "repo_name": "InfoSec-Black-Friday",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "FILENAME PATTERN: \\d+\\.md (matches 5 files: 2020.md, 2021.md, 2022.md...)",
+      "RED FLAG: free.*2025",
+      "RED FLAG: COD.*2025",
+      "BOT INDICATOR: 2025.*Edition",
+      "BOT INDICATOR: Updated.*2025",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 62/100"
+    ],
+    "detected_at": "2025-12-25T06:21:46.780806",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: free.*2025",
+      "RED FLAG: COD.*2025",
+      "BOT INDICATOR: 2025.*Edition",
+      "BOT INDICATOR: Updated.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 62,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/rmdz-commits/Hex-Code",
+    "owner": "rmdz-commits",
+    "repo_name": "Hex-Code",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-25T06:23:18.031094",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/sanat1ro/Satana-CS2",
+    "owner": "sanat1ro",
+    "repo_name": "Satana-CS2",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 36/100"
+    ],
+    "detected_at": "2025-12-25T06:23:33.795891",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 36,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/UnderminersTeam/UndertaleModTool",
+    "owner": "UnderminersTeam",
+    "repo_name": "UndertaleModTool",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*av",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-25T06:25:27.094335",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*av"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/kiddions-momenu/kiddions",
+    "owner": "kiddions-momenu",
+    "repo_name": "kiddions",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: free.*2025",
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: EFT.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-25T06:29:12.743915",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: free.*2025",
+      "RED FLAG: Rust.*2025",
+      "RED FLAG: EFT.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "RED FLAG: GTA.*Online.*2025",
+      "RED FLAG: 2025.*GTA.*Online",
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Abosmra/Crest-Companion-Tool",
+    "owner": "Abosmra",
+    "repo_name": "Crest-Companion-Tool",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: disable.*av",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 21/100"
+    ],
+    "detected_at": "2025-12-25T06:29:14.829303",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: disable.*av",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 21,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/4shareef/gta-5-cheat-engine",
+    "owner": "4shareef",
+    "repo_name": "gta-5-cheat-engine",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
+      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
+      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
+      "HIDDEN WORD: 'loader' found after normalization",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
+      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: 2025.*hack.*tool",
+      "RED FLAG: free.*2025",
+      "RED FLAG: EFT.*2025",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "BOT INDICATOR: 2025.*Version",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-25T06:29:33.541960",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: 2025.*hack.*tool",
+      "RED FLAG: free.*2025",
+      "RED FLAG: EFT.*2025",
+      "RED FLAG: GTA.*5.*2025",
+      "RED FLAG: 2025.*GTA.*5",
+      "RED FLAG: GTA.*V.*2025",
+      "RED FLAG: 2025.*GTA.*V",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "BOT INDICATOR: 2025.*Version",
+      "SUSPICIOUS N-GRAM (2x): latest version"
+    ],
+    "files": [
+      "Lоader.zip"
+    ],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
   }
 ]

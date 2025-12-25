@@ -1319,3 +1319,13 @@ https://github.com/7rikazhexde/gist-cache-rs,7rikazhexde,gist-cache-rs,LOW,PATTE
 https://github.com/Jrocch/apex-cheat,Jrocch,apex-cheat,HIGH,YARA_MATCH,62,False,0,1,PENDING
 https://github.com/ch3raxmmenu/cherax,ch3raxmmenu,cherax,HIGH,YARA_MATCH,100,False,0,3,PENDING
 https://github.com/kiddnsmenu/kiddions,kiddnsmenu,kiddions,HIGH,YARA_MATCH,100,False,0,1,PENDING
+https://github.com/geriondeer6/DeltaTactixTool,geriondeer6,DeltaTactixTool,HIGH,YARA_MATCH,76,False,0,3,PENDING
+https://github.com/ShadowHackrs/Jailbreaks-GPT-Gemini-deepseek-,ShadowHackrs,Jailbreaks-GPT-Gemini-deepseek-,HIGH,YARA_MATCH,23,False,0,1,PENDING
+https://github.com/jekil/awesome-hacking,jekil,awesome-hacking,HIGH,YARA_MATCH,15,False,0,1,PENDING
+https://github.com/0x90n/InfoSec-Black-Friday,0x90n,InfoSec-Black-Friday,HIGH,YARA_MATCH,62,False,0,2,PENDING
+https://github.com/rmdz-commits/Hex-Code,rmdz-commits,Hex-Code,LOW,PATTERN_MATCH,23,False,0,0,PENDING
+https://github.com/sanat1ro/Satana-CS2,sanat1ro,Satana-CS2,HIGH,YARA_MATCH,36,False,0,1,PENDING
+https://github.com/UnderminersTeam/UndertaleModTool,UnderminersTeam,UndertaleModTool,HIGH,YARA_MATCH,23,False,0,1,PENDING
+https://github.com/kiddions-momenu/kiddions,kiddions-momenu,kiddions,HIGH,YARA_MATCH,100,False,0,4,PENDING
+https://github.com/Abosmra/Crest-Companion-Tool,Abosmra,Crest-Companion-Tool,LOW,PATTERN_MATCH,21,False,0,0,PENDING
+https://github.com/4shareef/gta-5-cheat-engine,4shareef,gta-5-cheat-engine,HIGH,CYRILLIC_OBFUSCATION,100,True,1,3,PENDING
