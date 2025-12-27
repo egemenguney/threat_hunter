@@ -40902,5 +40902,239 @@
     "files": [],
     "suspicion_score": 93,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Letomaniy/Speed-Hack",
+    "owner": "Letomaniy",
+    "repo_name": "Speed-Hack",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-27T06:20:22.951527",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Cyrillic_Homoglyph_General (Detects various Cyrillic homoglyph obfuscation)",
+      "YARA:Delta_Force_Malware_Medium_Confidence (Medium confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/00sanoj00/Dialo_G_Mega_run_GODMOD",
+    "owner": "00sanoj00",
+    "repo_name": "Dialo_G_Mega_run_GODMOD",
+    "detection_type": "HIGH_ENTROPY",
+    "severity": "MEDIUM",
+    "evidence": [
+      "HIGH ENTROPY: xp.zip (8.00/8.0)",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-27T06:20:23.489635",
+    "cyrillic_detected": false,
+    "high_entropy_files": [
+      "xp.zip: HIGH ENTROPY (8.00/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Blueaert/RUAVT-Radar-CoD-MW3",
+    "owner": "Blueaert",
+    "repo_name": "RUAVT-Radar-CoD-MW3",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 20/100"
+    ],
+    "detected_at": "2025-12-27T06:21:35.819989",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 20,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Aureliustics/CodeHS-Plus",
+    "owner": "Aureliustics",
+    "repo_name": "CodeHS-Plus",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 38/100"
+    ],
+    "detected_at": "2025-12-27T06:21:53.365150",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 38,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/MasterOfLogic1/VB.NET_CheatCodes",
+    "owner": "MasterOfLogic1",
+    "repo_name": "VB.NET_CheatCodes",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 20/100"
+    ],
+    "detected_at": "2025-12-27T06:21:53.379668",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 20,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/rohitmahor/clean-code",
+    "owner": "rohitmahor",
+    "repo_name": "clean-code",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-27T06:21:53.719164",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/halbestvilpi1983/bfhub",
+    "owner": "halbestvilpi1983",
+    "repo_name": "bfhub",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 20/100"
+    ],
+    "detected_at": "2025-12-27T06:23:05.030123",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 20,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Dmeonjani/Warframe-hack",
+    "owner": "Dmeonjani",
+    "repo_name": "Warframe-hack",
+    "detection_type": "CYRILLIC_OBFUSCATION",
+    "severity": "HIGH",
+    "evidence": [
+      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
+      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
+      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
+      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
+      "HIDDEN WORD: 'loader' found after normalization",
+      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
+      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
+      "RED FLAG: undetected",
+      "RED FLAG: stealth\\s*mode",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: free.*2025",
+      "RED FLAG: 2025.*COD",
+      "RED FLAG: Warframe.*2025",
+      "RED FLAG: 2025.*Warframe",
+      "BOT INDICATOR: 2025.*Edition",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 100/100"
+    ],
+    "detected_at": "2025-12-27T06:25:22.696987",
+    "cyrillic_detected": true,
+    "high_entropy_files": [
+      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "RED FLAG: stealth\\s*mode",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: free.*2025",
+      "RED FLAG: 2025.*COD",
+      "RED FLAG: Warframe.*2025",
+      "RED FLAG: 2025.*Warframe",
+      "BOT INDICATOR: 2025.*Edition"
+    ],
+    "files": [
+      "Lоader.zip"
+    ],
+    "suspicion_score": 100,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/jeric765/wireguard",
+    "owner": "jeric765",
+    "repo_name": "wireguard",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (3x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version of",
+      "SUSPICION SCORE: 39/100"
+    ],
+    "detected_at": "2025-12-27T06:25:47.256028",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (3x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version of"
+    ],
+    "files": [],
+    "suspicion_score": 39,
+    "report_status": "PENDING"
   }
 ]

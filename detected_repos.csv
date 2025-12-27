@@ -1353,3 +1353,12 @@ https://github.com/SSLRI/pubghack,SSLRI,pubghack,HIGH,YARA_MATCH,15,False,0,1,PE
 https://github.com/Kava4/PUBG-LOGITECH-NO-RECOIL,Kava4,PUBG-LOGITECH-NO-RECOIL,HIGH,YARA_MATCH,15,False,0,1,PENDING
 https://github.com/Kawomada/PUBG-Mobile-Bypass-Source-fixed,Kawomada,PUBG-Mobile-Bypass-Source-fixed,LOW,PATTERN_MATCH,23,False,0,0,PENDING
 https://github.com/modinisder/EliteRoyaleBoost,modinisder,EliteRoyaleBoost,HIGH,YARA_MATCH,93,False,0,3,PENDING
+https://github.com/Letomaniy/Speed-Hack,Letomaniy,Speed-Hack,HIGH,YARA_MATCH,30,False,0,2,PENDING
+https://github.com/00sanoj00/Dialo_G_Mega_run_GODMOD,00sanoj00,Dialo_G_Mega_run_GODMOD,MEDIUM,HIGH_ENTROPY,30,False,1,0,PENDING
+https://github.com/Blueaert/RUAVT-Radar-CoD-MW3,Blueaert,RUAVT-Radar-CoD-MW3,HIGH,YARA_MATCH,20,False,0,1,PENDING
+https://github.com/Aureliustics/CodeHS-Plus,Aureliustics,CodeHS-Plus,HIGH,YARA_MATCH,38,False,0,2,PENDING
+https://github.com/MasterOfLogic1/VB.NET_CheatCodes,MasterOfLogic1,VB.NET_CheatCodes,HIGH,YARA_MATCH,20,False,0,1,PENDING
+https://github.com/rohitmahor/clean-code,rohitmahor,clean-code,HIGH,YARA_MATCH,30,False,0,1,PENDING
+https://github.com/halbestvilpi1983/bfhub,halbestvilpi1983,bfhub,HIGH,YARA_MATCH,20,False,0,1,PENDING
+https://github.com/Dmeonjani/Warframe-hack,Dmeonjani,Warframe-hack,HIGH,CYRILLIC_OBFUSCATION,100,True,1,4,PENDING
+https://github.com/jeric765/wireguard,jeric765,wireguard,LOW,PATTERN_MATCH,39,False,0,0,PENDING
