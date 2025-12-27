@@ -21,3 +21,6 @@ ddgs>=1.0.4
 # Optional: Advanced file analysis
 # python-magic>=0.4.27
 # ssdeep>=3.4
+
+# YAML parsing for workflow checks / CI
+PyYAML>=6.0

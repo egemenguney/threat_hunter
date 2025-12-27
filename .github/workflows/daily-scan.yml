@@ -16,6 +16,14 @@ on:
         description: 'Max wait time for rate limit (seconds)'
         required: false
         default: '3600'
+      check_auto_remove:
+        description: 'Auto-remove deleted repos from detected_repos.json (true/false)'
+        required: false
+        default: 'true'
+      check_dry_run:
+        description: 'If true, do not modify detected_repos.json (dry run)'
+        required: false
+        default: 'false'
 
 env:
   PYTHON_VERSION: '3.11'
@@ -101,6 +109,26 @@ jobs:
             AUTO_GENERATED_REPORT.md
             SUGGESTED_PATTERNS.txt
           retention-days: 30
+
+      - name: Update `detected_repos` (remove missing repositories)
+        env:
+          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+          AUTO_REMOVE: ${{ github.event.inputs.check_auto_remove || 'true' }}
+          DRY_RUN: ${{ github.event.inputs.check_dry_run || 'false' }}
+        run: |
+          echo "🔁 Checking repositories in detected_repos..."
+          echo "Auto-remove: $AUTO_REMOVE | Dry-run: $DRY_RUN"
+          if [ "$DRY_RUN" = 'true' ]; then
+            echo "Running in dry-run mode (no changes will be made)"
+            echo n | python check_repos_status.py
+          else
+            if [ "$AUTO_REMOVE" = 'true' ]; then
+              echo y | python check_repos_status.py
+            else
+              echo n | python check_repos_status.py
+            fi
+          fi
+          echo "✅ detected_repos check completed"
 
       - name: Run pipeline analysis
         env:
