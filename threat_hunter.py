@@ -80,8 +80,8 @@ REQUEST_DELAY = 0.3              # Delay between individual requests (minimal)
 REQUEST_TIMEOUT = 30             # HTTP request timeout
 
 # Core API Rate Limit Management
-CORE_API_RESERVED = 1000         # Issue oluşturma ve son işlemler için rezerve
-CORE_API_STOP_THRESHOLD = 1000   # Bu seviyeye düşünce taramayı durdur (sadece 1000 kalsın)
+CORE_API_RESERVED = 100         # Issue oluşturma ve son işlemler için rezerve
+CORE_API_STOP_THRESHOLD = 150   # Bu seviyeye düşünce taramayı durdur (sadece 1000 kalsın)
 RATE_LIMIT_BUFFER = 500          # Bu seviyede yavaşla
 
 # Web Search Strategy

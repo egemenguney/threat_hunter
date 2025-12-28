@@ -110,26 +110,6 @@ jobs:
             SUGGESTED_PATTERNS.txt
           retention-days: 30
 
-      - name: Update `detected_repos` (remove missing repositories)
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
-          AUTO_REMOVE: ${{ github.event.inputs.check_auto_remove || 'true' }}
-          DRY_RUN: ${{ github.event.inputs.check_dry_run || 'false' }}
-        run: |
-          echo "🔁 Checking repositories in detected_repos..."
-          echo "Auto-remove: $AUTO_REMOVE | Dry-run: $DRY_RUN"
-          if [ "$DRY_RUN" = 'true' ]; then
-            echo "Running in dry-run mode (no changes will be made)"
-            echo n | python check_repos_status.py
-          else
-            if [ "$AUTO_REMOVE" = 'true' ]; then
-              echo y | python check_repos_status.py
-            else
-              echo n | python check_repos_status.py
-            fi
-          fi
-          echo "✅ detected_repos check completed"
-
       - name: Run pipeline analysis
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
@@ -271,16 +251,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
+          rm -rf reports/
+          rm -f mass_report_log.json
+          mkdir -p reports/
+          
           echo "🤖 Generating report files for HIGH severity repositories..."
           HIGH_COUNT=${{ steps.check_high.outputs.high_count }}
-          
-          # Generate reports for up to 50 repos per run
-          MAX_REPORTS=50
+          MAX_REPORTS=0
           
           echo "📊 Found $HIGH_COUNT HIGH severity repos, generating reports for up to $MAX_REPORTS"
           
           # Run mass reporter in auto mode (generates report files, not actual GitHub reports)
-          python mass_reporter.py detected_repos.json --severity HIGH --max $MAX_REPORTS --auto
+          python mass_reporter.py detected_repos.json --severity HIGH --max $MAX_REPORTS --auto --dry-run
           
           echo "✅ Report files generated in reports/ folder"
 

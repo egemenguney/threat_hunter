@@ -131,10 +131,10 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
         return report_template
     
     def report_repository(self, repo: Dict) -> ReportResult:
-        """Report a single repository to GitHub"""
+        """Report a single repository by generating local files (GitHub reporting disabled)"""
         repo_url = repo['url']
         
-        # Check if already reported
+        # 1. Daha önce raporlandıysa atla
         if repo_url in self.reported_repos:
             return ReportResult(
                 repo_url=repo_url,
@@ -145,47 +145,21 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
                 evidence=repo.get('evidence', []),
                 report_status="SKIPPED",
                 report_time=datetime.now().isoformat(),
-                error_message="Already reported previously"
+                error_message="Already processed previously"
             )
         
-        if self.dry_run:
-            print(f"[DRY RUN] Would report: {repo_url}")
-            return ReportResult(
-                repo_url=repo_url,
-                repo_owner=repo['owner'],
-                repo_name=repo['repo_name'],
-                severity=repo['severity'],
-                detection_type=repo['detection_type'],
-                evidence=repo.get('evidence', []),
-                report_status="DRY_RUN",
-                report_time=datetime.now().isoformat(),
-                github_response="DRY RUN - No actual report sent"
-            )
-        
-        # Generate report text
+        # 2. Rapor metnini oluştur (Markdown içeriği)
         report_text = self.generate_report_text(repo)
         
-        # GitHub doesn't have a public API for abuse reports
-        # This is a placeholder for the reporting mechanism
-        # In practice, this would need to integrate with GitHub's abuse reporting system
-        
         try:
-            # Simulate reporting process
-            print(f"[REPORT] Reporting {repo_url}...")
-            print(f"[REPORT] Type: {repo['detection_type']}, Severity: {repo['severity']}")
-            
-            # In a real implementation, this would:
-            # 1. Submit to GitHub's abuse report form
-            # 2. Or use GitHub's internal reporting API if available
-            # 3. Or generate email reports to GitHub Security
-            
-            # For now, we'll create a detailed report file
+            # 3. Sadece yerel dosya oluştur (API çağrısı YOK)
             report_file = Path(f"reports/report_{repo['owner']}_{repo['repo_name']}.md")
             report_file.parent.mkdir(exist_ok=True)
             
             with open(report_file, 'w', encoding='utf-8') as f:
                 f.write(report_text)
             
+            # 4. Durumu SUCCESS olarak dön (Böylece özette görünür)
             return ReportResult(
                 repo_url=repo_url,
                 repo_owner=repo['owner'],
@@ -195,7 +169,7 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
                 evidence=repo.get('evidence', []),
                 report_status="SUCCESS",
                 report_time=datetime.now().isoformat(),
-                github_response=f"Report saved to {report_file}"
+                github_response=f"Report file generated: {report_file}"
             )
             
         except Exception as e:
@@ -212,9 +186,9 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
             )
     
     def mass_report(self, scan_results_file: str, severity_filter: str = "HIGH", max_reports: int = 0) -> List[ReportResult]:
-        """Mass report repositories from scan results"""
+        """Mass report repositories from scan results (Local file generation mode)"""
         
-        # Load scan results
+        # 1. Tarama sonuçlarını yükle
         try:
             with open(scan_results_file, 'r', encoding='utf-8') as f:
                 repos = json.load(f)
@@ -222,39 +196,34 @@ Repository takedown due to malware distribution and violation of GitHub Terms of
             print(f"[ERROR] Could not load scan results: {e}")
             return []
         
-        # Filter by severity
+        # 2. Önem derecesine göre filtrele
         filtered_repos = [repo for repo in repos if repo.get('severity') == severity_filter]
         
-        # Apply max limit if specified
+        # 3. Limit varsa uygula
         if max_reports > 0:
             filtered_repos = filtered_repos[:max_reports]
         
         print(f"[INFO] Found {len(filtered_repos)} repositories with {severity_filter} severity")
-        print(f"[INFO] Dry run: {self.dry_run}")
-        print(f"[INFO] Report delay: {REPORT_DELAY} seconds")
+        print(f"[INFO] Running in Local Report Generation mode")
         
         results = []
         
         for i, repo in enumerate(filtered_repos, 1):
             print(f"\n[PROGRESS] {i}/{len(filtered_repos)} - {repo['url']}")
             
+            # report_repository artık sadece dosya oluşturuyor
             result = self.report_repository(repo)
             results.append(result)
             
-            # Log result
-            status_emoji = "✅" if result.report_status == "SUCCESS" else "🔵" if result.report_status == "DRY_RUN" else "❌" if result.report_status == "FAILED" else "⏭️"
+            # Sonucu logla
+            status_emoji = "✅" if result.report_status == "SUCCESS" else "❌"
             print(f"[RESULT] {status_emoji} {result.report_status}: {result.repo_url}")
             
             if result.error_message:
                 print(f"[ERROR] {result.error_message}")
             
-            # Save progress
+            # Her adımda ilerlemeyi kaydet
             self.save_results(results)
-            
-            # Rate limiting delay
-            if i < len(filtered_repos) and not self.dry_run:
-                print(f"[WAIT] Waiting {REPORT_DELAY} seconds...")
-                time.sleep(REPORT_DELAY)
         
         return results
     
