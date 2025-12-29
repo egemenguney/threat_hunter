@@ -46,7 +46,6 @@ https://github.com/fracturedAI/delta-force-aim-enhancer,fracturedAI,delta-force-
 https://github.com/ghv31233/delta-force-aimbot-ai-lab,ghv31233,delta-force-aimbot-ai-lab,HIGH,YARA_MATCH,38,False,0,1,PENDING
 https://github.com/MrKebs/delta-force-elite-aimbot-tools,MrKebs,delta-force-elite-aimbot-tools,HIGH,CYRILLIC_OBFUSCATION,93,True,1,1,PENDING
 https://github.com/s60r-Delta-Force-Hack/.github,s60r-Delta-Force-Hack,.github,HIGH,YARA_MATCH,28,False,0,1,PENDING
-https://github.com/Delta-Force-Cheat-lareine/.github,Delta-Force-Cheat-lareine,.github,HIGH,YARA_MATCH,36,False,0,1,PENDING
 https://github.com/aristea-aetsira/DeltaForce-AI-PrecisionPilot,aristea-aetsira,DeltaForce-AI-PrecisionPilot,HIGH,CYRILLIC_OBFUSCATION,70,True,1,0,PENDING
 https://github.com/Kirthiv02/DeltaForce-AimMaster,Kirthiv02,DeltaForce-AimMaster,HIGH,CYRILLIC_OBFUSCATION,100,True,1,4,PENDING
 https://github.com/EGonz01101100/DeltaForce-AutoAimX,EGonz01101100,DeltaForce-AutoAimX,HIGH,CYRILLIC_OBFUSCATION,100,True,1,3,PENDING
@@ -67,7 +66,6 @@ https://github.com/192-168-4201/DeltaForce-EliteTrainer,192-168-4201,DeltaForce-
 https://github.com/Yemvis/delta-force-enhanced-trainer,Yemvis,delta-force-enhanced-trainer,HIGH,YARA_MATCH,38,False,0,1,PENDING
 https://github.com/babataifa/delta-force-tactical-trainer,babataifa,delta-force-tactical-trainer,HIGH,YARA_MATCH,38,False,0,1,PENDING
 https://github.com/delta-force-trainer/delta-force-trainer,delta-force-trainer,delta-force-trainer,HIGH,YARA_MATCH,38,False,0,1,PENDING
-https://github.com/diegoxl125/DeltaForce-OperatorEnhancer,diegoxl125,DeltaForce-OperatorEnhancer,HIGH,CYRILLIC_OBFUSCATION,100,True,1,2,PENDING
 https://github.com/okiebenladen24/v10-Delta-Unlocker,okiebenladen24,v10-Delta-Unlocker,HIGH,YARA_MATCH,77,False,0,2,PENDING
 https://github.com/bessone5102/DeltaForce-PrimeTrainer,bessone5102,DeltaForce-PrimeTrainer,HIGH,CYRILLIC_OBFUSCATION,100,True,1,2,PENDING
 https://github.com/Magt1998/Delta-Force-Trainer,Magt1998,Delta-Force-Trainer,HIGH,CYRILLIC_OBFUSCATION,100,True,1,4,PENDING
@@ -311,7 +309,6 @@ https://github.com/notryhard4126/fjdwmwxo,notryhard4126,fjdwmwxo,HIGH,YARA_MATCH
 https://github.com/Virus-012/CoDAimPlus,Virus-012,CoDAimPlus,HIGH,YARA_MATCH,38,False,0,1,PENDING
 https://github.com/blackilnoo/cod-hwid-shielder,blackilnoo,cod-hwid-shielder,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/dolley3834/CodDropper-HWID-Cleaner-v1,dolley3834,CodDropper-HWID-Cleaner-v1,HIGH,YARA_MATCH,38,False,0,1,PENDING
-https://github.com/moktarm888/CS2_DMA_Radar,moktarm888,CS2_DMA_Radar,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/beni8833/cs2-external,beni8833,cs2-external,HIGH,YARA_MATCH,30,False,0,1,PENDING
 https://github.com/linhkat3057/Valthrun,linhkat3057,Valthrun,HIGH,CRITICAL_INFRA,39,False,0,0,PENDING
 https://github.com/gilbertGabe/valthrun-cs2,gilbertGabe,valthrun-cs2,HIGH,YARA_MATCH,62,False,0,1,PENDING
@@ -338,7 +335,6 @@ https://github.com/taisrisk/Tainan-Wing-CS2-kernel-Cheat-Source,taisrisk,Tainan-
 https://github.com/UnrealKaraulov/EasyCheatDetector,UnrealKaraulov,EasyCheatDetector,HIGH,YARA_MATCH,53,False,0,3,PENDING
 https://github.com/RiderLinlin/cs2-aim-optimizer,RiderLinlin,cs2-aim-optimizer,HIGH,YARA_MATCH,54,False,0,1,PENDING
 https://github.com/Vitor-gf/cs2,Vitor-gf,cs2,HIGH,YARA_MATCH,30,False,0,1,PENDING
-https://github.com/f4t4litycs2/fatality,f4t4litycs2,fatality,HIGH,CRITICAL_INFRA,39,False,0,0,PENDING
 https://github.com/jorgezaid/fullyexternal-cs2,jorgezaid,fullyexternal-cs2,HIGH,YARA_MATCH,60,False,0,1,PENDING
 https://github.com/paulcake69/fullyexternal-cs2,paulcake69,fullyexternal-cs2,HIGH,YARA_MATCH,70,False,0,1,PENDING
 https://github.com/EXGAi/CS2-AI-2025,EXGAi,CS2-AI-2025,HIGH,YARA_MATCH,100,False,0,4,PENDING
@@ -549,7 +545,6 @@ https://github.com/SonalurSorp/Battlefield-2042-Lava,SonalurSorp,Battlefield-204
 https://github.com/chaitnyasonar/Battlefield2042-MasterMindTools,chaitnyasonar,Battlefield2042-MasterMindTools,HIGH,CYRILLIC_OBFUSCATION,100,True,1,4,PENDING
 https://github.com/weesenoapnoap/2042-combat-optimizer,weesenoapnoap,2042-combat-optimizer,HIGH,YARA_MATCH,91,False,0,4,PENDING
 https://github.com/mrrebrik67stranger/battlefield-2042-tools,mrrebrik67stranger,battlefield-2042-tools,HIGH,YARA_MATCH,100,False,0,4,PENDING
-https://github.com/shkertvoridobro/battlefield-2042-tools,shkertvoridobro,battlefield-2042-tools,HIGH,YARA_MATCH,100,False,0,4,PENDING
 https://github.com/zuoroZERO/Battlefield-2042-Cheat-ADVANCE,zuoroZERO,Battlefield-2042-Cheat-ADVANCE,HIGH,YARA_MATCH,30,False,0,1,PENDING
 https://github.com/BattleField2042-Cheat-Panel/-BattleField2042-Cheat-Panel,BattleField2042-Cheat-Panel,-BattleField2042-Cheat-Panel,HIGH,YARA_MATCH,53,False,0,2,PENDING
 https://github.com/BattleField2042-Cheat-Panel/Download,BattleField2042-Cheat-Panel,Download,HIGH,YARA_MATCH,53,False,0,2,PENDING
@@ -863,7 +858,6 @@ https://github.com/Huy-2k11/Native-Parser,Huy-2k11,Native-Parser,LOW,PATTERN_MAT
 https://github.com/uddant-creator/rustdesk,uddant-creator,rustdesk,HIGH,YARA_MATCH,30,False,0,1,PENDING
 https://github.com/Firaz33/Rust-demo---Python-Comments-Remover-,Firaz33,Rust-demo---Python-Comments-Remover-,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/AT-290690/rust-lisp,AT-290690,rust-lisp,HIGH,YARA_MATCH,20,False,0,1,PENDING
-https://github.com/Susovan33/rust-hwid-masquerade,Susovan33,rust-hwid-masquerade,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/yanxgod/hwid_spoofer-for-rust,yanxgod,hwid_spoofer-for-rust,HIGH,CRITICAL_INFRA,31,False,0,0,PENDING
 https://github.com/realstrings/Lydian-spoofer,realstrings,Lydian-spoofer,HIGH,YARA_MATCH,15,False,0,1,PENDING
 https://github.com/xmxv/Rust-recoil-macro-AK-,xmxv,Rust-recoil-macro-AK-,HIGH,YARA_MATCH,23,False,0,1,PENDING
@@ -1003,7 +997,6 @@ https://github.com/ApexLegends-HyperBoost-Toolkit/.github,ApexLegends-HyperBoost
 https://github.com/ApexLegendsAimAssistESPToolkit/.github,ApexLegendsAimAssistESPToolkit,.github,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/SoftwareDevelopment11/Apex-Legends-External-2025,SoftwareDevelopment11,Apex-Legends-External-2025,HIGH,YARA_MATCH,74,False,0,3,PENDING
 https://github.com/superbrogoat9759/ApexLegendsZeusMenu,superbrogoat9759,ApexLegendsZeusMenu,HIGH,YARA_MATCH,38,False,0,1,PENDING
-https://github.com/Niharika0612/Apex-Point-hacks-damage-multiplier-pack,Niharika0612,Apex-Point-hacks-damage-multiplier-pack,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/DongB6/ApexHackathon2,DongB6,ApexHackathon2,LOW,PATTERN_MATCH,23,False,0,0,PENDING
 https://github.com/Iscar919/pubg-advantage-toolkit,Iscar919,pubg-advantage-toolkit,HIGH,YARA_MATCH,54,False,0,1,PENDING
 https://github.com/CoffinDynasty/pubg-aimplus-tools,CoffinDynasty,pubg-aimplus-tools,LOW,PATTERN_MATCH,31,False,0,0,PENDING
@@ -1177,7 +1170,6 @@ https://github.com/1susano-mo1d-menu/susano,1susano-mo1d-menu,susano,HIGH,YARA_M
 https://github.com/midn1ghtm0dmnu/midnight,midn1ghtm0dmnu,midnight,HIGH,YARA_MATCH,100,False,0,3,PENDING
 https://github.com/euIenmomenu/eulen,euIenmomenu,eulen,HIGH,YARA_MATCH,70,False,0,1,PENDING
 https://github.com/fmmgta5/f1vem,fmmgta5,f1vem,HIGH,YARA_MATCH,74,False,0,3,PENDING
-https://github.com/kiddionsmodm/kiddions,kiddionsmodm,kiddions,HIGH,YARA_MATCH,78,False,0,1,PENDING
 https://github.com/atlas-modmenu/atlas,atlas-modmenu,atlas,LOW,PATTERN_MATCH,31,False,0,0,PENDING
 https://github.com/galezzza/WarehousesGTASachkovHackathon,galezzza,WarehousesGTASachkovHackathon,HIGH,CYRILLIC_OBFUSCATION,70,True,0,2,PENDING
 https://github.com/mandemadhu533/NebulaStrike,mandemadhu533,NebulaStrike,HIGH,YARA_MATCH,100,False,0,4,PENDING
@@ -1301,7 +1293,6 @@ https://github.com/PRIMEAungHtetKyaw/Hwid-Spoofer-For-Fortnite,PRIMEAungHtetKyaw
 https://github.com/Haeryz/Apex-external-driver,Haeryz,Apex-external-driver,LOW,PATTERN_MATCH,23,False,0,0,PENDING
 https://github.com/kiddions-mm-devz/kiddions,kiddions-mm-devz,kiddions,HIGH,YARA_MATCH,100,False,0,4,PENDING
 https://github.com/Gtajisan/Miui-bootlooder-unlock,Gtajisan,Miui-bootlooder-unlock,HIGH,YARA_MATCH,87,False,0,1,PENDING
-https://github.com/gxqk/k2-external-cs2-cheat,gxqk,k2-external-cs2-cheat,HIGH,YARA_MATCH,38,False,0,1,PENDING
 https://github.com/UnrealKaraulov/UnrealDemoScanner,UnrealKaraulov,UnrealDemoScanner,HIGH,YARA_MATCH,30,False,0,2,PENDING
 https://github.com/JourneyOver/CTRPF-AR-CHEAT-CODES,JourneyOver,CTRPF-AR-CHEAT-CODES,HIGH,YARA_MATCH,15,False,0,1,PENDING
 https://github.com/silentesc/torrent-cleaner,silentesc,torrent-cleaner,LOW,PATTERN_MATCH,23,False,0,0,PENDING
@@ -1352,7 +1343,6 @@ https://github.com/ptr-ptr/PUBG-ESP-Mod-Menu,ptr-ptr,PUBG-ESP-Mod-Menu,HIGH,YARA
 https://github.com/SSLRI/pubghack,SSLRI,pubghack,HIGH,YARA_MATCH,15,False,0,1,PENDING
 https://github.com/Kava4/PUBG-LOGITECH-NO-RECOIL,Kava4,PUBG-LOGITECH-NO-RECOIL,HIGH,YARA_MATCH,15,False,0,1,PENDING
 https://github.com/Kawomada/PUBG-Mobile-Bypass-Source-fixed,Kawomada,PUBG-Mobile-Bypass-Source-fixed,LOW,PATTERN_MATCH,23,False,0,0,PENDING
-https://github.com/modinisder/EliteRoyaleBoost,modinisder,EliteRoyaleBoost,HIGH,YARA_MATCH,93,False,0,3,PENDING
 https://github.com/Letomaniy/Speed-Hack,Letomaniy,Speed-Hack,HIGH,YARA_MATCH,30,False,0,2,PENDING
 https://github.com/00sanoj00/Dialo_G_Mega_run_GODMOD,00sanoj00,Dialo_G_Mega_run_GODMOD,MEDIUM,HIGH_ENTROPY,30,False,1,0,PENDING
 https://github.com/Blueaert/RUAVT-Radar-CoD-MW3,Blueaert,RUAVT-Radar-CoD-MW3,HIGH,YARA_MATCH,20,False,0,1,PENDING
@@ -1362,3 +1352,21 @@ https://github.com/rohitmahor/clean-code,rohitmahor,clean-code,HIGH,YARA_MATCH,3
 https://github.com/halbestvilpi1983/bfhub,halbestvilpi1983,bfhub,HIGH,YARA_MATCH,20,False,0,1,PENDING
 https://github.com/Dmeonjani/Warframe-hack,Dmeonjani,Warframe-hack,HIGH,CYRILLIC_OBFUSCATION,100,True,1,4,PENDING
 https://github.com/jeric765/wireguard,jeric765,wireguard,LOW,PATTERN_MATCH,39,False,0,0,PENDING
+https://github.com/SANTHOSHARULDOSS/CodTech-Internship-Tasks,SANTHOSHARULDOSS,CodTech-Internship-Tasks,LOW,PATTERN_MATCH,23,False,0,0,PENDING
+https://github.com/DhruvGohel46/Secretc-coders-Odoo-x-Adani-University-Hackathon-26-,DhruvGohel46,Secretc-coders-Odoo-x-Adani-University-Hackathon-26-,LOW,PATTERN_MATCH,23,False,0,0,PENDING
+https://github.com/juvoy/wradar,juvoy,wradar,HIGH,YARA_MATCH,23,False,0,1,PENDING
+https://github.com/morgandusty/Osiris-release,morgandusty,Osiris-release,HIGH,YARA_MATCH,20,False,0,1,PENDING
+https://github.com/nabil34000/battlefield-waltz-advantage-suite,nabil34000,battlefield-waltz-advantage-suite,HIGH,YARA_MATCH,70,False,0,1,PENDING
+https://github.com/quetiphicomp1984/bflab,quetiphicomp1984,bflab,HIGH,YARA_MATCH,30,False,0,1,PENDING
+https://github.com/Amine123-fd/warframe-mod-menu-plus,Amine123-fd,warframe-mod-menu-plus,HIGH,YARA_MATCH,69,False,0,2,PENDING
+https://github.com/CRUSTDE-ContainerizedRustDevEnv/crustde_cnt_img_pod,CRUSTDE-ContainerizedRustDevEnv,crustde_cnt_img_pod,HIGH,YARA_MATCH,31,False,0,1,PENDING
+https://github.com/swayoleg/hackerrank-problemsolving,swayoleg,hackerrank-problemsolving,HIGH,YARA_MATCH,30,False,0,1,PENDING
+https://github.com/mavkny/ESP32-Garden-Guardian,mavkny,ESP32-Garden-Guardian,HIGH,YARA_MATCH,23,False,0,1,PENDING
+https://github.com/renhuailin/esp32-rust,renhuailin,esp32-rust,LOW,PATTERN_MATCH,23,False,0,0,PENDING
+https://github.com/Nicopro890/Tower-Defence-Simulator-Script,Nicopro890,Tower-Defence-Simulator-Script,MEDIUM,PATTERN_MATCH,47,False,0,0,PENDING
+https://github.com/Kurosachi16/Tower-Defence-Simulator-Script,Kurosachi16,Tower-Defence-Simulator-Script,MEDIUM,PATTERN_MATCH,47,False,0,0,PENDING
+https://github.com/kazzythedev/fn-cheats,kazzythedev,fn-cheats,HIGH,YARA_MATCH,41,False,0,1,PENDING
+https://github.com/SheldonPihlstrom/EliteDead,SheldonPihlstrom,EliteDead,HIGH,YARA_MATCH,68,False,0,1,PENDING
+https://github.com/vivs0/bgmi,vivs0,bgmi,LOW,PATTERN_MATCH,24,False,0,0,PENDING
+https://github.com/ratatyuue/Pubg-2025,ratatyuue,Pubg-2025,HIGH,YARA_MATCH,68,False,0,1,PENDING
+https://github.com/11033143/pubg-2025-hack,11033143,pubg-2025-hack,MEDIUM,HIGH_ENTROPY,51,False,1,0,PENDING

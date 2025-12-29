@@ -40845,5 +40845,466 @@
     "files": [],
     "suspicion_score": 39,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/SANTHOSHARULDOSS/CodTech-Internship-Tasks",
+    "owner": "SANTHOSHARULDOSS",
+    "repo_name": "CodTech-Internship-Tasks",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-29T06:25:07.953038",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/DhruvGohel46/Secretc-coders-Odoo-x-Adani-University-Hackathon-26-",
+    "owner": "DhruvGohel46",
+    "repo_name": "Secretc-coders-Odoo-x-Adani-University-Hackathon-26-",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): password localhost 5432",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-29T06:25:08.383848",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): password localhost 5432"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/juvoy/wradar",
+    "owner": "juvoy",
+    "repo_name": "wradar",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-29T06:25:15.085017",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/morgandusty/Osiris-release",
+    "owner": "morgandusty",
+    "repo_name": "Osiris-release",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 20/100"
+    ],
+    "detected_at": "2025-12-29T06:26:10.393338",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 20,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/nabil34000/battlefield-waltz-advantage-suite",
+    "owner": "nabil34000",
+    "repo_name": "battlefield-waltz-advantage-suite",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Battlefield.*2025",
+      "RED FLAG: 2025.*Battlefield",
+      "SUSPICIOUS N-GRAM (2x): download 5blink",
+      "SUSPICIOUS N-GRAM (2x): badge download 5blink",
+      "SUSPICIOUS N-GRAM (2x): download 5blink 5d",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 70/100"
+    ],
+    "detected_at": "2025-12-29T06:26:16.785284",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Battlefield.*2025",
+      "RED FLAG: 2025.*Battlefield",
+      "SUSPICIOUS N-GRAM (2x): download 5blink",
+      "SUSPICIOUS N-GRAM (2x): badge download 5blink",
+      "SUSPICIOUS N-GRAM (2x): download 5blink 5d"
+    ],
+    "files": [],
+    "suspicion_score": 70,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/quetiphicomp1984/bflab",
+    "owner": "quetiphicomp1984",
+    "repo_name": "bflab",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-29T06:26:23.621358",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Amine123-fd/warframe-mod-menu-plus",
+    "owner": "Amine123-fd",
+    "repo_name": "warframe-mod-menu-plus",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: stealth\\s*mode",
+      "RED FLAG: Warframe.*2025",
+      "RED FLAG: 2025.*Warframe",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 69/100"
+    ],
+    "detected_at": "2025-12-29T06:28:33.520146",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: stealth\\s*mode",
+      "RED FLAG: Warframe.*2025",
+      "RED FLAG: 2025.*Warframe"
+    ],
+    "files": [],
+    "suspicion_score": 69,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/CRUSTDE-ContainerizedRustDevEnv/crustde_cnt_img_pod",
+    "owner": "CRUSTDE-ContainerizedRustDevEnv",
+    "repo_name": "crustde_cnt_img_pod",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2024",
+      "RED FLAG: 2024.*Rust",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 31/100"
+    ],
+    "detected_at": "2025-12-29T06:28:46.033046",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2024",
+      "RED FLAG: 2024.*Rust"
+    ],
+    "files": [],
+    "suspicion_score": 31,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/swayoleg/hackerrank-problemsolving",
+    "owner": "swayoleg",
+    "repo_name": "hackerrank-problemsolving",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 30/100"
+    ],
+    "detected_at": "2025-12-29T06:28:46.327077",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 30,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/mavkny/ESP32-Garden-Guardian",
+    "owner": "mavkny",
+    "repo_name": "ESP32-Garden-Guardian",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: Rust.*2025",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-29T06:28:45.307337",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
+    ],
+    "readme_flags": [
+      "RED FLAG: Rust.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/renhuailin/esp32-rust",
+    "owner": "renhuailin",
+    "repo_name": "esp32-rust",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: Rust.*2025",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2025-12-29T06:28:47.920523",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: Rust.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Nicopro890/Tower-Defence-Simulator-Script",
+    "owner": "Nicopro890",
+    "repo_name": "Tower-Defence-Simulator-Script",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "MEDIUM",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): click here",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): click here https",
+      "SUSPICIOUS N-GRAM (3x): the latest version",
+      "SUSPICION SCORE: 47/100"
+    ],
+    "detected_at": "2025-12-29T06:28:57.828875",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): click here",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): click here https",
+      "SUSPICIOUS N-GRAM (3x): the latest version"
+    ],
+    "files": [],
+    "suspicion_score": 47,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/Kurosachi16/Tower-Defence-Simulator-Script",
+    "owner": "Kurosachi16",
+    "repo_name": "Tower-Defence-Simulator-Script",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "MEDIUM",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): click here",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): click here https",
+      "SUSPICIOUS N-GRAM (3x): the latest version",
+      "SUSPICION SCORE: 47/100"
+    ],
+    "detected_at": "2025-12-29T06:29:01.272636",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): click here",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): click here https",
+      "SUSPICIOUS N-GRAM (3x): the latest version"
+    ],
+    "files": [],
+    "suspicion_score": 47,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/kazzythedev/fn-cheats",
+    "owner": "kazzythedev",
+    "repo_name": "fn-cheats",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: MIT\\s*License.*hack",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 41/100"
+    ],
+    "detected_at": "2025-12-29T06:29:35.526702",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: undetected",
+      "BOT INDICATOR: MIT\\s*License.*hack"
+    ],
+    "files": [],
+    "suspicion_score": 41,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/SheldonPihlstrom/EliteDead",
+    "owner": "SheldonPihlstrom",
+    "repo_name": "EliteDead",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: undetected",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: PUBG.*2025",
+      "BOT INDICATOR: educational.*purposes.*only",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 68/100"
+    ],
+    "detected_at": "2025-12-29T06:30:22.081474",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: anti[- ]?ban",
+      "RED FLAG: undetected",
+      "RED FLAG: 2025.*undetected",
+      "RED FLAG: PUBG.*2025",
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 68,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/vivs0/bgmi",
+    "owner": "vivs0",
+    "repo_name": "bgmi",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): bypass 312791",
+      "SUSPICIOUS N-GRAM (2x): cheat bypass 312791",
+      "SUSPICIOUS N-GRAM (2x): bypass 312791 bypaph",
+      "SUSPICION SCORE: 24/100"
+    ],
+    "detected_at": "2025-12-29T06:30:50.314840",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): bypass 312791",
+      "SUSPICIOUS N-GRAM (2x): cheat bypass 312791",
+      "SUSPICIOUS N-GRAM (2x): bypass 312791 bypaph"
+    ],
+    "files": [],
+    "suspicion_score": 24,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/ratatyuue/Pubg-2025",
+    "owner": "ratatyuue",
+    "repo_name": "Pubg-2025",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: undetected",
+      "RED FLAG: PUBG.*2025",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version from",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 68/100"
+    ],
+    "detected_at": "2025-12-29T06:30:49.196151",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: undetected",
+      "RED FLAG: PUBG.*2025",
+      "SUSPICIOUS N-GRAM (3x): latest version",
+      "SUSPICIOUS N-GRAM (2x): the latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version from"
+    ],
+    "files": [],
+    "suspicion_score": 68,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/11033143/pubg-2025-hack",
+    "owner": "11033143",
+    "repo_name": "pubg-2025-hack",
+    "detection_type": "HIGH_ENTROPY",
+    "severity": "MEDIUM",
+    "evidence": [
+      "HIGH ENTROPY: Loader.rar (7.82/8.0)",
+      "RED FLAG: PUBG.*2025",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICION SCORE: 51/100"
+    ],
+    "detected_at": "2025-12-29T06:30:49.455297",
+    "cyrillic_detected": false,
+    "high_entropy_files": [
+      "Loader.rar: HIGH ENTROPY (7.82/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: PUBG.*2025",
+      "SUSPICIOUS N-GRAM (2x): latest version"
+    ],
+    "files": [],
+    "suspicion_score": 51,
+    "report_status": "PENDING"
   }
 ]
