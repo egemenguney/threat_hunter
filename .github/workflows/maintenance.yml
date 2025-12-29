@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
-          # 'y' göndererek silinenleri otomatik JSON'dan çıkartıyoruz
+          
           echo y | python check_repos_status.py
 
       - name: Commit Changes
