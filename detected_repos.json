@@ -1313,32 +1313,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/Delta-Force-Cheat-lareine/.github",
-    "owner": "Delta-Force-Cheat-lareine",
-    "repo_name": ".github",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: disable.*defender",
-      "RED FLAG: undetected",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "SUSPICION SCORE: 36/100"
-    ],
-    "detected_at": "2025-12-19T06:20:16.158781",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
-    ],
-    "readme_flags": [
-      "RED FLAG: disable.*defender",
-      "RED FLAG: undetected"
-    ],
-    "files": [],
-    "suspicion_score": 36,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/aristea-aetsira/DeltaForce-AI-PrecisionPilot",
     "owner": "aristea-aetsira",
     "repo_name": "DeltaForce-AI-PrecisionPilot",
@@ -2054,45 +2028,6 @@
     ],
     "files": [],
     "suspicion_score": 38,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/diegoxl125/DeltaForce-OperatorEnhancer",
-    "owner": "diegoxl125",
-    "repo_name": "DeltaForce-OperatorEnhancer",
-    "detection_type": "CYRILLIC_OBFUSCATION",
-    "severity": "HIGH",
-    "evidence": [
-      "CYRILLIC FILENAME: Lоader.zip - Cyrillic obfuscation: 'о' (U+043E) instead of 'o'",
-      "MIXED SCRIPT: 'о' (U+043E) -> 'o'",
-      "NORMALIZED: 'Lоader.zip' -> 'Loader.zip'",
-      "HOMOGLYPH 'Lоader' -> 'Loader' (target: loader)",
-      "HIDDEN WORD: 'loader' found after normalization",
-      "URL ENCODED CYRILLIC: URL-encoded Cyrillic: %D0%BE = о (U+043E)",
-      "HIGH ENTROPY: Lоader.zip (7.81/8.0)",
-      "RED FLAG: stealth\\s*mode",
-      "RED FLAG: Delta.*Force.*2025",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
-      "SUSPICION SCORE: 100/100"
-    ],
-    "detected_at": "2025-12-19T06:20:14.269946",
-    "cyrillic_detected": true,
-    "high_entropy_files": [
-      "Lоader.zip: HIGH ENTROPY (7.81/8.0) - likely encrypted/packed"
-    ],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
-    ],
-    "readme_flags": [
-      "RED FLAG: stealth\\s*mode",
-      "RED FLAG: Delta.*Force.*2025"
-    ],
-    "files": [
-      "Lоader.zip"
-    ],
-    "suspicion_score": 100,
     "report_status": "PENDING"
   },
   {
@@ -10036,29 +9971,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/moktarm888/CS2_DMA_Radar",
-    "owner": "moktarm888",
-    "repo_name": "CS2_DMA_Radar",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "SUSPICIOUS N-GRAM (3x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version",
-      "SUSPICION SCORE: 31/100"
-    ],
-    "detected_at": "2025-12-19T06:22:28.732959",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "SUSPICIOUS N-GRAM (3x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version"
-    ],
-    "files": [],
-    "suspicion_score": 31,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/beni8833/cs2-external",
     "owner": "beni8833",
     "repo_name": "cs2-external",
@@ -10733,31 +10645,6 @@
     "readme_flags": [],
     "files": [],
     "suspicion_score": 30,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/f4t4litycs2/fatality",
-    "owner": "f4t4litycs2",
-    "repo_name": "fatality",
-    "detection_type": "CRITICAL_INFRA",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: disable.*antivirus",
-      "RED FLAG: disable.*av",
-      "RED FLAG: bypass.*detection",
-      "SUSPICION SCORE: 39/100"
-    ],
-    "detected_at": "2025-12-19T06:22:40.453945",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "RED FLAG: disable.*antivirus",
-      "RED FLAG: disable.*av",
-      "RED FLAG: bypass.*detection"
-    ],
-    "files": [],
-    "suspicion_score": 39,
     "report_status": "PENDING"
   },
   {
@@ -16560,42 +16447,6 @@
       "SUSPICION SCORE: 100/100"
     ],
     "detected_at": "2025-12-19T06:24:09.783101",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
-      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
-    ],
-    "readme_flags": [
-      "RED FLAG: undetected",
-      "RED FLAG: Battlefield.*2025",
-      "RED FLAG: BF2042.*2025",
-      "BOT INDICATOR: educational.*purposes.*only"
-    ],
-    "files": [],
-    "suspicion_score": 100,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/shkertvoridobro/battlefield-2042-tools",
-    "owner": "shkertvoridobro",
-    "repo_name": "battlefield-2042-tools",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: undetected",
-      "RED FLAG: Battlefield.*2025",
-      "RED FLAG: BF2042.*2025",
-      "BOT INDICATOR: educational.*purposes.*only",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
-      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
-      "SUSPICION SCORE: 100/100"
-    ],
-    "detected_at": "2025-12-19T06:24:10.826129",
     "cyrillic_detected": false,
     "high_entropy_files": [],
     "yara_matches": [
@@ -26183,29 +26034,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/Susovan33/rust-hwid-masquerade",
-    "owner": "Susovan33",
-    "repo_name": "rust-hwid-masquerade",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "RED FLAG: 2025.*Rust",
-      "BOT INDICATOR: educational.*purposes.*only",
-      "SUSPICION SCORE: 31/100"
-    ],
-    "detected_at": "2025-12-19T06:26:31.106737",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "RED FLAG: 2025.*Rust",
-      "BOT INDICATOR: educational.*purposes.*only"
-    ],
-    "files": [],
-    "suspicion_score": 31,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/yanxgod/hwid_spoofer-for-rust",
     "owner": "yanxgod",
     "repo_name": "hwid_spoofer-for-rust",
@@ -30099,29 +29927,6 @@
     ],
     "files": [],
     "suspicion_score": 38,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/Niharika0612/Apex-Point-hacks-damage-multiplier-pack",
-    "owner": "Niharika0612",
-    "repo_name": "Apex-Point-hacks-damage-multiplier-pack",
-    "detection_type": "PATTERN_MATCH",
-    "severity": "LOW",
-    "evidence": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version",
-      "SUSPICION SCORE: 31/100"
-    ],
-    "detected_at": "2025-12-19T06:27:34.210938",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [],
-    "readme_flags": [
-      "SUSPICIOUS N-GRAM (2x): latest version",
-      "SUSPICIOUS N-GRAM (2x): the latest version"
-    ],
-    "files": [],
-    "suspicion_score": 31,
     "report_status": "PENDING"
   },
   {
@@ -35689,40 +35494,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/kiddionsmodm/kiddions",
-    "owner": "kiddionsmodm",
-    "repo_name": "kiddions",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: disable.*antivirus",
-      "RED FLAG: disable.*defender",
-      "RED FLAG: bypass.*detection",
-      "RED FLAG: free.*2025",
-      "RED FLAG: GTA.*V.*2025",
-      "BOT INDICATOR: Updated.*2025",
-      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
-      "SUSPICION SCORE: 78/100"
-    ],
-    "detected_at": "2025-12-19T06:28:21.032279",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Bot_Generated (Bot-generated README patterns)"
-    ],
-    "readme_flags": [
-      "RED FLAG: disable.*antivirus",
-      "RED FLAG: disable.*defender",
-      "RED FLAG: bypass.*detection",
-      "RED FLAG: free.*2025",
-      "RED FLAG: GTA.*V.*2025",
-      "BOT INDICATOR: Updated.*2025"
-    ],
-    "files": [],
-    "suspicion_score": 78,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/atlas-modmenu/atlas",
     "owner": "atlas-modmenu",
     "repo_name": "atlas",
@@ -39316,30 +39087,6 @@
     "report_status": "PENDING"
   },
   {
-    "url": "https://github.com/gxqk/k2-external-cs2-cheat",
-    "owner": "gxqk",
-    "repo_name": "k2-external-cs2-cheat",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "BOT INDICATOR: educational.*purposes.*only",
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
-      "SUSPICION SCORE: 38/100"
-    ],
-    "detected_at": "2025-12-23T06:23:50.061189",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))"
-    ],
-    "readme_flags": [
-      "BOT INDICATOR: educational.*purposes.*only"
-    ],
-    "files": [],
-    "suspicion_score": 38,
-    "report_status": "PENDING"
-  },
-  {
     "url": "https://github.com/UnrealKaraulov/UnrealDemoScanner",
     "owner": "UnrealKaraulov",
     "repo_name": "UnrealDemoScanner",
@@ -40863,44 +40610,6 @@
     ],
     "files": [],
     "suspicion_score": 23,
-    "report_status": "PENDING"
-  },
-  {
-    "url": "https://github.com/modinisder/EliteRoyaleBoost",
-    "owner": "modinisder",
-    "repo_name": "EliteRoyaleBoost",
-    "detection_type": "YARA_MATCH",
-    "severity": "HIGH",
-    "evidence": [
-      "RED FLAG: disable.*antivirus",
-      "RED FLAG: disable.*defender",
-      "RED FLAG: undetected",
-      "RED FLAG: 2025.*hack.*tool",
-      "RED FLAG: PUBG.*2025",
-      "RED FLAG: 2025.*PlayerUnknown",
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
-      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
-      "SUSPICION SCORE: 93/100"
-    ],
-    "detected_at": "2025-12-26T06:29:04.757222",
-    "cyrillic_detected": false,
-    "high_entropy_files": [],
-    "yara_matches": [
-      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
-      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
-      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
-    ],
-    "readme_flags": [
-      "RED FLAG: disable.*antivirus",
-      "RED FLAG: disable.*defender",
-      "RED FLAG: undetected",
-      "RED FLAG: 2025.*hack.*tool",
-      "RED FLAG: PUBG.*2025",
-      "RED FLAG: 2025.*PlayerUnknown"
-    ],
-    "files": [],
-    "suspicion_score": 93,
     "report_status": "PENDING"
   },
   {
