@@ -9,18 +9,17 @@ on:
         description: 'Max results per query'
         required: false
         default: '100'
-      rate_limit_wait:
-        description: 'Max wait time for rate limit (seconds)'
-        required: false
-        default: '3600'
       check_dry_run:
         description: 'If true, do not modify detected_repos.json (dry run)'
         required: false
         default: 'false'
 
+permissions:
+  contents: write
+  issues: write
+
 env:
   PYTHON_VERSION: '3.11'
-  RATE_LIMIT_MAX_WAIT: ${{ github.event.inputs.rate_limit_wait || '3600' }}
 
 jobs:
   scan:
@@ -30,6 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SCAN_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,138 +42,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          echo "Dependencies installed"
 
-      - name: Check rate limit before scan
+      - name: Run Threat Hunter Scan
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
-          echo "Checking rate limit status..."
-          RATE_INFO=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/rate_limit)
-          CORE_REMAINING=$(echo $RATE_INFO | jq '.resources.core.remaining')
-          SEARCH_REMAINING=$(echo $RATE_INFO | jq '.resources.search.remaining')
-          CORE_RESET=$(echo $RATE_INFO | jq '.resources.core.reset')
+          python threat_hunter.py --max-results ${{ github.event.inputs.max_results || '100' }}
 
-          echo "Core API remaining: $CORE_REMAINING/5000"
-          echo "Search API remaining: $SEARCH_REMAINING/30"
-
-          if [ "$CORE_REMAINING" -lt 500 ]; then
-            CURRENT_TIME=$(date +%s)
-            WAIT_TIME=$((CORE_RESET - CURRENT_TIME + 60))
-            if [ "$WAIT_TIME" -gt 0 ] && [ "$WAIT_TIME" -lt 3600 ]; then
-              echo "Low rate limit, waiting ${WAIT_TIME}s for reset..."
-              sleep $WAIT_TIME
-            fi
-          fi
-
-      - name: Test SCAN_TOKEN validity
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
-        run: |
-          echo "Testing SCAN_TOKEN..."
-          curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user | jq '.login // "ERROR"'
-          echo "Token test completed"
-
-      - name: Run malware scan
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
-          RATE_LIMIT_MAX_WAIT: ${{ env.RATE_LIMIT_MAX_WAIT }}
-        run: |
-          echo "Starting malware scan with SCAN_TOKEN..."
-          echo "Max rate limit wait: ${RATE_LIMIT_MAX_WAIT}s"
-          python threat_hunter.py
-
-      - name: Show final rate limit status
-        if: always()
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
-        run: |
-          echo "Final rate limit status:"
-          curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/rate_limit | jq '.resources | {core: .core.remaining, search: .search.remaining}'
-
-      - name: Upload scan results
-        uses: actions/upload-artifact@v4
-        with:
-          name: scan-results-${{ github.run_number }}
-          path: |
-            detected_repos.json
-            detected_repos.csv
-            AUTO_GENERATED_REPORT.md
-            SUGGESTED_PATTERNS.txt
-          retention-days: 30
-
-      - name: Check for HIGH severity detections
-        id: check_high
-        run: |
-          HIGH_COUNT=$(python -c "import json; data=json.load(open('detected_repos.json')); print(len([d for d in data if d.get('severity')=='HIGH']))")
-          echo "high_count=$HIGH_COUNT" >> $GITHUB_OUTPUT
-          echo "Found $HIGH_COUNT HIGH severity repositories"
-
-      - name: Check for new pattern suggestions
-        id: check_patterns
-        run: |
-          if [ -f "SUGGESTED_PATTERNS.txt" ]; then
-            echo "new_patterns=true" >> $GITHUB_OUTPUT
-            echo "New pattern suggestions found"
-          else
-            echo "new_patterns=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Create issue for new detections
-        if: steps.check_high.outputs.high_count > 0
-        uses: actions/github-script@v7
-        env:
-          NEW_PATTERNS: ${{ steps.check_patterns.outputs.new_patterns }}
-        with:
-          github-token: ${{ secrets.SCAN_TOKEN }}
-          script: |
-            const fs = require('fs');
-            
-            try {
-              const rateLimit = await github.rest.rateLimit.get();
-              const remaining = rateLimit.data.rate.remaining;
-              
-              console.log(`Rate limit remaining: ${remaining}`);
-              
-              if (remaining < 50) {
-                throw new Error(`Rate limit too low (${remaining}), cannot create issue safely`);
-              }
-              
-              const data = JSON.parse(fs.readFileSync('detected_repos.json', 'utf8'));
-              const highSeverity = data.filter(d => d.severity === 'HIGH');
-              
-              if (highSeverity.length === 0) return;
-              let body = `## Malware Scan Report
-              
-              ### Top 20 Detected Repos
-              | Repository | Type | Score |
-              |------------|------|-------|
-              ${highSeverity.slice(0, 20).map(r => `| [${r.owner}/${r.repo_name}](${r.url}) | ${r.detection_type} | ${r.suspicion_score}/100 |`).join('\n')}
-              
-              ${highSeverity.length > 20 ? `\n*... and ${highSeverity.length - 20} more*` : ''}
-              
-              Full results in workflow artifacts.
-              
-              ${process.env.NEW_PATTERNS === 'true' ? '\nNew pattern suggestions found - Check SUGGESTED_PATTERNS.txt in artifacts' : ''}
-              `;
-              
-              const issue = await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: `Malware Scan: ${highSeverity.length} HIGH severity repos detected`,
-                body: body,
-                labels: ['malware-detection', 'automated']
-              });
-              
-              console.log(`Issue created: #${issue.data.number}`);
-              console.log(`Rate limit after issue: ${(await github.rest.rateLimit.get()).data.rate.remaining}`);
-              
-            } catch (error) {
-              console.error(`Failed to create issue: ${error.message}`);
-              core.setFailed(`Issue creation failed: ${error.message}`);
-            }
-
-      - name: Commit updated detected_repos
+      - name: Commit updated scan results
         if: success()
         run: |
           git config user.name "github-actions[bot]"
@@ -181,44 +58,28 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update detected repos [skip ci]"
+            git commit -m "chore: update scan results [skip ci]"
             git push
-            echo "Updated detected_repos committed"
           fi
 
-      - name: Auto-report HIGH severity repos
-        if: steps.check_high.outputs.high_count > 0
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
+      - name: Generate Mass Reports (Dry Run Mode)
+        if: always()
         run: |
+          
           rm -rf reports/
-          rm -f mass_report_log.json
           mkdir -p reports/
+          
+          # Dry-run modunda çalıştırarak klasör ve log dosyalarını oluşturur
+          python mass_reporter.py detected_repos.json --severity HIGH --auto --dry-run
 
-          HIGH_COUNT=${{ steps.check_high.outputs.high_count }}
-          MAX_REPORTS=0
-
-          python mass_reporter.py detected_repos.json --severity HIGH --max $MAX_REPORTS --auto --dry-run
-
-      - name: Upload report logs
+      - name: Upload Report Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: report-logs-${{ github.run_number }}
+          name: threat-hunter-reports-${{ github.run_number }}
           path: |
             mass_report_log.json
             mass_report_summary.md
             reports/
-          retention-days: 30
-          if-no-files-found: ignore
-
-  notify:
-    needs: scan
-    runs-on: ubuntu-latest
-    if: failure()
-    
-    steps:
-      - name: Notify on failure
-        run: |
-          echo "Scan failed! Check workflow logs."
-
+          retention-days: 7
+          if-no-files-found: warn
