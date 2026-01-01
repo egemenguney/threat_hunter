@@ -2,10 +2,7 @@ name: Daily Malware Scan
 
 on:
   schedule:
-    # Her gün 06:00 UTC (09:00 Türkiye)
-    - cron: '0 6 * * *'
-  
-  # Manuel tetikleme
+    - cron: '0 6 * * 1'
   workflow_dispatch:
     inputs:
       max_results:
@@ -16,10 +13,6 @@ on:
         description: 'Max wait time for rate limit (seconds)'
         required: false
         default: '3600'
-      check_auto_remove:
-        description: 'Auto-remove deleted repos from detected_repos.json (true/false)'
-        required: false
-        default: 'true'
       check_dry_run:
         description: 'If true, do not modify detected_repos.json (dry run)'
         required: false
@@ -27,78 +20,76 @@ on:
 
 env:
   PYTHON_VERSION: '3.11'
-  # Rate limit bitince kaç saniye beklesin (default: 60 dakika)
   RATE_LIMIT_MAX_WAIT: ${{ github.event.inputs.rate_limit_wait || '3600' }}
 
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 180  # 3 saat max - rate limit bekleme için yeterli
-    
+    timeout-minutes: 180
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-      
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          echo "✅ Dependencies installed (including DuckDuckGo search fallback)"
-      
+          echo "Dependencies installed"
+
       - name: Check rate limit before scan
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
-          echo "🔑 Checking rate limit status..."
+          echo "Checking rate limit status..."
           RATE_INFO=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/rate_limit)
           CORE_REMAINING=$(echo $RATE_INFO | jq '.resources.core.remaining')
           SEARCH_REMAINING=$(echo $RATE_INFO | jq '.resources.search.remaining')
           CORE_RESET=$(echo $RATE_INFO | jq '.resources.core.reset')
-          
-          echo "📊 Core API remaining: $CORE_REMAINING/5000"
-          echo "🔍 Search API remaining: $SEARCH_REMAINING/30"
-          
-          # Eğer core API 500'ün altındaysa bekle
+
+          echo "Core API remaining: $CORE_REMAINING/5000"
+          echo "Search API remaining: $SEARCH_REMAINING/30"
+
           if [ "$CORE_REMAINING" -lt 500 ]; then
             CURRENT_TIME=$(date +%s)
             WAIT_TIME=$((CORE_RESET - CURRENT_TIME + 60))
             if [ "$WAIT_TIME" -gt 0 ] && [ "$WAIT_TIME" -lt 3600 ]; then
-              echo "⏳ Low rate limit, waiting ${WAIT_TIME}s for reset..."
+              echo "Low rate limit, waiting ${WAIT_TIME}s for reset..."
               sleep $WAIT_TIME
             fi
           fi
-      
+
       - name: Test SCAN_TOKEN validity
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
-          echo "🔑 Testing SCAN_TOKEN..."
+          echo "Testing SCAN_TOKEN..."
           curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user | jq '.login // "ERROR"'
-          echo "✅ Token test completed"
-      
+          echo "Token test completed"
+
       - name: Run malware scan
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
           RATE_LIMIT_MAX_WAIT: ${{ env.RATE_LIMIT_MAX_WAIT }}
         run: |
-          echo "🔍 Starting malware scan with SCAN_TOKEN..."
-          echo "⏱️ Max rate limit wait: ${RATE_LIMIT_MAX_WAIT}s"
+          echo "Starting malware scan with SCAN_TOKEN..."
+          echo "Max rate limit wait: ${RATE_LIMIT_MAX_WAIT}s"
           python threat_hunter.py
-      
+
       - name: Show final rate limit status
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
         run: |
-          echo "📊 Final rate limit status:"
+          echo "Final rate limit status:"
           curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/rate_limit | jq '.resources | {core: .core.remaining, search: .search.remaining}'
-      
+
       - name: Upload scan results
         uses: actions/upload-artifact@v4
         with:
@@ -110,33 +101,13 @@ jobs:
             SUGGESTED_PATTERNS.txt
           retention-days: 30
 
-      - name: Run pipeline analysis
-        env:
-          GITHUB_TOKEN: ${{ secrets.SCAN_TOKEN }}
-        run: |
-          echo "🔬 Running pipeline analysis..."
-          python pipeline.py
-          echo "✅ Pipeline analysis completed"
-          
-          # Show summary
-          echo "📊 Pipeline Results:"
-          cat pipeline_output/FINAL_REPORT.md | head -50
-
-      - name: Upload pipeline results
-        uses: actions/upload-artifact@v4
-        with:
-          name: pipeline-results-${{ github.run_number }}
-          path: |
-            pipeline_output/
-          retention-days: 30
-      
       - name: Check for HIGH severity detections
         id: check_high
         run: |
           HIGH_COUNT=$(python -c "import json; data=json.load(open('detected_repos.json')); print(len([d for d in data if d.get('severity')=='HIGH']))")
           echo "high_count=$HIGH_COUNT" >> $GITHUB_OUTPUT
           echo "Found $HIGH_COUNT HIGH severity repositories"
-      
+
       - name: Check for new pattern suggestions
         id: check_patterns
         run: |
@@ -146,24 +117,22 @@ jobs:
           else
             echo "new_patterns=false" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Create issue for new detections
         if: steps.check_high.outputs.high_count > 0
         uses: actions/github-script@v7
         env:
           NEW_PATTERNS: ${{ steps.check_patterns.outputs.new_patterns }}
         with:
-          # SCAN_TOKEN kullan (1000 rate limit rezerve edildi)
           github-token: ${{ secrets.SCAN_TOKEN }}
           script: |
             const fs = require('fs');
             
             try {
-              // Rate limit kontrolü
               const rateLimit = await github.rest.rateLimit.get();
               const remaining = rateLimit.data.rate.remaining;
               
-              console.log(`📊 Rate limit remaining: ${remaining}`);
+              console.log(`Rate limit remaining: ${remaining}`);
               
               if (remaining < 50) {
                 throw new Error(`Rate limit too low (${remaining}), cannot create issue safely`);
@@ -173,35 +142,7 @@ jobs:
               const highSeverity = data.filter(d => d.severity === 'HIGH');
               
               if (highSeverity.length === 0) return;
-              
-              // Pipeline sonuçlarını oku
-              let pipelineSummary = '';
-              try {
-                const pipelineReport = fs.readFileSync('pipeline_output/repos_to_report.json', 'utf8');
-                const pipelineData = JSON.parse(pipelineReport);
-                const critical = pipelineData.filter(r => r.severity === 'CRITICAL').length;
-                const high = pipelineData.filter(r => r.severity === 'HIGH').length;
-                const obfuscated = pipelineData.filter(r => r.detection_type.includes('obfuscated_js')).length;
-                const easylauncher = pipelineData.filter(r => r.detection_type.includes('easylauncher')).length;
-                
-                pipelineSummary = `
-              ### 🔬 Pipeline Analysis
-              | Category | Count |
-              |----------|-------|
-              | CRITICAL | ${critical} |
-              | HIGH | ${high} |
-              | Obfuscated JS | ${obfuscated} |
-              | easylauncher.su | ${easylauncher} |
-              | **Total to Report** | **${pipelineData.length}** |
-              `;
-              } catch (e) {
-                console.log('Pipeline results not found');
-              }
-              
-              const body = `## 🚨 Daily Scan Results - ${new Date().toISOString().split('T')[0]}
-              
-              **HIGH Severity Detections: ${highSeverity.length}**
-              ${pipelineSummary}
+              let body = `## Malware Scan Report
               
               ### Top 20 Detected Repos
               | Repository | Type | Score |
@@ -210,28 +151,27 @@ jobs:
               
               ${highSeverity.length > 20 ? `\n*... and ${highSeverity.length - 20} more*` : ''}
               
-              📁 Full results in workflow artifacts.
+              Full results in workflow artifacts.
               
-              ${process.env.NEW_PATTERNS === 'true' ? '\n🧠 **New pattern suggestions found** - Check SUGGESTED_PATTERNS.txt in artifacts' : ''}
+              ${process.env.NEW_PATTERNS === 'true' ? '\nNew pattern suggestions found - Check SUGGESTED_PATTERNS.txt in artifacts' : ''}
               `;
               
               const issue = await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: `🚨 Malware Scan: ${highSeverity.length} HIGH severity repos detected`,
+                title: `Malware Scan: ${highSeverity.length} HIGH severity repos detected`,
                 body: body,
                 labels: ['malware-detection', 'automated']
               });
               
-              console.log(`✅ Issue created: #${issue.data.number}`);
-              console.log(`📊 Rate limit after issue: ${(await github.rest.rateLimit.get()).data.rate.remaining}`);
+              console.log(`Issue created: #${issue.data.number}`);
+              console.log(`Rate limit after issue: ${(await github.rest.rateLimit.get()).data.rate.remaining}`);
               
             } catch (error) {
-              // Rate limit veya başka hata - CRITICAL: Bu adım başarısız olursa workflow fail olsun
-              console.error(`❌ CRITICAL: Failed to create issue: ${error.message}`);
+              console.error(`Failed to create issue: ${error.message}`);
               core.setFailed(`Issue creation failed: ${error.message}`);
             }
-      
+
       - name: Commit updated detected_repos
         if: success()
         run: |
@@ -243,7 +183,7 @@ jobs:
           else
             git commit -m "chore: update detected repos [skip ci]"
             git push
-            echo "✅ Updated detected_repos committed"
+            echo "Updated detected_repos committed"
           fi
 
       - name: Auto-report HIGH severity repos
@@ -254,17 +194,11 @@ jobs:
           rm -rf reports/
           rm -f mass_report_log.json
           mkdir -p reports/
-          
-          echo "🤖 Generating report files for HIGH severity repositories..."
+
           HIGH_COUNT=${{ steps.check_high.outputs.high_count }}
           MAX_REPORTS=0
-          
-          echo "📊 Found $HIGH_COUNT HIGH severity repos, generating reports for up to $MAX_REPORTS"
-          
-          # Run mass reporter in auto mode (generates report files, not actual GitHub reports)
+
           python mass_reporter.py detected_repos.json --severity HIGH --max $MAX_REPORTS --auto --dry-run
-          
-          echo "✅ Report files generated in reports/ folder"
 
       - name: Upload report logs
         if: always()

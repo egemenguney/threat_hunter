@@ -1,144 +1,66 @@
-# 🎯 Threat Hunter
+# Threat Hunter (Community / Demo Version)
 
-**GitHub Malware Repo Scanner & Reporter**
+Threat Hunter is a Python-based security tool designed to demonstrate malware detection capabilities using YARA rules. This repository serves as a **public showcase** and a feature-limited version of the full Threat Hunter ecosystem.
 
-Tek komutla GitHub'daki malware dağıtan repo'ları tespit et, kategorize et ve raporla.
+> [!NOTE]
+> This is a **Showcase/Demo** version. The full Professional edition—featuring automated CI/CD pipelines, deep analysis engines, and FastAPI integration with a centralized web dashboard—is maintained in a private repository.
 
-## 🚀 Quick Start
+## 🚀 Features
+- **YARA Integration:** Scan files and directories using industry-standard YARA signatures.
+- **Structured Reporting:** Automatically generate scan results in CSV and JSON formats.
+- **Batch Processing:** Consolidate multiple scan reports using the `mass_reporter.py` utility.
 
-```bash
-# 1. İlk tarama (threat_hunter.py zaten çalıştıysa atla)
-python threat_hunter.py
+## 🛠️ Installation
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/YOUR_USERNAME/threat-hunter.git](https://github.com/YOUR_USERNAME/threat-hunter.git)
+   ```
 
-# 2. Pipeline çalıştır - TEK KOMUT, TÜM ANALİZ
-python pipeline.py
+2. Install the necessary dependencies:
+    ```bash
+    pip install -r requirements.txt
 
-# 3. Sonuçlar:
-#    pipeline_output/FINAL_REPORT.md     → Detaylı rapor
-#    pipeline_output/repos_to_report.json → Mass report için hazır
-#    pipeline_output/clusters.json       → Tüm veriler
-```
+    ```
 
-## 📊 Son Analiz Sonuçları (23 Aralık 2025)
 
-| Metrik | Sayı |
-|--------|------|
-| **Toplam Repo** | 1,117 |
-| **Malware Link** | 118 |
-| **easylauncher.su** | 9 |
-| **mediafire.com** | 102 |
-| **github.io Pattern** | 78 |
+## 💻 Usage
 
-### 🔴 En Tehlikeli Pattern: easylauncher.su
-```
-https://easylauncher.su/PSnzrH
-```
-- VirusTotal: **12/66 malicious** (Trojan.FakeGit)
-- Yöntem: Badge resimlerinin içine gizlenmiş link
-- 9 repo tespit edildi
+### Basic Scan
 
-## 📁 Dosya Yapısı
-
-```
-threat_hunter/
-├── threat_hunter.py     # GitHub repo tarayıcı
-├── pipeline.py          # ⭐ ANA SCRIPT - Tek komut, tüm analiz
-├── mass_reporter.py     # GitHub abuse reporter
-├── rate_limit_monitor.py # API limit checker
-├── rules.yar            # YARA kuralları
-│
-├── detected_repos.json  # threat_hunter çıktısı (1,318 repo)
-├── detected_repos.csv   # Excel için
-│
-└── pipeline_output/     # Pipeline çıktıları
-    ├── FINAL_REPORT.md  # 📋 Detaylı analiz raporu
-    ├── repos_to_report.json  # Mass report için 118 repo
-    └── clusters.json    # Tüm cluster verileri
-```
-
-## 🔄 Pipeline Aşamaları
-
-```
-STAGE 1: Load Repos
-    └─ detected_repos.json → HIGH severity filtrele
-
-STAGE 2: Clustering
-    └─ Her repo için:
-       - github.io linki var mı?
-       - index.html var mı?
-       - script.js var mı?
-       - .zip/.exe dosyası var mı?
-       - easylauncher.su linki var mı?
-       - Diğer malware domain'leri var mı?
-
-STAGE 3: Deep Analysis
-    └─ Kategorize edilmiş repo'lar için:
-       - README raw içeriği → malware domain search
-       - index.html raw içeriği → redirect/link search
-       - script.js raw içeriği → gizli URL search
-       - github.io source repo → dosya listesi
-
-STAGE 4: Generate Reports
-    └─ FINAL_REPORT.md
-    └─ repos_to_report.json
-    └─ clusters.json
-```
-
-## 🎯 Tespit Edilen Malware Domain'ler
-
-| Domain | Repo Sayısı | Risk |
-|--------|-------------|------|
-| easylauncher.su | 9 | 🔴 CRITICAL |
-| mediafire.com | 102 | 🟠 HIGH |
-| gofile.io | 5 | 🟠 HIGH |
-| sites.google.com/view | 2 | 🟡 MEDIUM |
-| mega.nz | 1 | 🟡 MEDIUM |
-
-## 📝 GitHub'a Raporlama
+Perform a scan on a specific path using a YARA rule file:
 
 ```bash
-# Dry run (test)
-python mass_reporter.py --input pipeline_output/repos_to_report.json --dry-run
+python threat_hunter.py <target_directory> rules.yar
 
-# Gerçek rapor (dikkatli kullan!)
-python mass_reporter.py --input pipeline_output/repos_to_report.json
 ```
 
-## ⚙️ Kurulum
+### Batch Reporting
+
+Merge existing reports into a single consolidated view:
 
 ```bash
-# 1. Clone
-git clone https://github.com/egemenguney/threat_hunter.git
-cd threat_hunter
+python mass_reporter.py
 
-# 2. Virtual environment
-python -m venv venv_threat
-.\venv_threat\Scripts\activate  # Windows
-source venv_threat/bin/activate # Linux/Mac
-
-# 3. Dependencies
-pip install -r requirements.txt
-
-# 4. GitHub Token (opsiyonel ama önerilir)
-# .env.local dosyası oluştur:
-GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
 ```
 
-## 🔧 Pipeline Parametreleri
+## 📂 Project Structure
 
-```bash
-# Tam pipeline (stage 1-4)
-python pipeline.py
-
-# Sadece deep analysis (önceki cluster'ları kullan)
-python pipeline.py --stage 3
-
-# Sadece rapor oluştur
-python pipeline.py --stage 4
-```
+* `threat_hunter.py`: Core scanning logic.
+* `rules.yar`: Sample YARA rule definitions.
+* `mass_reporter.py`: Utility for aggregating scan results.
+* `detected_repos.csv/json`: Sample output formats.
 
 ---
 
-**Author:** Security Research  
-**Last Update:** December 23, 2025
+## 🔒 License & Copyright
 
+**Copyright (c) 2025 Egemen Güney KOÇ | egmenguney.net | All rights reserved.**
+
+This software is provided for **demonstration and educational purposes only**.
+
+* **No Permission:** You may not copy, modify, redistribute, or use this code for commercial purposes.
+* **Pro Version:** If you are interested in the full version (Pipeline integration, FastAPI backend, and Web Dashboard), please contact me directly.
+
+---
+
+**Contact:** contact@egemenguney.net

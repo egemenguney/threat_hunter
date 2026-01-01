@@ -85,7 +85,6 @@ CORE_API_STOP_THRESHOLD = 150   # Bu seviyeye düşünce taramayı durdur (sadec
 RATE_LIMIT_BUFFER = 500          # Bu seviyede yavaşla
 
 # Web Search Strategy
-# ÖNCELİK: GitHub PAT ile arama, sonra DDGS fallback
 WEB_SEARCH_PRIMARY = False       # GitHub PAT birincil yöntem
 WEB_SEARCH_DELAY = 2.0           # Web search istekleri arası bekleme (saniye)
 WEB_SEARCH_MAX_RESULTS = 100     # Web search'ten max sonuç (increased for DDGS)
@@ -1179,7 +1178,6 @@ class AsyncGitHubClient:
     async def _check_rate_limit_buffer(self, is_search: bool = False):
         """Proaktif rate limit kontrolü - sadece kritik seviyede dur"""
         if is_search:
-            # Search API: 30/dakika kontrolü ayrıca yapılıyor
             pass
         else:
             # Core API: 1000'e düşünce dur (1000 rezerve)
@@ -1195,11 +1193,9 @@ class AsyncGitHubClient:
             reset_time = int(response.headers.get('X-RateLimit-Reset', 0))
             remaining = int(response.headers.get('X-RateLimit-Remaining', -1))
             
-            # Rate limit mi yoksa başka bir 403 mü?
             if remaining == 0 or 'rate limit' in response.text.lower():
                 if reset_time:
                     wait_time = max(reset_time - time.time(), 1)
-                    # GitHub Actions'da 60 dakikaya kadar bekle (workflow zaten uzun sürebilir)
                     max_wait = int(os.environ.get('RATE_LIMIT_MAX_WAIT', 3600))  # Default 60 min
                     if wait_time <= max_wait:
                         limit_type = "Search" if is_search else "API"
@@ -1225,7 +1221,6 @@ class AsyncGitHubClient:
         
         async with self.search_semaphore:
             while len(results) < max_results:
-                # Proaktif rate limit kontrolü
                 await self._check_rate_limit_buffer(is_search=True)
                 
                 url = f"{GITHUB_API}/search/repositories"
@@ -1306,7 +1301,6 @@ class AsyncGitHubClient:
     async def get_repo(self, client: httpx.AsyncClient, owner: str, repo: str) -> Optional[Dict]:
         """Get repository data"""
         async with self.repo_semaphore:
-            # Proaktif rate limit kontrolü
             await self._check_rate_limit_buffer(is_search=False)
             
             try:
@@ -1333,7 +1327,6 @@ class AsyncGitHubClient:
     async def get_contents(self, client: httpx.AsyncClient, owner: str, repo: str) -> List[Dict]:
         """Get repository contents"""
         async with self.repo_semaphore:
-            # Proaktif rate limit kontrolü
             await self._check_rate_limit_buffer(is_search=False)
             
             try:
@@ -1358,7 +1351,6 @@ class AsyncGitHubClient:
     async def get_readme(self, client: httpx.AsyncClient, owner: str, repo: str) -> str:
         """Get README content"""
         async with self.repo_semaphore:
-            # Proaktif rate limit kontrolü
             await self._check_rate_limit_buffer(is_search=False)
             
             try:
@@ -1386,7 +1378,6 @@ class AsyncGitHubClient:
                                 repo: str, path: str) -> Optional[bytes]:
         """Get raw file content for entropy analysis"""
         async with self.repo_semaphore:
-            # Proaktif rate limit kontrolü
             await self._check_rate_limit_buffer(is_search=False)
             
             try:
@@ -1756,7 +1747,6 @@ class MalwareHunter:
                                   query: str, max_results: int = 30) -> List[DetectedRepo]:
         """Search for repos and analyze them"""
         
-        # Kritik rate limit kontrolü - taramayı durdur
         if self.github.rate_limit_critical_flag or self.github.is_rate_limit_critical():
             return []  # Return empty list instead of raising exception
         
@@ -1771,7 +1761,6 @@ class MalwareHunter:
         all_detections = []
         
         for i in range(0, len(repos), batch_size):
-            # Her batch öncesi kontrol
             if self.github.rate_limit_critical_flag or self.github.is_rate_limit_critical():
                 break  # Exit loop cleanly
             
