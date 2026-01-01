@@ -41306,5 +41306,313 @@
     "files": [],
     "suspicion_score": 51,
     "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/OvalCabby/RING_HWIDspoofer",
+    "owner": "OvalCabby",
+    "repo_name": "RING_HWIDspoofer",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "SUSPICIOUS N-GRAM (2x): password r1ng",
+      "SUSPICIOUS N-GRAM (2x): it password r1ng",
+      "SUSPICIOUS N-GRAM (2x): password r1ng 3",
+      "SUSPICION SCORE: 39/100"
+    ],
+    "detected_at": "2026-01-01T16:34:52.258524",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "SUSPICIOUS N-GRAM (2x): password r1ng",
+      "SUSPICIOUS N-GRAM (2x): it password r1ng",
+      "SUSPICIOUS N-GRAM (2x): password r1ng 3"
+    ],
+    "files": [],
+    "suspicion_score": 39,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/alekya56/Python-practice-problems-from-LeetCode-and-HackerRank-with-solutions1.",
+    "owner": "alekya56",
+    "repo_name": "Python-practice-problems-from-LeetCode-and-HackerRank-with-solutions1.",
+    "detection_type": "HIGH_ENTROPY",
+    "severity": "MEDIUM",
+    "evidence": [
+      "HIGH ENTROPY: Programming Task - 2 (For Advance(EDA) Python Programmers)_leetcode-checkpoint.zip (7.87/8.0)",
+      "SUSPICION SCORE: 35/100"
+    ],
+    "detected_at": "2026-01-01T16:34:57.593855",
+    "cyrillic_detected": false,
+    "high_entropy_files": [
+      "Programming Task - 2 (For Advance(EDA) Python Programmers)_leetcode-checkpoint.zip: HIGH ENTROPY (7.87/8.0) - likely encrypted/packed"
+    ],
+    "yara_matches": [],
+    "readme_flags": [],
+    "files": [],
+    "suspicion_score": 35,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/kwhorne/Claude-Code-Cheat-Sheet",
+    "owner": "kwhorne",
+    "repo_name": "Claude-Code-Cheat-Sheet",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "MEDIUM",
+    "evidence": [
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): to latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version claude",
+      "SUSPICION SCORE: 55/100"
+    ],
+    "detected_at": "2026-01-01T16:35:09.162036",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: 2025.*Version",
+      "BOT INDICATOR: Updated.*2025",
+      "SUSPICIOUS N-GRAM (2x): latest version",
+      "SUSPICIOUS N-GRAM (2x): to latest version",
+      "SUSPICIOUS N-GRAM (2x): latest version claude"
+    ],
+    "files": [],
+    "suspicion_score": 55,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/xxIslexx/aimbot",
+    "owner": "xxIslexx",
+    "repo_name": "aimbot",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2026-01-01T16:35:21.700100",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/replete/obsidian-minimal-theme-css-snippets",
+    "owner": "replete",
+    "repo_name": "obsidian-minimal-theme-css-snippets",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: disable.*av",
+      "RED FLAG: 2024.*working",
+      "RED FLAG: 2024.*COD",
+      "BOT INDICATOR: 2024.*Version",
+      "SUSPICION SCORE: 32/100"
+    ],
+    "detected_at": "2026-01-01T16:36:09.890547",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: disable.*av",
+      "RED FLAG: 2024.*working",
+      "RED FLAG: 2024.*COD",
+      "BOT INDICATOR: 2024.*Version"
+    ],
+    "files": [],
+    "suspicion_score": 32,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/SolvyrEryx/ValoVision",
+    "owner": "SolvyrEryx",
+    "repo_name": "ValoVision",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "BOT INDICATOR: Updated.*2024",
+      "SUSPICION SCORE: 21/100"
+    ],
+    "detected_at": "2026-01-01T16:37:42.043465",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "BOT INDICATOR: Updated.*2024"
+    ],
+    "files": [],
+    "suspicion_score": 21,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/igiel230/FortniteCheat2026",
+    "owner": "igiel230",
+    "repo_name": "FortniteCheat2026",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "RED FLAG: Fortnite.*2026",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2026-01-01T16:39:26.415457",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "RED FLAG: Fortnite.*2026"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/LEX-ESP-for-Fortnite/Fortnite-LEX-esp",
+    "owner": "LEX-ESP-for-Fortnite",
+    "repo_name": "Fortnite-LEX-esp",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "MALICIOUS DOMAIN: cheatseller.ru",
+      "YARA:Known_C2_Domains (Known malicious C2 domains from this campaign)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 48/100"
+    ],
+    "detected_at": "2026-01-01T16:39:27.432210",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Known_C2_Domains (Known malicious C2 domains from this campaign)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "MALICIOUS DOMAIN: cheatseller.ru"
+    ],
+    "files": [],
+    "suspicion_score": 48,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/sandygoday/Fortnite-V-Bucks-and-Skins-Hack-Generator-2021",
+    "owner": "sandygoday",
+    "repo_name": "Fortnite-V-Bucks-and-Skins-Hack-Generator-2021",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: anti[- ]?ban",
+      "SUSPICIOUS N-GRAM (2x): click here",
+      "SUSPICIOUS N-GRAM (2x): click here and",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 99/100"
+    ],
+    "detected_at": "2026-01-01T16:39:31.054538",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Suspicious_Repository_Names (Detects Game Cheat repos utilizing 'Current Year' social engineering (e.g., Hack 2025))",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: anti[- ]?ban",
+      "SUSPICIOUS N-GRAM (2x): click here",
+      "SUSPICIOUS N-GRAM (2x): click here and"
+    ],
+    "files": [],
+    "suspicion_score": 99,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/thosmcclendon21-ux/Apex-legends-aimbot-ai-",
+    "owner": "thosmcclendon21-ux",
+    "repo_name": "Apex-legends-aimbot-ai-",
+    "detection_type": "PATTERN_MATCH",
+    "severity": "LOW",
+    "evidence": [
+      "BOT INDICATOR: educational.*purposes.*only",
+      "SUSPICION SCORE: 23/100"
+    ],
+    "detected_at": "2026-01-01T16:39:49.113298",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [],
+    "readme_flags": [
+      "BOT INDICATOR: educational.*purposes.*only"
+    ],
+    "files": [],
+    "suspicion_score": 23,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/PatrickXin/EFT_Survival",
+    "owner": "PatrickXin",
+    "repo_name": "EFT_Survival",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: turn off.*antivirus",
+      "RED FLAG: undetected",
+      "RED FLAG: EFT.*2025",
+      "BOT INDICATOR: Updated.*2025",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "SUSPICION SCORE: 70/100"
+    ],
+    "detected_at": "2026-01-01T16:40:33.042341",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus",
+      "RED FLAG: turn off.*antivirus",
+      "RED FLAG: undetected",
+      "RED FLAG: EFT.*2025",
+      "BOT INDICATOR: Updated.*2025"
+    ],
+    "files": [],
+    "suspicion_score": 70,
+    "report_status": "PENDING"
+  },
+  {
+    "url": "https://github.com/liqu1dmomen/liquid",
+    "owner": "liqu1dmomen",
+    "repo_name": "liquid",
+    "detection_type": "YARA_MATCH",
+    "severity": "HIGH",
+    "evidence": [
+      "RED FLAG: disable.*antivirus",
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)",
+      "SUSPICION SCORE: 68/100"
+    ],
+    "detected_at": "2026-01-01T16:40:52.925196",
+    "cyrillic_detected": false,
+    "high_entropy_files": [],
+    "yara_matches": [
+      "YARA:Readme_Disable_Antivirus (README instructs user to disable antivirus)",
+      "YARA:Readme_Bot_Generated (Bot-generated README patterns)",
+      "YARA:Delta_Force_Malware_High_Confidence (High confidence Delta Force malware detection)"
+    ],
+    "readme_flags": [
+      "RED FLAG: disable.*antivirus"
+    ],
+    "files": [],
+    "suspicion_score": 68,
+    "report_status": "PENDING"
   }
 ]
