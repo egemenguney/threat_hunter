@@ -54,7 +54,7 @@ python mass_reporter.py
 
 ## 🔒 License & Copyright
 
-**Copyright (c) 2025 Egemen Güney KOÇ | egmenguney.net | All rights reserved.**
+**Copyright (c) 2025 Egemen Güney KOÇ | https://www.egemenguney.net | All rights reserved.**
 
 This software is provided for **demonstration and educational purposes only**.
 
@@ -64,6 +64,7 @@ This software is provided for **demonstration and educational purposes only**.
 ---
 
 **Contact:** contact@egemenguney.net
+
 
 
 
