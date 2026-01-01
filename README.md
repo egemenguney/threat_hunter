@@ -13,7 +13,7 @@ Threat Hunter is a Python-based security tool designed to demonstrate malware de
 ## 🛠️ Installation
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/egemenguney/threat-hunter.git](https://github.com/egemenguney/threat-hunter.git)
+   git clone https://github.com/egemenguney/threat-hunter.git
    ```
 
 2. Install the necessary dependencies:
@@ -64,4 +64,5 @@ This software is provided for **demonstration and educational purposes only**.
 ---
 
 **Contact:** contact@egemenguney.net
+
 
